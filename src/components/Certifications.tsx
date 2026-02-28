@@ -53,18 +53,54 @@ const Certifications = () => {
             <span className="text-primary font-display text-sm tracking-widest uppercase">Formação</span>
             <h2 className="text-3xl font-display font-bold mt-2 mb-8">Educação</h2>
             <div className="space-y-4 mb-10">
-              <div className="flex items-start gap-3 bg-card border border-border rounded-xl p-4 card-elevated">
-                <GraduationCap size={20} className="text-primary mt-0.5 shrink-0" />
-                <div>
-                  <p className="font-medium">Graduação em Marketing</p>
-                  <p className="text-muted-foreground text-sm">Uniessa • Mar 2026 — Jun 2028</p>
+              <div className="bg-card border border-border rounded-xl p-4 card-elevated">
+                <div className="flex items-start gap-3">
+                  <GraduationCap size={20} className="text-primary mt-0.5 shrink-0" />
+                  <div className="w-full">
+                    <p className="font-medium">Graduação em Marketing</p>
+                    <p className="text-muted-foreground text-sm">Uniessa • Mar 2026 — Jun 2028</p>
+                    <span className="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full mt-1">Em andamento</span>
+                    <div className="mt-3">
+                      <div className="flex justify-between text-xs text-muted-foreground mb-1">
+                        <span>Progresso</span>
+                        <span>0%</span>
+                      </div>
+                      <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
+                        <motion.div
+                          className="h-full rounded-full bg-primary"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "0%" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.3 }}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-start gap-3 bg-card border border-border rounded-xl p-4 card-elevated">
-                <GraduationCap size={20} className="text-primary mt-0.5 shrink-0" />
-                <div>
-                  <p className="font-medium">Ciências Econômicas</p>
-                  <p className="text-muted-foreground text-sm">Universidade Federal de Alfenas • 2019 — 2023</p>
+              <div className="bg-card border border-border rounded-xl p-4 card-elevated">
+                <div className="flex items-start gap-3">
+                  <GraduationCap size={20} className="text-primary mt-0.5 shrink-0" />
+                  <div className="w-full">
+                    <p className="font-medium">Ciências Econômicas</p>
+                    <p className="text-muted-foreground text-sm">Universidade Federal de Alfenas • 2019 — 2023</p>
+                    <span className="inline-block text-xs font-medium text-destructive bg-destructive/10 px-2 py-0.5 rounded-full mt-1">Incompleta</span>
+                    <div className="mt-3">
+                      <div className="flex justify-between text-xs text-muted-foreground mb-1">
+                        <span>Progresso</span>
+                        <span>75%</span>
+                      </div>
+                      <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
+                        <motion.div
+                          className="h-full rounded-full bg-muted-foreground/50"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "75%" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.5 }}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
