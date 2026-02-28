@@ -1,12 +1,24 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Experience from "@/components/Experience";
+import Certifications from "@/components/Certifications";
+import Contact from "@/components/Contact";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Navbar />
+      <Hero />
+      <About />
+      <Experience />
+      <Certifications />
+      <Contact />
+      <footer className="bg-background border-t border-border py-6">
+        <div className="container px-6 text-center text-muted-foreground text-sm">
+          © 2025 Thalgy Lino. Todos os direitos reservados.
+        </div>
+      </footer>
     </div>
   );
 };
