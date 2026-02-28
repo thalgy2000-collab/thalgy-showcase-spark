@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { Award, GraduationCap } from "lucide-react";
 
 const certifications = [
-  "Product Management — PM3",
-  "Scrum Master Professional Certificate (SMPC) — Certprof",
+  { name: "Product Management — PM3", link: "https://gerarcertificado.com.br/validar.php" },
+  { name: "Scrum Master Professional Certificate (SMPC) — Certprof", link: "https://drive.google.com/drive/u/0/folders/1cP-AXITCA4U0YTIbpwTgN66e_GVu_heb" },
+  { name: "Power BI para Business Intelligence — Data Science Academy", link: "https://drive.google.com/drive/u/0/folders/1cP-AXITCA4U0YTIbpwTgN66e_GVu_heb" },
 ];
 
 const tools = ["Jira", "Trello", "N8N", "Figma", "Meta Ads", "Google Analytics", "Power BI", "Excel Avançado"];
@@ -24,17 +25,20 @@ const Certifications = () => {
             <h2 className="text-3xl font-display font-bold mt-2 mb-8">Certificados</h2>
             <div className="space-y-4">
               {certifications.map((cert, i) => (
-                <motion.div
+                <motion.a
                   key={i}
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-3 bg-card border border-border rounded-xl p-4 card-elevated"
+                  className="flex items-start gap-3 bg-card border border-border rounded-xl p-4 card-elevated hover:border-primary/50 transition-colors"
                 >
                   <Award size={20} className="text-primary mt-0.5 shrink-0" />
-                  <span className="font-medium">{cert}</span>
-                </motion.div>
+                  <span className="font-medium">{cert.name}</span>
+                </motion.a>
               ))}
             </div>
           </motion.div>
