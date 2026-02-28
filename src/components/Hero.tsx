@@ -35,14 +35,16 @@ const Hero = () => {
             <span className="text-gradient">Lino</span>
           </h1>
 
+
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-lg md:text-xl text-primary-foreground/70 max-w-xl mb-10 font-light leading-relaxed"
           >
-            Especialista em otimização de processos, análise de dados e gestão de produtos digitais.
-            Transformando visão de negócio em resultados mensuráveis.
+            De Marketing e Growth para Product Management. Unindo visão estratégica de negócio,
+            análise de dados e mentalidade centrada no usuário para construir produtos digitais com impacto real.
           </motion.p>
 
           <motion.div

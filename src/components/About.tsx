@@ -21,13 +21,15 @@ const About = () => {
         >
           <span className="text-primary font-display text-sm tracking-widest uppercase">Sobre</span>
           <h2 className="text-3xl md:text-4xl font-display font-bold mt-2 mb-6">
-            De operações a <span className="text-gradient">produto</span>
+            De marketing a <span className="text-gradient">produto</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed text-lg">
-            Profissional com sólida experiência em operações e e-commerce, migrando para Product Management.
-            Especialista em otimização de processos e análise de dados, com histórico em liderança de equipes
-            e implementação de automações que geram eficiência operacional. Atualmente cursando Product Management (PM3),
-            unindo visão de negócio, análise econômica e conhecimento técnico para a construção de produtos digitais.
+            Minha trajetória começa em marketing digital e growth — gestão de canais pagos, testes A/B,
+            análise de funil e otimização de conversão. Essa base me deu fluência em dados, comportamento
+            do usuário e métricas de negócio. Agora, levo toda essa bagagem para Product Management,
+            onde conecto necessidades reais dos usuários com oportunidades de negócio para construir
+            produtos que geram valor de ponta a ponta. Cursando PM3 para aprofundar frameworks de
+            Discovery, Delivery e estratégia de produto.
           </p>
         </motion.div>
 

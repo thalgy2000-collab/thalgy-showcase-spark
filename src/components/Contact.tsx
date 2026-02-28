@@ -17,7 +17,7 @@ const Contact = () => {
             Vamos conversar?
           </h2>
           <p className="text-primary-foreground/60 mb-10">
-            Estou aberto a novas oportunidades em Product Management. Entre em contato!
+            Em transição de Marketing para Produto — aberto a oportunidades em PM, Growth PM e Product Ops.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
