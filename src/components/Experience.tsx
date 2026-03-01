@@ -41,9 +41,12 @@ const experiences = [
     company: "Cyber for Business",
     period: "Ago 2022 — Mar 2023",
     current: false,
-    results: [],
+    results: [
+      { metric: "+5%", label: "crescimento de seguidores dos clientes" },
+      { metric: "+10%", label: "aumento em leads quentes" },
+    ],
     description:
-      "Gestão de canais de aquisição pagos (Meta/Google Ads), focando na análise da jornada do usuário desde o primeiro contato até a conversão.",
+      "Gestão de canais de aquisição pagos (Meta/Google Ads), focando na análise da jornada do usuário desde o primeiro contato até a conversão. Estratégias de conteúdo e tráfego pago que resultaram em crescimento da base de seguidores e geração de leads qualificados.",
   },
 ];
 
