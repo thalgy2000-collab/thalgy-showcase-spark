@@ -30,9 +30,11 @@ const experiences = [
     company: "Cyber for Business",
     period: "Ago 2022 — Mar 2023",
     current: false,
-    results: [],
+    results: [
+      { metric: "+10%", label: "produtividade da equipe com automação de processos" },
+    ],
     description:
-      "Liderança do planejamento estratégico e execução de projetos para clientes B2B/B2C. Elo central entre stakeholders e equipes de Tráfego Pago, Social Media, TI e Design.",
+      "Liderança do planejamento estratégico e execução de projetos para clientes B2B/B2C. Elo central entre stakeholders e equipes de Tráfego Pago, Social Media, TI e Design. Redução de processos operacionais através da automação, resultando em ganho de produtividade.",
   },
   {
     role: "Analista de Mídias Digitais",
