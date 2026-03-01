@@ -14,7 +14,191 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      certifications: {
+        Row: {
+          created_at: string
+          id: string
+          link: string | null
+          name: string
+          sort_order: number | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          link?: string | null
+          name: string
+          sort_order?: number | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          link?: string | null
+          name?: string
+          sort_order?: number | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      education: {
+        Row: {
+          created_at: string
+          degree: string
+          id: string
+          institution: string
+          period: string
+          progress: number | null
+          sort_order: number | null
+          status: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          degree: string
+          id?: string
+          institution: string
+          period: string
+          progress?: number | null
+          sort_order?: number | null
+          status?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          degree?: string
+          id?: string
+          institution?: string
+          period?: string
+          progress?: number | null
+          sort_order?: number | null
+          status?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      experience_images: {
+        Row: {
+          caption: string | null
+          created_at: string
+          experience_id: string | null
+          id: string
+          image_url: string
+        }
+        Insert: {
+          caption?: string | null
+          created_at?: string
+          experience_id?: string | null
+          id?: string
+          image_url: string
+        }
+        Update: {
+          caption?: string | null
+          created_at?: string
+          experience_id?: string | null
+          id?: string
+          image_url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "experience_images_experience_id_fkey"
+            columns: ["experience_id"]
+            isOneToOne: false
+            referencedRelation: "experiences"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      experiences: {
+        Row: {
+          company: string
+          created_at: string
+          description: string | null
+          id: string
+          is_current: boolean | null
+          period: string
+          pm_skills: string[] | null
+          products: string | null
+          results: Json | null
+          role: string
+          sort_order: number | null
+          technologies: string[] | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_current?: boolean | null
+          period: string
+          pm_skills?: string[] | null
+          products?: string | null
+          results?: Json | null
+          role: string
+          sort_order?: number | null
+          technologies?: string[] | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_current?: boolean | null
+          period?: string
+          pm_skills?: string[] | null
+          products?: string | null
+          results?: Json | null
+          role?: string
+          sort_order?: number | null
+          technologies?: string[] | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          bio: string | null
+          created_at: string
+          full_name: string
+          id: string
+          linkedin_url: string | null
+          location: string | null
+          photo_url: string | null
+          title: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string
+          full_name?: string
+          id?: string
+          linkedin_url?: string | null
+          location?: string | null
+          photo_url?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string
+          full_name?: string
+          id?: string
+          linkedin_url?: string | null
+          location?: string | null
+          photo_url?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

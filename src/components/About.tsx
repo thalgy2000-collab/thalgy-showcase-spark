@@ -28,8 +28,7 @@ const About = () => {
             análise de funil e otimização de conversão. Essa base me deu fluência em dados, comportamento
             do usuário e métricas de negócio. Agora, levo toda essa bagagem para Product Management,
             onde conecto necessidades reais dos usuários com oportunidades de negócio para construir
-            produtos que geram valor de ponta a ponta. Cursando PM3 para aprofundar frameworks de
-            Discovery, Delivery e estratégia de produto.
+            produtos que geram valor de ponta a ponta.
           </p>
         </motion.div>
 
@@ -41,9 +40,9 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-card rounded-xl p-6 card-elevated border border-border hover:border-primary/30 transition-colors group"
+              className="bg-card rounded-2xl p-6 card-elevated border border-border hover:border-primary/30 transition-all group hover:-translate-y-1"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 <item.icon size={20} className="text-primary" />
               </div>
               <h3 className="font-display font-semibold mb-2">{item.label}</h3>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const links = [
   { label: "Sobre", href: "#sobre" },
@@ -12,6 +13,7 @@ const links = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -22,7 +24,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-card/80 backdrop-blur-lg border-b border-border shadow-sm" : "bg-transparent"
+        scrolled ? "glass border-b border-border shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="container px-6 flex items-center justify-between h-16">
@@ -43,6 +45,24 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          {user ? (
+            <button
+              onClick={() => signOut()}
+              className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Sair
+            </button>
+          ) : (
+            <a
+              href="/login"
+              className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
+                scrolled ? "text-primary hover:text-primary/80" : "text-primary-foreground/70 hover:text-primary-foreground"
+              }`}
+            >
+              <LogIn size={14} />
+              Admin
+            </a>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -61,7 +81,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card border-b border-border"
+            className="md:hidden glass border-b border-border"
           >
             <div className="container px-6 py-4 flex flex-col gap-4">
               {links.map((link) => (

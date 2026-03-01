@@ -1,56 +1,10 @@
 import { motion } from "framer-motion";
-import { TrendingUp, ArrowUpRight } from "lucide-react";
-
-const experiences = [
-  {
-    role: "Analista de Marketplaces",
-    company: "BRK Agro",
-    period: "Out 2025 — Atual",
-    current: true,
-    results: [
-      { metric: "+15%", label: "aumento em vendas via Testes A/B" },
-      { metric: "-20%", label: "redução de churn com fluxo proativo" },
-    ],
-    description:
-      "Gestão de funil de vendas de ponta a ponta na Shopee, unindo estratégias de Growth e Customer Experience. Estruturação de testes A/B e implementação de fluxos proativos de retenção.",
-  },
-  {
-    role: "Analista de Marketplaces",
-    company: "Balux Pet Market",
-    period: "Jul 2024 — Set 2025",
-    current: false,
-    results: [
-      { metric: "0→1", label: "fundação do setor de marketplaces" },
-    ],
-    description:
-      "Responsável pela fundação e estruturação do setor de marketplaces (jornada 0 ao 1). Definição de estratégia de precificação, gestão do ciclo de vida dos produtos e criação de processos operacionais escaláveis.",
-  },
-  {
-    role: "Coordenador de Operações",
-    company: "Cyber for Business",
-    period: "Ago 2022 — Mar 2023",
-    current: false,
-    results: [
-      { metric: "+10%", label: "produtividade da equipe com automação de processos" },
-    ],
-    description:
-      "Liderança do planejamento estratégico e execução de projetos para clientes B2B/B2C. Elo central entre stakeholders e equipes de Tráfego Pago, Social Media, TI e Design. Redução de processos operacionais através da automação, resultando em ganho de produtividade.",
-  },
-  {
-    role: "Analista de Mídias Digitais",
-    company: "Cyber for Business",
-    period: "Ago 2022 — Mar 2023",
-    current: false,
-    results: [
-      { metric: "+5%", label: "crescimento de seguidores dos clientes" },
-      { metric: "+10%", label: "aumento em leads quentes" },
-    ],
-    description:
-      "Gestão de canais de aquisição pagos (Meta/Google Ads), focando na análise da jornada do usuário desde o primeiro contato até a conversão. Estratégias de conteúdo e tráfego pago que resultaram em crescimento da base de seguidores e geração de leads qualificados.",
-  },
-];
+import { TrendingUp, Cpu, Wrench, Package } from "lucide-react";
+import { useExperiences } from "@/hooks/useExperiences";
 
 const Experience = () => {
+  const { data: experiences } = useExperiences();
+
   return (
     <section id="experiencia" className="py-24 bg-secondary/50">
       <div className="container px-6">
@@ -67,10 +21,10 @@ const Experience = () => {
           </h2>
         </motion.div>
 
-        <div className="space-y-8 max-w-3xl">
-          {experiences.map((exp, i) => (
+        <div className="space-y-10 max-w-4xl">
+          {experiences?.map((exp, i) => (
             <motion.div
-              key={i}
+              key={exp.id}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -81,7 +35,7 @@ const Experience = () => {
 
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
                 <h3 className="font-display font-semibold text-lg">{exp.role}</h3>
-                {exp.current && (
+                {exp.is_current && (
                   <span className="text-xs font-medium bg-accent/20 text-accent px-2 py-0.5 rounded-full">
                     Atual
                   </span>
@@ -92,13 +46,74 @@ const Experience = () => {
               <p className="text-muted-foreground text-sm mb-3">{exp.period}</p>
               <p className="text-muted-foreground leading-relaxed mb-4">{exp.description}</p>
 
+              {/* Products section */}
+              {exp.products && (
+                <div className="mb-4 bg-card border border-border rounded-xl p-4 card-elevated">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Package size={16} className="text-primary" />
+                    <span className="font-display font-semibold text-sm">Produtos & Entregas</span>
+                  </div>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{exp.products}</p>
+                </div>
+              )}
+
+              {/* Technologies & PM Skills */}
+              <div className="flex flex-wrap gap-4 mb-4">
+                {exp.technologies && exp.technologies.length > 0 && (
+                  <div className="flex-1 min-w-[200px]">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <Cpu size={14} className="text-accent" />
+                      <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Tecnologias</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {exp.technologies.map((tech, j) => (
+                        <span key={j} className="text-xs bg-accent/10 text-accent border border-accent/20 px-2 py-1 rounded-md font-medium">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {exp.pm_skills && exp.pm_skills.length > 0 && (
+                  <div className="flex-1 min-w-[200px]">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <Wrench size={14} className="text-primary" />
+                      <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Skills de PM</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {exp.pm_skills.map((skill, j) => (
+                        <span key={j} className="text-xs bg-primary/10 text-primary border border-primary/20 px-2 py-1 rounded-md font-medium">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Results */}
               {exp.results.length > 0 && (
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 mb-4">
                   {exp.results.map((r, j) => (
                     <div key={j} className="inline-flex items-center gap-2 bg-card border border-border rounded-lg px-4 py-2 card-elevated">
                       <TrendingUp size={14} className="text-accent" />
                       <span className="font-display font-bold text-accent">{r.metric}</span>
                       <span className="text-muted-foreground text-sm">{r.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Experience images */}
+              {exp.images && exp.images.length > 0 && (
+                <div className="flex gap-3 overflow-x-auto pb-2">
+                  {exp.images.map((img) => (
+                    <div key={img.id} className="shrink-0 rounded-lg overflow-hidden border border-border">
+                      <img src={img.image_url} alt={img.caption || ""} className="h-32 w-auto object-cover" />
+                      {img.caption && (
+                        <p className="text-xs text-muted-foreground p-2">{img.caption}</p>
+                      )}
                     </div>
                   ))}
                 </div>
