@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Award, GraduationCap } from "lucide-react";
+import { Award, GraduationCap, LayoutDashboard, Trello, Workflow, Figma, BarChart3, FileSpreadsheet, Megaphone, Heart } from "lucide-react";
 
 const certifications = [
   { name: "Product Management — PM3", link: "https://gerarcertificado.com.br/validar.php" },
@@ -7,7 +7,18 @@ const certifications = [
   { name: "Power BI para Business Intelligence — Data Science Academy", link: "https://drive.google.com/drive/u/0/folders/1cP-AXITCA4U0YTIbpwTgN66e_GVu_heb" },
 ];
 
-const tools = ["Jira", "Trello", "N8N", "Figma", "Meta Ads", "Google Analytics", "Power BI", "Excel Avançado"];
+const tools = [
+  { name: "Jira", icon: LayoutDashboard },
+  { name: "Trello", icon: Trello },
+  { name: "N8N", icon: Workflow },
+  { name: "Figma", icon: Figma },
+  { name: "Meta Ads", icon: Megaphone },
+  { name: "Google Ads", icon: Megaphone },
+  { name: "Google Analytics", icon: BarChart3 },
+  { name: "Power BI", icon: BarChart3 },
+  { name: "Excel Avançado", icon: FileSpreadsheet },
+  { name: "Lovable", icon: Heart },
+];
 
 const Certifications = () => {
   return (
@@ -107,14 +118,18 @@ const Certifications = () => {
 
             <h3 className="font-display font-semibold mb-4">Ferramentas</h3>
             <div className="flex flex-wrap gap-2">
-              {tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="bg-secondary text-secondary-foreground text-sm font-medium px-3 py-1.5 rounded-lg"
-                >
-                  {tool}
-                </span>
-              ))}
+              {tools.map((tool) => {
+                const Icon = tool.icon;
+                return (
+                  <span
+                    key={tool.name}
+                    className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground text-sm font-medium px-3 py-1.5 rounded-lg"
+                  >
+                    <Icon size={16} className="text-primary shrink-0" />
+                    {tool.name}
+                  </span>
+                );
+              })}
             </div>
           </motion.div>
         </div>
