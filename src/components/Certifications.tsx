@@ -5,6 +5,9 @@ const certifications = [
   { name: "Product Management — PM3", link: "https://gerarcertificado.com.br/validar.php" },
   { name: "Scrum Master Professional Certificate (SMPC) — Certprof", link: "https://drive.google.com/drive/u/0/folders/1cP-AXITCA4U0YTIbpwTgN66e_GVu_heb" },
   { name: "Power BI para Business Intelligence — Data Science Academy", link: "https://drive.google.com/drive/u/0/folders/1cP-AXITCA4U0YTIbpwTgN66e_GVu_heb" },
+  { name: "Google Analytics", link: "" },
+  { name: "Google Ads", link: "" },
+  { name: "Python para Análise de Dados — Data Science Academy", link: "" },
 ];
 
 const tools = [
