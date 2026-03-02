@@ -74,13 +74,13 @@ const Certifications = () => {
                     <div className="mt-3">
                       <div className="flex justify-between text-xs text-muted-foreground mb-1">
                         <span>Progresso</span>
-                        <span>0%</span>
+                        <span>20%</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
                         <motion.div
                           className="h-full rounded-full bg-primary"
                           initial={{ width: 0 }}
-                          whileInView={{ width: "0%" }}
+                          whileInView={{ width: "20%" }}
                           viewport={{ once: true }}
                           transition={{ duration: 1, delay: 0.3 }}
                         />
@@ -99,13 +99,13 @@ const Certifications = () => {
                     <div className="mt-3">
                       <div className="flex justify-between text-xs text-muted-foreground mb-1">
                         <span>Progresso</span>
-                        <span>75%</span>
+                        <span>50%</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
                         <motion.div
                           className="h-full rounded-full bg-muted-foreground/50"
                           initial={{ width: 0 }}
-                          whileInView={{ width: "75%" }}
+                          whileInView={{ width: "50%" }}
                           viewport={{ once: true }}
                           transition={{ duration: 1, delay: 0.5 }}
                         />
