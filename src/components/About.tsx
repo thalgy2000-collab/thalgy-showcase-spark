@@ -1,11 +1,22 @@
 import { motion } from "framer-motion";
-import { Target, BarChart3, Users, Lightbulb } from "lucide-react";
+import { Target, BarChart3, Users } from "lucide-react";
 
 const highlights = [
-  { icon: Target, label: "Product Discovery", desc: "Entrevistas, análise de concorrência, mapeamento de dores" },
-  { icon: BarChart3, label: "Data & Analytics", desc: "Google Analytics, Power BI, Excel Avançado" },
-  { icon: Users, label: "Product Delivery", desc: "Backlog, User Stories, Scrum/Kanban" },
-  { icon: Lightbulb, label: "Growth & Aquisição", desc: "Meta Ads, Google Ads, Testes A/B" },
+  {
+    icon: Target,
+    label: "Product Management",
+    items: ["Product Discovery", "Roadmap & Backlog", "KPIs & OKRs", "A/B Testing"],
+  },
+  {
+    icon: Users,
+    label: "Metodologias Ágeis",
+    items: ["Scrum (certificado SMPC)", "Kanban"],
+  },
+  {
+    icon: BarChart3,
+    label: "Ferramentas de Análise",
+    items: ["Google Analytics", "Power BI"],
+  },
 ];
 
 const About = () => {
@@ -32,7 +43,7 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {highlights.map((item, i) => (
             <motion.div
               key={item.label}
@@ -45,8 +56,15 @@ const About = () => {
               <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 <item.icon size={20} className="text-primary" />
               </div>
-              <h3 className="font-display font-semibold mb-2">{item.label}</h3>
-              <p className="text-muted-foreground text-sm">{item.desc}</p>
+              <h3 className="font-display font-semibold mb-3">{item.label}</h3>
+              <ul className="space-y-1.5">
+                {item.items.map((sub) => (
+                  <li key={sub} className="text-muted-foreground text-sm flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0" />
+                    {sub}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>
