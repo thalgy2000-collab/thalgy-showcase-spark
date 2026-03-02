@@ -60,7 +60,7 @@ const defaultExperiences: Experience[] = [
     period: "Ago 2022 — Mar 2023",
     is_current: false,
     products: "Implementação de dashboard de acompanhamento de projetos e automação de relatórios de performance para clientes B2B/B2C. Criação de fluxos automatizados de onboarding de clientes.",
-    technologies: ["Trello", "Google Workspace", "N8N", "Google Data Studio"],
+    technologies: ["Trello", "Google Workspace", "ClickUp", "Power BI", "Slack", "Meta Ads", "Google Ads", "Google Data Studio"],
     pm_skills: ["Gestão de Stakeholders", "Automação de Processos", "Liderança", "Delivery"],
     results: [
       { metric: "+10%", label: "produtividade da equipe com automação de processos" },
