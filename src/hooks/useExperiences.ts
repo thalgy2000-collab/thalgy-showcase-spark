@@ -29,7 +29,7 @@ const defaultExperiences: Experience[] = [
     period: "Out 2025 — Atual",
     is_current: true,
     products: "Gestão da loja oficial na Shopee, incluindo criação e otimização de listings, gestão de campanhas promocionais e estruturação do funil de vendas completo na plataforma.",
-    technologies: ["Shopee Seller Center", "Google Analytics", "Excel", "N8N"],
+    technologies: ["Shopee Seller Center", "Google Analytics", "Excel", "Bling ERP"],
     pm_skills: ["Testes A/B", "Análise de Funil", "Retenção de Clientes", "Growth"],
     results: [
       { metric: "+15%", label: "aumento em vendas via Testes A/B" },
@@ -45,7 +45,7 @@ const defaultExperiences: Experience[] = [
     period: "Jul 2024 — Set 2025",
     is_current: false,
     products: "Fundação do setor de marketplaces do zero. Estruturação de operação multi-marketplace (Mercado Livre, Shopee, Amazon), definição de processos de cadastro, precificação dinâmica e gestão do ciclo de vida dos produtos.",
-    technologies: ["Bling ERP", "Mercado Livre", "Shopee", "Amazon Seller Central", "Excel"],
+    technologies: ["Mercado Livre", "Shopee", "Shankya", "Excel"],
     pm_skills: ["Jornada 0→1", "Processos Escaláveis", "Precificação", "Discovery"],
     results: [
       { metric: "0→1", label: "fundação do setor de marketplaces" },
