@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Target, BarChart3, Users } from "lucide-react";
+import { Target, BarChart3, Users, Rocket } from "lucide-react";
 
 const highlights = [
   {
@@ -16,6 +16,11 @@ const highlights = [
     icon: BarChart3,
     label: "Ferramentas de Análise",
     items: ["Google Analytics", "Power BI"],
+  },
+  {
+    icon: Rocket,
+    label: "Growth & Aquisição",
+    items: ["Meta Ads", "Google Ads", "Métricas de aquisição", "Teste A/B"],
   },
 ];
 
@@ -43,7 +48,7 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((item, i) => (
             <motion.div
               key={item.label}
