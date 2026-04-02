@@ -300,8 +300,12 @@
       }
 
       /* ── SKILLS ── */
+      .skills-container {
+        display: grid; grid-template-columns: 2fr 1fr; gap: 40px;
+        align-items: start;
+      }
       .skills-grid {
-        display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
       }
       .skill-card {
         background: #0f172a;
@@ -320,11 +324,47 @@
       .certs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
       .cert-card {
         background: #0f172a; border: 1px solid #1e293b;
-        border-radius: 12px; padding: 20px;
+        border-radius: 12px; overflow: hidden; cursor: pointer;
+        transition: transform .2s, border-color .2s;
+      }
+      .cert-card:hover { transform: translateY(-2px); border-color: #3b82f6; }
+      .cert-image {
+        width: 100%; height: 160px;
+        object-fit: cover;
+        display: block;
+      }
+      .cert-content {
+        padding: 20px;
       }
       .cert-card .ct-name { font-size: 14px; font-weight: 500; color: #e2e8f0; margin-bottom: 4px; }
       .cert-card .ct-issuer { font-size: 12px; color: #475569; margin-bottom: 8px; }
       .cert-card .ct-code { font-size: 10px; color: #334155; font-family: monospace; }
+
+      /* ── MODAL ── */
+      .modal {
+        display: none; position: fixed; z-index: 1000;
+        left: 0; top: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9); backdrop-filter: blur(4px);
+      }
+      .modal.active { display: flex; align-items: center; justify-content: center; }
+      .modal-content {
+        max-width: 90%; max-height: 90vh;
+        border-radius: 12px; overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .modal-content img {
+        max-width: 100%; max-height: 90vh;
+        object-fit: contain;
+        display: block;
+      }
+      .modal-close {
+        position: absolute; top: 20px; right: 40px;
+        color: #fff; font-size: 40px; font-weight: bold;
+        cursor: pointer; z-index: 1001;
+        transition: color .2s;
+      }
+      .modal-close:hover { color: #3b82f6; }
 
       /* ── CONTACT ── */
       .contact-row { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -381,9 +421,10 @@
         <li><a href="#prodify">Case</a></li>
         <li><a href="#exp">Experiência</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#certificates">Certificações</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
-      <a href="mailto:thalgy2000@gmail.com" class="nav-cta">Fale comigo</a>
+      <a href="https://wa.me/5516994657472?text=Ol%C3%A1%20Thalgy%2C%20vim%20pelo%20seu%20portf%C3%B3lio!" target="_blank" class="nav-cta">Fale comigo</a>
     </nav>
 
     <main>
@@ -652,22 +693,31 @@
         </div>
 
         <!-- CERTS -->
-        <div class="section-eyebrow" style="margin-top:48px;margin-bottom:12px;">Certificações</div>
+        <div id="certificates" class="section-eyebrow" style="margin-top:48px;margin-bottom:12px;">Certificações</div>
         <div class="certs-grid">
-          <div class="cert-card">
-            <div class="ct-name">Product Management</div>
-            <div class="ct-issuer">PM3</div>
-            <div class="ct-code">bd6e5c562777847ec9898effdd3d99d4</div>
+          <div class="cert-card" onclick="openModal('/certificates/product-management.jpg')">
+            <img src="/certificates/product-management.jpg" alt="Product Management Certificate" class="cert-image">
+            <div class="cert-content">
+              <div class="ct-name">Product Management</div>
+              <div class="ct-issuer">PM3</div>
+              <div class="ct-code">bd6e5c562777847ec9898effdd3d99d4</div>
+            </div>
           </div>
-          <div class="cert-card">
-            <div class="ct-name">Scrum Master Professional (SMPC)</div>
-            <div class="ct-issuer">Certprof</div>
-            <div class="ct-code">THA1770B2CSMPC2QAYTH</div>
+          <div class="cert-card" onclick="openModal('/certificates/scrum-master.jpg')">
+            <img src="/certificates/scrum-master.jpg" alt="Scrum Master Certificate" class="cert-image">
+            <div class="cert-content">
+              <div class="ct-name">Scrum Master Professional (SMPC)</div>
+              <div class="ct-issuer">Certprof</div>
+              <div class="ct-code">THA1770B2CSMPC2QAYTH</div>
+            </div>
           </div>
-          <div class="cert-card">
-            <div class="ct-name">Power BI para Business Intelligence</div>
-            <div class="ct-issuer">Data Science Academy</div>
-            <div class="ct-code">—</div>
+          <div class="cert-card" onclick="openModal('/certificates/power-bi.jpg')">
+            <img src="/certificates/power-bi.jpg" alt="Power BI Certificate" class="cert-image">
+            <div class="cert-content">
+              <div class="ct-name">Power BI para Business Intelligence</div>
+              <div class="ct-issuer">Data Science Academy</div>
+              <div class="ct-code">—</div>
+            </div>
           </div>
         </div>
       </section>
@@ -690,11 +740,49 @@
               ></strong
             >
           </div>
-          <div class="contact-chip">📱 <strong>(16) 99465-7472</strong></div>
+          <div class="contact-chip">📱 <strong><a href="https://wa.me/5516994657472?text=Ol%C3%A1%20Thalgy%2C%20vim%20pelo%20seu%20portf%C3%B3lio!" target="_blank">(16) 99465-7472</a></strong></div>
         </div>
       </section>
 
       <footer>Thalgy de Oliveira Lino · Product Manager Jr. · 2026</footer>
     </main>
+
+    <!-- CERTIFICATE MODAL -->
+    <div id="certModal" class="modal">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div class="modal-content">
+        <img id="modalImage" src="" alt="Certificate">
+      </div>
+    </div>
+
+    <script>
+      function openModal(imageSrc) {
+        const modal = document.getElementById('certModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imageSrc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('certModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      // Close modal when clicking outside the image
+      document.getElementById('certModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeModal();
+        }
+      });
+
+      // Close modal with ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeModal();
+        }
+      });
+    </script>
   </body>
 </html>
