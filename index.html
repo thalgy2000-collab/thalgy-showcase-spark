@@ -1,693 +1,508 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thalgy Lino — Product Manager</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-      html { scroll-behavior: smooth; }
-      body {
-        font-family: 'DM Sans', sans-serif;
-        background: #0a0f1e;
-        color: #e2e8f0;
-        min-height: 100vh;
-        line-height: 1.6;
-      }
-
-      /* ── NAV ── */
-      nav {
-        position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-        background: rgba(10,15,30,0.85);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid #1e293b;
-        padding: 0 48px;
-        display: flex; align-items: center; justify-content: space-between;
-        height: 60px;
-      }
-      .nav-logo {
-        font-family: 'Syne', sans-serif;
-        font-size: 18px; font-weight: 800; color: #fff;
-      }
-      .nav-logo span { color: #3b82f6; }
-      .nav-links { display: flex; gap: 28px; list-style: none; }
-      .nav-links a {
-        font-size: 13px; font-weight: 500; color: #64748b;
-        text-decoration: none; transition: color .2s;
-      }
-      .nav-links a:hover { color: #e2e8f0; }
-      .nav-cta {
-        background: #3b82f6; color: #fff;
-        padding: 8px 18px; border-radius: 8px;
-        font-size: 13px; font-weight: 500;
-        text-decoration: none; transition: background .2s;
-      }
-      .nav-cta:hover { background: #2563eb; }
-
-      /* ── LAYOUT ── */
-      main { max-width: 960px; margin: 0 auto; padding-top: 60px; }
-
-      /* ── HERO ── */
-      .hero {
-        padding: 100px 48px 80px;
-        position: relative;
-      }
-      .hero::before {
-        content: '';
-        position: absolute; top: 60px; right: 0;
-        width: 400px; height: 400px;
-        background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
-        pointer-events: none;
-      }
-      .badge {
-        display: inline-block;
-        background: #1e3a5f; color: #60a5fa;
-        font-size: 11px; font-weight: 600;
-        padding: 5px 14px; border-radius: 20px;
-        letter-spacing: 1.5px; text-transform: uppercase;
-        margin-bottom: 28px;
-      }
-      .hero h1 {
-        font-family: 'Syne', sans-serif;
-        font-size: 64px; font-weight: 800;
-        line-height: 1.02; color: #fff;
-        margin-bottom: 20px;
-      }
-      .hero h1 .accent { color: #3b82f6; }
-      .hero-sub {
-        font-size: 18px; color: #94a3b8;
-        line-height: 1.7; max-width: 520px;
-        margin-bottom: 40px;
-      }
-      .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-      .btn-primary {
-        background: #3b82f6; color: #fff;
-        padding: 14px 28px; border-radius: 10px;
-        font-size: 14px; font-weight: 500;
-        text-decoration: none; border: none; cursor: pointer;
-        transition: background .2s, transform .15s;
-        display: inline-flex; align-items: center; gap: 8px;
-      }
-      .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
-      .btn-secondary {
-        background: transparent; color: #e2e8f0;
-        padding: 14px 28px; border-radius: 10px;
-        font-size: 14px; font-weight: 500;
-        border: 1px solid #334155; cursor: pointer;
-        text-decoration: none; transition: border-color .2s, transform .15s;
-        display: inline-flex; align-items: center; gap: 8px;
-      }
-      .btn-secondary:hover { border-color: #475569; transform: translateY(-1px); }
-
-      /* ── SECTIONS ── */
-      section {
-        padding: 80px 48px;
-        border-top: 1px solid #1e293b;
-      }
-      .section-eyebrow {
-        font-size: 11px; font-weight: 600;
-        letter-spacing: 2px; color: #3b82f6;
-        text-transform: uppercase; margin-bottom: 12px;
-      }
-      section h2 {
-        font-family: 'Syne', sans-serif;
-        font-size: 36px; font-weight: 700;
-        color: #fff; margin-bottom: 8px;
-      }
-      .section-sub {
-        font-size: 15px; color: #64748b; margin-bottom: 48px;
-      }
-
-      /* ── CASE CARD ── */
-      .case-card {
-        background: #0f172a;
-        border: 1px solid #1e293b;
-        border-radius: 20px; overflow: hidden;
-      }
-      .case-header {
-        background: linear-gradient(135deg, #1e3a5f 0%, #0f2847 100%);
-        padding: 48px;
-        display: flex; align-items: flex-start; gap: 28px;
-      }
-      .case-icon {
-        width: 60px; height: 60px;
-        background: #3b82f6; border-radius: 14px;
-        display: flex; align-items: center; justify-content: center;
-        font-family: 'Syne', sans-serif;
-        font-weight: 800; font-size: 20px; color: #fff;
-        flex-shrink: 0;
-      }
-      .case-meta h3 {
-        font-family: 'Syne', sans-serif;
-        font-size: 30px; font-weight: 700; color: #fff;
-        margin-bottom: 8px;
-      }
-      .case-meta p { font-size: 15px; color: #93c5fd; line-height: 1.65; }
-      .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-      .tag {
-        background: rgba(59,130,246,0.2); color: #93c5fd;
-        font-size: 11px; font-weight: 500;
-        padding: 4px 12px; border-radius: 4px;
-      }
-
-      .case-body { padding: 40px 48px; }
-
-      .problem-box {
-        background: #0a0f1e;
-        border-left: 3px solid #3b82f6;
-        padding: 18px 22px;
-        border-radius: 0 10px 10px 0;
-        margin-bottom: 36px;
-      }
-      .problem-box .pb-label {
-        font-size: 10px; font-weight: 600;
-        letter-spacing: 1.5px; color: #3b82f6;
-        text-transform: uppercase; margin-bottom: 8px;
-      }
-      .problem-box p { font-size: 14px; color: #94a3b8; line-height: 1.7; }
-
-      .cb-h5 {
-        font-family: 'Syne', sans-serif;
-        font-size: 15px; font-weight: 700;
-        color: #e2e8f0; margin: 28px 0 14px;
-      }
-
-      .flow {
-        display: flex; flex-wrap: wrap;
-        align-items: center; gap: 6px;
-        margin-bottom: 32px;
-      }
-      .flow-step {
-        background: #1e293b;
-        padding: 9px 16px;
-        border-radius: 8px;
-        font-size: 12px; font-weight: 500; color: #e2e8f0;
-      }
-      .flow-arrow { color: #3b82f6; font-size: 16px; font-weight: 700; }
-
-      .metrics {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px; margin: 28px 0;
-      }
-      .metric {
-        background: #0a0f1e;
-        border: 1px solid #1e293b;
-        border-radius: 12px; padding: 20px;
-        text-align: center;
-      }
-      .metric .num {
-        font-family: 'Syne', sans-serif;
-        font-size: 30px; font-weight: 700; color: #3b82f6;
-      }
-      .metric .desc { font-size: 12px; color: #475569; margin-top: 4px; }
-
-      .decisions {
-        display: grid; grid-template-columns: 1fr 1fr;
-        gap: 12px; margin-top: 8px;
-      }
-      .decision-item {
-        background: #0a0f1e;
-        border: 1px solid #1e293b;
-        border-radius: 10px; padding: 16px 18px;
-      }
-      .decision-item .di-label {
-        font-size: 10px; font-weight: 600;
-        color: #3b82f6; text-transform: uppercase;
-        letter-spacing: 1px; margin-bottom: 6px;
-      }
-      .decision-item p { font-size: 13px; color: #94a3b8; line-height: 1.55; }
-
-      .learnings {
-        display: grid; grid-template-columns: 1fr 1fr;
-        gap: 12px; margin-top: 8px;
-      }
-      .learning-item {
-        background: #0a0f1e;
-        border: 1px solid #1e293b;
-        border-radius: 10px; padding: 16px 18px;
-      }
-      .learning-item .li-label {
-        font-size: 10px; font-weight: 600;
-        color: #10b981; text-transform: uppercase;
-        letter-spacing: 1px; margin-bottom: 6px;
-      }
-      .learning-item p { font-size: 13px; color: #94a3b8; line-height: 1.55; }
-
-      .hypothesis-box {
-        background: rgba(59,130,246,0.06);
-        border: 1px solid rgba(59,130,246,0.2);
-        border-radius: 12px; padding: 20px 24px;
-        margin-top: 28px;
-      }
-      .hypothesis-box .hy-label {
-        font-size: 10px; font-weight: 600;
-        color: #60a5fa; text-transform: uppercase;
-        letter-spacing: 1px; margin-bottom: 8px;
-      }
-      .hypothesis-box p { font-size: 14px; color: #93c5fd; line-height: 1.65; }
-
-      .link-btn {
-        display: inline-flex; align-items: center; gap: 8px;
-        background: #1e3a5f; color: #93c5fd;
-        padding: 12px 20px; border-radius: 10px;
-        font-size: 13px; font-weight: 500;
-        text-decoration: none; margin-top: 32px;
-        transition: background .2s;
-        border: none; cursor: pointer;
-      }
-      .link-btn:hover { background: #1e4976; }
-
-      /* ── EXPERIENCE ── */
-      .exp-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-      .exp-card {
-        background: #0f172a;
-        border: 1px solid #1e293b;
-        border-radius: 14px; padding: 26px;
-      }
-      .exp-company {
-        font-size: 10px; font-weight: 600;
-        letter-spacing: 1.5px; color: #3b82f6;
-        text-transform: uppercase; margin-bottom: 6px;
-      }
-      .exp-card h4 {
-        font-family: 'Syne', sans-serif;
-        font-size: 16px; font-weight: 700;
-        color: #fff; margin-bottom: 4px;
-      }
-      .exp-period { font-size: 12px; color: #475569; margin-bottom: 14px; }
-      .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-      .exp-bullets li {
-        font-size: 13px; color: #94a3b8;
-        padding-left: 16px; position: relative; line-height: 1.5;
-      }
-      .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #3b82f6; }
-      .exp-highlight {
-        display: inline-block;
-        background: #1e3a5f; color: #60a5fa;
-        font-size: 11px; font-weight: 600;
-        padding: 3px 10px; border-radius: 4px; margin-top: 10px;
-      }
-
-      /* ── SKILLS ── */
-      .skills-grid {
-        display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
-      }
-      .skill-card {
-        background: #0f172a;
-        border: 1px solid #1e293b;
-        border-radius: 12px; padding: 20px;
-      }
-      .sk-label {
-        font-size: 10px; font-weight: 600;
-        color: #3b82f6; text-transform: uppercase;
-        letter-spacing: 1px; margin-bottom: 12px;
-      }
-      .sk-items { display: flex; flex-direction: column; gap: 5px; }
-      .sk-items span { font-size: 12px; color: #94a3b8; }
-
-      /* ── CERTS ── */
-      .certs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-      .cert-card {
-        background: #0f172a; border: 1px solid #1e293b;
-        border-radius: 12px; padding: 20px;
-      }
-      .cert-card .ct-name { font-size: 14px; font-weight: 500; color: #e2e8f0; margin-bottom: 4px; }
-      .cert-card .ct-issuer { font-size: 12px; color: #475569; margin-bottom: 8px; }
-      .cert-card .ct-code { font-size: 10px; color: #334155; font-family: monospace; }
-
-      /* ── CONTACT ── */
-      .contact-row { display: flex; gap: 12px; flex-wrap: wrap; }
-      .contact-chip {
-        background: #0f172a; border: 1px solid #1e293b;
-        border-radius: 10px; padding: 14px 22px;
-        font-size: 13px; color: #94a3b8;
-        display: flex; align-items: center; gap: 10px;
-      }
-      .contact-chip strong { color: #e2e8f0; }
-      .contact-chip a { color: #60a5fa; text-decoration: none; }
-      .contact-chip a:hover { text-decoration: underline; }
-
-      /* ── FOOTER ── */
-      footer {
-        padding: 32px 48px;
-        border-top: 1px solid #1e293b;
-        text-align: center;
-        font-size: 13px; color: #334155;
-      }
-
-      /* ── RESPONSIVE ── */
-      @media (max-width: 700px) {
-        nav { padding: 0 20px; }
-        .nav-links { display: none; }
-        .hero { padding: 80px 24px 60px; }
-        .hero h1 { font-size: 40px; }
-        section { padding: 60px 24px; }
-        .case-header { padding: 28px; flex-direction: column; }
-        .case-body { padding: 28px; }
-        .metrics { grid-template-columns: 1fr 1fr; }
-        .decisions { grid-template-columns: 1fr; }
-        .learnings { grid-template-columns: 1fr; }
-        .exp-grid { grid-template-columns: 1fr; }
-        .skills-grid { grid-template-columns: 1fr 1fr; }
-        .certs-grid { grid-template-columns: 1fr; }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAV -->
-    <nav>
-      <div class="nav-logo">Thalgy<span>.</span></div>
-      <ul class="nav-links">
-        <li><a href="#prodify">Case</a></li>
-        <li><a href="#exp">Experiência</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contato</a></li>
-      </ul>
-      <a href="mailto:thalgy2000@gmail.com" class="nav-cta">Fale comigo</a>
-    </nav>
-
-    <main>
-      <!-- HERO -->
-      <div class="hero">
-        <div class="badge">Portfólio · Product Manager Jr.</div>
-        <h1>Thalgy<br /><span class="accent">de Oliveira Lino</span></h1>
-        <p class="hero-sub">
-          PM Jr. com background em operações e e-commerce. Construo produtos que conectam frameworks e entregam
-          visibilidade real sobre o progresso do produto.
-        </p>
-        <div class="hero-btns">
-          <a href="#prodify" class="btn-primary">Ver case: Prodify →</a>
-          <a href="https://www.linkedin.com/in/thalgy-lino-438445196/" target="_blank" class="btn-secondary"
-            >LinkedIn ↗</a
-          >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thalgy Lino — Product Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0f1e;
+      color: #e2e8f0;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+ 
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,15,30,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1e293b;
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px; font-weight: 800; color: #fff;
+    }
+    .nav-logo span { color: #3b82f6; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: #64748b;
+      text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: #e2e8f0; }
+    .nav-cta {
+      background: #3b82f6; color: #fff;
+      padding: 8px 18px; border-radius: 8px;
+      font-size: 13px; font-weight: 500;
+      text-decoration: none; transition: background .2s;
+    }
+    .nav-cta:hover { background: #2563eb; }
+ 
+    /* ── LAYOUT ── */
+    main { max-width: 960px; margin: 0 auto; padding-top: 60px; }
+ 
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 48px 80px;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 60px; right: 0;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-block;
+      background: #1e3a5f; color: #60a5fa;
+      font-size: 11px; font-weight: 600;
+      padding: 5px 14px; border-radius: 20px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 64px; font-weight: 800;
+      line-height: 1.02; color: #fff;
+      margin-bottom: 20px;
+    }
+    .hero h1 .accent { color: #3b82f6; }
+    .hero-sub {
+      font-size: 18px; color: #94a3b8;
+      line-height: 1.7; max-width: 520px;
+      margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: #3b82f6; color: #fff;
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 14px; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .2s, transform .15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: #e2e8f0;
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 14px; font-weight: 500;
+      border: 1px solid #334155; cursor: pointer;
+      text-decoration: none; transition: border-color .2s, transform .15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { border-color: #475569; transform: translateY(-1px); }
+ 
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 48px;
+      border-top: 1px solid #1e293b;
+    }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 2px; color: #3b82f6;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px; font-weight: 700;
+      color: #fff; margin-bottom: 8px;
+    }
+    .section-sub {
+      font-size: 15px; color: #64748b; margin-bottom: 48px;
+    }
+ 
+    /* ── CASE CARD ── */
+    .case-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 20px; overflow: hidden;
+    }
+    .case-header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #0f2847 100%);
+      padding: 48px;
+      display: flex; align-items: flex-start; gap: 28px;
+    }
+    .case-icon {
+      width: 60px; height: 60px;
+      background: #3b82f6; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 20px; color: #fff;
+      flex-shrink: 0;
+    }
+    .case-meta h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 30px; font-weight: 700; color: #fff;
+      margin-bottom: 8px;
+    }
+    .case-meta p { font-size: 15px; color: #93c5fd; line-height: 1.65; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .tag {
+      background: rgba(59,130,246,0.2); color: #93c5fd;
+      font-size: 11px; font-weight: 500;
+      padding: 4px 12px; border-radius: 4px;
+    }
+ 
+    .case-body { padding: 40px 48px; }
+ 
+    .problem-box {
+      background: #0a0f1e;
+      border-left: 3px solid #3b82f6;
+      padding: 18px 22px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 36px;
+    }
+    .problem-box .pb-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 1.5px; color: #3b82f6;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .problem-box p { font-size: 14px; color: #94a3b8; line-height: 1.7; }
+ 
+    .cb-h5 {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px; font-weight: 700;
+      color: #e2e8f0; margin: 28px 0 14px;
+    }
+ 
+    .flow {
+      display: flex; flex-wrap: wrap;
+      align-items: center; gap: 6px;
+      margin-bottom: 32px;
+    }
+    .flow-step {
+      background: #1e293b;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 12px; font-weight: 500; color: #e2e8f0;
+    }
+    .flow-arrow { color: #3b82f6; font-size: 16px; font-weight: 700; }
+ 
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin: 28px 0;
+    }
+    .metric {
+      background: #0a0f1e;
+      border: 1px solid #1e293b;
+      border-radius: 12px; padding: 20px;
+      text-align: center;
+    }
+    .metric .num {
+      font-family: 'Syne', sans-serif;
+      font-size: 30px; font-weight: 700; color: #3b82f6;
+    }
+    .metric .desc { font-size: 12px; color: #475569; margin-top: 4px; }
+ 
+    .decisions {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-top: 8px;
+    }
+    .decision-item {
+      background: #0a0f1e;
+      border: 1px solid #1e293b;
+      border-radius: 10px; padding: 16px 18px;
+    }
+    .decision-item .di-label {
+      font-size: 10px; font-weight: 600;
+      color: #3b82f6; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 6px;
+    }
+    .decision-item p { font-size: 13px; color: #94a3b8; line-height: 1.55; }
+ 
+    .learnings {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-top: 8px;
+    }
+    .learning-item {
+      background: #0a0f1e;
+      border: 1px solid #1e293b;
+      border-radius: 10px; padding: 16px 18px;
+    }
+    .learning-item .li-label {
+      font-size: 10px; font-weight: 600;
+      color: #10b981; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 6px;
+    }
+    .learning-item p { font-size: 13px; color: #94a3b8; line-height: 1.55; }
+ 
+    .hypothesis-box {
+      background: rgba(59,130,246,0.06);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 12px; padding: 20px 24px;
+      margin-top: 28px;
+    }
+    .hypothesis-box .hy-label {
+      font-size: 10px; font-weight: 600;
+      color: #60a5fa; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 8px;
+    }
+    .hypothesis-box p { font-size: 14px; color: #93c5fd; line-height: 1.65; }
+ 
+    .link-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1e3a5f; color: #93c5fd;
+      padding: 12px 20px; border-radius: 10px;
+      font-size: 13px; font-weight: 500;
+      text-decoration: none; margin-top: 32px;
+      transition: background .2s;
+      border: none; cursor: pointer;
+    }
+    .link-btn:hover { background: #1e4976; }
+ 
+    /* ── EXPERIENCE ── */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .exp-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 14px; padding: 26px;
+    }
+    .exp-company {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 1.5px; color: #3b82f6;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .exp-card h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px; font-weight: 700;
+      color: #fff; margin-bottom: 4px;
+    }
+    .exp-period { font-size: 12px; color: #475569; margin-bottom: 14px; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .exp-bullets li {
+      font-size: 13px; color: #94a3b8;
+      padding-left: 16px; position: relative; line-height: 1.5;
+    }
+    .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #3b82f6; }
+    .exp-highlight {
+      display: inline-block;
+      background: #1e3a5f; color: #60a5fa;
+      font-size: 11px; font-weight: 600;
+      padding: 3px 10px; border-radius: 4px; margin-top: 10px;
+    }
+ 
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    }
+    .skill-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px; padding: 20px;
+    }
+    .sk-label {
+      font-size: 10px; font-weight: 600;
+      color: #3b82f6; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 12px;
+    }
+    .sk-items { display: flex; flex-direction: column; gap: 5px; }
+    .sk-items span { font-size: 12px; color: #94a3b8; }
+ 
+    /* ── CERTS ── */
+    .certs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .cert-card {
+      background: #0f172a; border: 1px solid #1e293b;
+      border-radius: 12px; padding: 20px;
+    }
+    .cert-card .ct-name { font-size: 14px; font-weight: 500; color: #e2e8f0; margin-bottom: 4px; }
+    .cert-card .ct-issuer { font-size: 12px; color: #475569; margin-bottom: 8px; }
+    .cert-card .ct-code { font-size: 10px; color: #334155; font-family: monospace; }
+ 
+    /* ── CONTACT ── */
+    .contact-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .contact-chip {
+      background: #0f172a; border: 1px solid #1e293b;
+      border-radius: 10px; padding: 14px 22px;
+      font-size: 13px; color: #94a3b8;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .contact-chip strong { color: #e2e8f0; }
+    .contact-chip a { color: #60a5fa; text-decoration: none; }
+    .contact-chip a:hover { text-decoration: underline; }
+ 
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      font-size: 13px; color: #334155;
+    }
+ 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 80px 24px 60px; }
+      .hero h1 { font-size: 40px; }
+      section { padding: 60px 24px; }
+      .case-header { padding: 28px; flex-direction: column; }
+      .case-body { padding: 28px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .decisions { grid-template-columns: 1fr; }
+      .learnings { grid-template-columns: 1fr; }
+      .exp-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .certs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+ 
+  <nav>
+    <div class="nav-logo">Thalgy<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#prodify">Case</a></li>
+      <li><a href="#exp">Experiência</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contato</a></li>
+    </ul>
+    <a href="mailto:thalgy2000@gmail.com" class="nav-cta">Fale comigo</a>
+  </nav>
+ 
+  <main>
+ 
+    <div class="hero">
+      <div class="badge">Portfólio · Product Manager Jr.</div>
+      <h1>Thalgy<br><span class="accent">de Oliveira Lino</span></h1>
+      <p class="hero-sub">PM Jr. com background em operações e e-commerce. Construo produtos que conectam frameworks e entregam visibilidade real sobre o progresso do produto.</p>
+      <div class="hero-btns">
+        <a href="#prodify" class="btn-primary">Ver case: Prodify →</a>
+        <a href="https://www.linkedin.com/in/thalgy-lino-438445196/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+      </div>
+    </div>
+ 
+    <section id="prodify">
+      <div class="section-eyebrow">Case de Produto</div>
+      <h2>Prodify</h2>
+      <p class="section-sub">A plataforma que une todos os frameworks de produto em um lugar — do discovery ao delivery.</p>
+ 
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-icon">P</div>
+          <div class="case-meta">
+            <h3>Prodify</h3>
+            <p>Ferramenta all-in-one que conecta OKRs, Opportunity Tree, Roadmap, Backlog e Sprints em um único sistema com propagação automática de progresso entre todas as camadas.</p>
+            <div class="tags">
+              <span class="tag">MVP ao vivo</span>
+              <span class="tag">7 usuários</span>
+              <span class="tag">Supabase + Netlify</span>
+              <span class="tag">Google OAuth</span>
+              <span class="tag">GitHub OAuth</span>
+              <span class="tag">Solo builder</span>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="case-body">
+ 
+          <div class="problem-box">
+            <div class="pb-label">O Problema</div>
+            <p>Ferramentas como Jira, Notion e Linear tratam cada framework em silos isolados. Ao mover uma tarefa no backlog, não há visibilidade do impacto no Key Result atrelado. Falta conexão sistêmica entre as camadas estratégica e operacional do produto.</p>
+          </div>
+ 
+          <div class="cb-h5">Como a conexão funciona na prática</div>
+          <div class="flow">
+            <div class="flow-step">Sprint Task</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Backlog Item</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Key Result</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Objective</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Roadmap</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Release</div>
+          </div>
+ 
+          <div class="metrics">
+            <div class="metric"><div class="num">89</div><div class="desc">Nós de oportunidade</div></div>
+            <div class="metric"><div class="num">38</div><div class="desc">Key Results cadastrados</div></div>
+            <div class="metric"><div class="num">7</div><div class="desc">Usuários ativos</div></div>
+          </div>
+ 
+          <div class="cb-h5">Módulos do produto</div>
+          <div class="decisions">
+            <div class="decision-item">
+              <div class="di-label">Discovery</div>
+              <p>OKRs, Opportunity Tree (3 níveis), SWOT Analysis e PRD estruturado com campos de problema, público-alvo e métricas de sucesso.</p>
+            </div>
+            <div class="decision-item">
+              <div class="di-label">Delivery</div>
+              <p>Backlog com story points e critérios de aceitação, Sprint Management, Roadmap por quarter, Releases e priorização RICE.</p>
+            </div>
+          </div>
+ 
+          <div class="cb-h5">Decisões de produto tomadas</div>
+          <div class="decisions">
+            <div class="decision-item">
+              <div class="di-label">Segurança</div>
+              <p>RLS em todas as tabelas + termo de uso no onboarding + OAuth com Google e GitHub para eliminar atrito de cadastro.</p>
+            </div>
+            <div class="decision-item">
+              <div class="di-label">Onboarding</div>
+              <p>Fluxo guiado para novos usuários com controle de conclusão para reduzir abandono no primeiro acesso.</p>
+            </div>
+            <div class="decision-item">
+              <div class="di-label">Multi-produto</div>
+              <p>Arquitetura com roles (owner/editor/viewer) pensada para times, não só uso individual.</p>
+            </div>
+            <div class="decision-item">
+              <div class="di-label">Correlação de abas</div>
+              <p>Contexto persistente ao navegar — produto selecionado e filtros mantidos entre módulos para uma experiência fluida.</p>
+            </div>
+          </div>
+ 
+          <div class="cb-h5">O que aprendi</div>
+          <div class="learnings">
+            <div class="learning-item">
+              <div class="li-label">Técnico</div>
+              <p>Banco de dados relacional, autenticação OAuth (Google Console + GitHub), hospedagem com CI/CD automático via Netlify e desenvolvimento com IA (Lovable + Cursor).</p>
+            </div>
+            <div class="learning-item">
+              <div class="li-label">Produto</div>
+              <p>Usabilidade emergente: usar o próprio produto revelou atritos invisíveis no design. Arquitetura de informação impacta diretamente a fluidez do trabalho do PM.</p>
+            </div>
+          </div>
+ 
+          <div class="hypothesis-box">
+            <div class="hy-label">Hipótese a validar nos próximos ciclos</div>
+            <p>PMs que usam mais de 2 ferramentas simultaneamente perdem contexto ao alternar entre elas, o que reduz a clareza sobre o progresso real do produto. O Prodify resolve isso ao centralizar e conectar todos os frameworks com propagação automática de progresso.</p>
+          </div>
+ 
+          <a href="https://jolly-fenglisu-d10e91.netlify.app/" target="_blank" class="link-btn">Acessar MVP ao vivo →</a>
         </div>
       </div>
-
-      <!-- CASE: PRODIFY -->
-      <section id="prodify">
-        <div class="section-eyebrow">Case de Produto</div>
-        <h2>Prodify</h2>
-        <p class="section-sub">
-          A plataforma que une todos os frameworks de produto em um lugar — do discovery ao delivery.
-        </p>
-
-        <div class="case-card">
-          <div class="case-header">
-            <div class="case-icon">P</div>
-            <div class="case-meta">
-              <h3>Prodify</h3>
-              <p>
-                Ferramenta all-in-one que conecta OKRs, Opportunity Tree, Roadmap, Backlog e Sprints em um único sistema
-                com propagação automática de progresso entre todas as camadas.
-              </p>
-              <div class="tags">
-                <span class="tag">MVP ao vivo</span>
-                <span class="tag">7 usuários</span>
-                <span class="tag">Supabase + Netlify</span>
-                <span class="tag">Google OAuth</span>
-                <span class="tag">GitHub OAuth</span>
-                <span class="tag">Solo builder</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="case-body">
-            <div class="problem-box">
-              <div class="pb-label">O Problema</div>
-              <p>
-                Ferramentas como Jira, Notion e Linear tratam cada framework em silos isolados. Ao mover uma tarefa no
-                backlog, não há visibilidade do impacto no Key Result atrelado. Falta conexão sistêmica entre as camadas
-                estratégica e operacional do produto.
-              </p>
-            </div>
-
-            <div class="cb-h5">Como a conexão funciona na prática</div>
-            <div class="flow">
-              <div class="flow-step">Sprint Task</div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-step">Backlog Item</div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-step">Key Result</div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-step">Objective</div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-step">Roadmap</div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-step">Release</div>
-            </div>
-
-            <div class="metrics">
-              <div class="metric">
-                <div class="num">89</div>
-                <div class="desc">Nós de oportunidade</div>
-              </div>
-              <div class="metric">
-                <div class="num">38</div>
-                <div class="desc">Key Results cadastrados</div>
-              </div>
-              <div class="metric">
-                <div class="num">7</div>
-                <div class="desc">Usuários ativos</div>
-              </div>
-            </div>
-
-            <div class="cb-h5">Módulos do produto</div>
-            <div class="decisions">
-              <div class="decision-item">
-                <div class="di-label">Discovery</div>
-                <p>
-                  OKRs, Opportunity Tree (3 níveis), SWOT Analysis e PRD estruturado com campos de problema,
-                  público-alvo e métricas de sucesso.
-                </p>
-              </div>
-              <div class="decision-item">
-                <div class="di-label">Delivery</div>
-                <p>
-                  Backlog com story points e critérios de aceitação, Sprint Management, Roadmap por quarter, Releases e
-                  priorização RICE.
-                </p>
-              </div>
-            </div>
-
-            <div class="cb-h5">Decisões de produto tomadas</div>
-            <div class="decisions">
-              <div class="decision-item">
-                <div class="di-label">Segurança</div>
-                <p>
-                  RLS em todas as tabelas + termo de uso no onboarding + OAuth com Google e GitHub para eliminar atrito
-                  de cadastro.
-                </p>
-              </div>
-              <div class="decision-item">
-                <div class="di-label">Onboarding</div>
-                <p>
-                  Fluxo guiado para novos usuários com controle de conclusão para reduzir abandono no primeiro acesso.
-                </p>
-              </div>
-              <div class="decision-item">
-                <div class="di-label">Multi-produto</div>
-                <p>Arquitetura com roles (owner/editor/viewer) pensada para times, não só uso individual.</p>
-              </div>
-              <div class="decision-item">
-                <div class="di-label">Correlação de abas</div>
-                <p>
-                  Contexto persistente ao navegar — produto selecionado e filtros mantidos entre módulos para uma
-                  experiência fluida.
-                </p>
-              </div>
-            </div>
-
-            <div class="cb-h5">O que aprendi</div>
-            <div class="learnings">
-              <div class="learning-item">
-                <div class="li-label">Técnico</div>
-                <p>
-                  Banco de dados relacional, autenticação OAuth (Google Console + GitHub), hospedagem com CI/CD
-                  automático via Netlify e desenvolvimento com IA (Lovable + Cursor).
-                </p>
-              </div>
-              <div class="learning-item">
-                <div class="li-label">Produto</div>
-                <p>
-                  Usabilidade emergente: usar o próprio produto revelou atritos invisíveis no design. Arquitetura de
-                  informação impacta diretamente a fluidez do trabalho do PM.
-                </p>
-              </div>
-            </div>
-
-            <div class="hypothesis-box">
-              <div class="hy-label">Hipótese a validar nos próximos ciclos</div>
-              <p>
-                PMs que usam mais de 2 ferramentas simultaneamente perdem contexto ao alternar entre elas, o que reduz a
-                clareza sobre o progresso real do produto. O Prodify resolve isso ao centralizar e conectar todos os
-                frameworks com propagação automática de progresso.
-              </p>
-            </div>
-
-            <a href="https://jolly-fenglisu-d10e91.netlify.app/" target="_blank" class="link-btn"
-              >Acessar MVP ao vivo →</a
-            >
-          </div>
-        </div>
-      </section>
-
-      <!-- EXPERIÊNCIA -->
-      <section id="exp">
-        <div class="section-eyebrow">Trajetória</div>
-        <h2>Experiência</h2>
-        <p class="section-sub">Background em operações e e-commerce com resultados mensuráveis.</p>
-
-        <div class="exp-grid">
-          <div class="exp-card">
-            <div class="exp-company">BRK Agro · Shopee</div>
-            <h4>Analista de Marketplaces</h4>
-            <div class="exp-period">Out/2025 – Presente</div>
-            <ul class="exp-bullets">
-              <li>Gestão de funil E2E — Growth + Customer Experience</li>
-              <li>Testes A/B em criativos e títulos de anúncios para tráfego qualificado</li>
-              <li>Fluxo proativo de negociação em situação de stockout</li>
-            </ul>
-            <span class="exp-highlight">+15% vendas · -20% churn</span>
-          </div>
-
-          <div class="exp-card">
-            <div class="exp-company">Balux Pet Market</div>
-            <h4>Analista de Marketplaces</h4>
-            <div class="exp-period">Jul/2024 – Set/2025</div>
-            <ul class="exp-bullets">
-              <li>Fundação do setor de marketplaces do zero (0→1)</li>
-              <li>Estratégia de precificação e gestão do ciclo de vida dos produtos</li>
-              <li>Processos escaláveis com alinhamento entre compras, estoque e logística</li>
-            </ul>
-            <span class="exp-highlight">Fundação do canal 0→1</span>
-          </div>
-
-          <div class="exp-card">
-            <div class="exp-company">Cyber for Business</div>
-            <h4>Coordenador de Operações</h4>
-            <div class="exp-period">Mar/2023 – Jul/2023</div>
-            <ul class="exp-bullets">
-              <li>Elo central entre stakeholders e equipes multidisciplinares (Tráfego, Social Media, TI e Design)</li>
-              <li>Planejamento estratégico e execução de projetos B2B/B2C</li>
-            </ul>
-          </div>
-
-          <div class="exp-card">
-            <div class="exp-company">Cyber for Business</div>
-            <h4>Analista de Mídias Digitais</h4>
-            <div class="exp-period">Ago/2022 – Mar/2023</div>
-            <ul class="exp-bullets">
-              <li>Mapeamento da jornada do usuário — do primeiro clique à conversão</li>
-              <li>Campanhas pagas (Meta/Google Ads) com mentalidade de experimentação</li>
-              <li>Decisões baseadas em CTR, CPA e ROAS</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- SKILLS -->
-      <section id="skills">
-        <div class="section-eyebrow">Habilidades</div>
-        <h2>Stack de PM</h2>
-        <p class="section-sub">Frameworks e ferramentas que utilizo no dia a dia.</p>
-
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="sk-label">Discovery</div>
-            <div class="sk-items">
-              <span>Entrevistas com usuários</span>
-              <span>Opportunity Tree</span>
-              <span>Benchmarking</span>
-              <span>Mapeamento de jornada</span>
-              <span>SWOT Analysis</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="sk-label">Delivery</div>
-            <div class="sk-items">
-              <span>Backlog & User Stories</span>
-              <span>Scrum / Kanban</span>
-              <span>Priorização RICE/ICE</span>
-              <span>OKRs & KRs</span>
-              <span>Sprint Planning</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="sk-label">Data</div>
-            <div class="sk-items">
-              <span>Google Analytics</span>
-              <span>Power BI</span>
-              <span>Excel Avançado</span>
-              <span>Supabase</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <div class="sk-label">Ferramentas</div>
-            <div class="sk-items">
-              <span>Jira / Trello</span>
-              <span>Figma</span>
-              <span>Lovable / Cursor</span>
-              <span>N8N</span>
-              <span>Meta Ads</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CERTS -->
-        <div class="section-eyebrow" style="margin-top:48px;margin-bottom:12px;">Certificações</div>
-        <div class="certs-grid">
-          <div class="cert-card">
-            <div class="ct-name">Product Management</div>
-            <div class="ct-issuer">PM3</div>
-            <div class="ct-code">bd6e5c562777847ec9898effdd3d99d4</div>
-          </div>
-          <div class="cert-card">
-            <div class="ct-name">Scrum Master Professional (SMPC)</div>
-            <div class="ct-issuer">Certprof</div>
-            <div class="ct-code">THA1770B2CSMPC2QAYTH</div>
-          </div>
-          <div class="cert-card">
-            <div class="ct-name">Power BI para Business Intelligence</div>
-            <div class="ct-issuer">Data Science Academy</div>
-            <div class="ct-code">—</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact">
-        <div class="section-eyebrow">Contato</div>
-        <h2>Vamos conversar</h2>
-        <p class="section-sub">Aberto a oportunidades como Product Manager Jr.</p>
-        <div class="contact-row">
-          <div class="contact-chip">
-            📧 <strong><a href="mailto:thalgy2000@gmail.com">thalgy2000@gmail.com</a></strong>
-          </div>
-          <div class="contact-chip">📍 <strong>Uberlândia – MG</strong></div>
-          <div class="contact-chip">
-            🔗
-            <strong
-              ><a href="https://www.linkedin.com/in/thalgy-lino-438445196/" target="_blank"
-                >linkedin.com/in/thalgy-lino</a
-              ></strong
-            >
-          </div>
-          <div class="contact-chip">📱 <strong>(16) 99465-7472</strong></div>
-        </div>
-      </section>
-
-      <footer>Thalgy de Oliveira Lino · Product Manager Jr. · 2026</footer>
-    </main>
-  </body>
-</html>
+    </section>
+ 
+    <section id="exp">
+      <div class="section-eyebrow">Trajetória</div>
+      <h2>Experiência</h2>
+      <p class="section-sub">Background em operações e e-commerce com resultados mensuráveis.</p>
+ 
+      <div class="exp-grid">
+        <div class="exp-card">
+          <div class="exp-company">E-commerce & Marketplace</div>
+          <h4>Analista de Marketplaces</h4>
+          <div class="exp-period">Out/2025 – Presente</div>
+          <ul class="exp-bullets">
+            <li>Gestão de funil E2E — Growth + Customer Experience</li>
+            <li>Testes A/B em criativos e títulos de anúncios para tráfego qualificado</li>
+            <li>Fluxo proativo de negociação em situação de stockout</li>
+          </ul>
+          <span class="exp-highlight
