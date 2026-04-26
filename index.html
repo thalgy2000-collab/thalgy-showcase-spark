@@ -508,6 +508,45 @@
             </div>
           </div>
 
+
+          <div class="cb-h5">Análise de dados & Instrumentação</div>
+          <div class="decisions">
+            <div class="decision-item">
+              <div class="di-label">Rastreamento de eventos</div>
+              <p>Tabela <code style="background:#1e293b;padding:1px 6px;border-radius:3px;font-size:11px;">events</code> com 2.558 eventos registrados — rastreia event_name, página, propriedades (JSONB) e user_id para cada ação do usuário dentro do app.</p>
+            </div>
+            <div class="decision-item">
+              <div class="di-label">Engajamento por sessão</div>
+              <p>Campo <code style="background:#1e293b;padding:1px 6px;border-radius:3px;font-size:11px;">last_seen_at</code> em profiles atualizado a cada acesso — permite medir frequência de retorno e identificar usuários inativos.</p>
+            </div>
+            <div class="decision-item">
+              <div class="di-label">Coleta no onboarding</div>
+              <p>Survey estruturado captura: cargo, empresa, tamanho do time, tempo de experiência em PM, objetivo principal de uso e como o usuário encontrou o Prodify — dados diretos do ICP.</p>
+            </div>
+            <div class="decision-item">
+              <div class="di-label">Segmentação de usuários</div>
+              <p>Campos <code style="background:#1e293b;padding:1px 6px;border-radius:3px;font-size:11px;">pm_experience</code> e <code style="background:#1e293b;padding:1px 6px;border-radius:3px;font-size:11px;">main_goal</code> permitem segmentar usuários por perfil e objetivo — base para personalização futura e priorização de features.</p>
+            </div>
+          </div>
+          <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-radius:10px;padding:16px 22px;margin:16px 0 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;">
+            <div>
+              <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:#3b82f6;">2.558</div>
+              <div style="font-size:11px;color:#475569;margin-top:4px;">Eventos rastreados</div>
+            </div>
+            <div>
+              <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:#3b82f6;">6</div>
+              <div style="font-size:11px;color:#475569;margin-top:4px;">Campos de perfil coletados</div>
+            </div>
+            <div>
+              <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:#3b82f6;">5</div>
+              <div style="font-size:11px;color:#475569;margin-top:4px;">Opções de objetivo de uso</div>
+            </div>
+            <div>
+              <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:#3b82f6;">5</div>
+              <div style="font-size:11px;color:#475569;margin-top:4px;">Níveis de experiência em PM</div>
+            </div>
+          </div>
+
           <div class="cb-h5">O que aprendi</div>
           <div class="learnings">
             <div class="learning-item">
