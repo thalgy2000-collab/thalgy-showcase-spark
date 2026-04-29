@@ -6,11 +6,11 @@
   <meta property="og:url" content="https://thalgy-showcase-spark.lovable.app/" />
   <meta property="og:title" content="Thalgy Lino — Product Manager Jr." />
   <meta property="og:description" content="PM Jr. com background em operações e e-commerce. Criador do Prodify — plataforma all-in-one que conecta OKRs, Roadmap, Backlog e Sprints com IA generativa e Google Calendar." />
-  <meta property="banner_linkedin" content="https://thalgy-showcase-spark.lovable.app/banner_linkedin" />
+  <meta property="og:image" content="https://thalgy-showcase-spark.lovable.app/banner_linkedin.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Thalgy Lino — Product Manager Jr." />
   <meta name="twitter:description" content="PM Jr. com background em operações e e-commerce. Criador do Prodify — plataforma all-in-one que conecta OKRs, Roadmap, Backlog e Sprints com IA generativa e Google Calendar." />
-  <meta name="twitter:image" content="https://thalgy-showcase-spark.lovable.app/product-management.jpg" />
+  <meta name="twitter:image" content="https://thalgy-showcase-spark.lovable.app/banner_linkedin.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thalgy Lino — Product Manager</title>
@@ -195,6 +195,7 @@
       padding: 9px 16px;
       border-radius: 8px;
       font-size: 12px; font-weight: 500; color: #e2e8f0;
+      white-space: nowrap;
     }
     .flow-arrow { color: #3b82f6; font-size: 16px; font-weight: 700; }
 
@@ -355,19 +356,30 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
-      nav { padding: 0 20px; }
+      nav { padding: 0 16px; }
       .nav-links { display: none; }
-      .hero { padding: 80px 24px 60px; }
-      .hero h1 { font-size: 40px; }
-      section { padding: 60px 24px; }
-      .case-header { padding: 28px; flex-direction: column; }
-      .case-body { padding: 28px; }
+      .nav-cta { padding: 8px 14px; font-size: 12px; }
+      .hero { padding: 80px 20px 50px; }
+      .hero h1 { font-size: 36px; }
+      .hero-sub { font-size: 15px; }
+      section { padding: 48px 20px; }
+      section h2 { font-size: 26px; }
+      .case-header { padding: 22px; flex-direction: column; gap: 16px; }
+      .case-body { padding: 22px; }
       .metrics { grid-template-columns: 1fr 1fr; }
       .decisions { grid-template-columns: 1fr; }
       .learnings { grid-template-columns: 1fr; }
       .exp-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .certs-grid { grid-template-columns: 1fr; }
+      .flow { gap: 6px; }
+      .flow-step { font-size: 11px; padding: 7px 12px; }
+      .flow-arrow { font-size: 13px; }
+      .cert-card img { border-radius: 8px; }
+      .contact-row { flex-direction: column; }
+      .contact-chip { width: 100%; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
     }
   </style>
 </head>
@@ -548,7 +560,7 @@
               <p>Campos <code style="background:#1e293b;padding:1px 6px;border-radius:3px;font-size:11px;">pm_experience</code> e <code style="background:#1e293b;padding:1px 6px;border-radius:3px;font-size:11px;">main_goal</code> permitem segmentar usuários por perfil e objetivo — base para personalização futura e priorização de features.</p>
             </div>
           </div>
-          <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-radius:10px;padding:16px 22px;margin:16px 0 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;">
+          <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-radius:10px;padding:16px 22px;margin:16px 0 28px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;text-align:center;">
             <div>
               <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:#3b82f6;">2.894</div>
               <div style="font-size:11px;color:#475569;margin-top:4px;">Eventos rastreados</div>
@@ -632,7 +644,7 @@
             <div class="flow-step">OKRs importados no app</div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:24px 0;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:24px 0;">
             <div class="decision-item" style="border-color:rgba(124,58,237,0.3);">
               <div class="di-label" style="color:#7c3aed;">Extração de texto</div>
               <p>Suporte a PDF (unpdf), DOCX (mammoth), TXT, MD e CSV — cada formato com parser específico para máxima fidelidade na extração do conteúdo.</p>
@@ -648,7 +660,7 @@
           </div>
 
           <div class="cb-h5" style="margin-top:28px;">Novas funcionalidades com IA</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 24px;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:8px 0 24px;">
             <div class="decision-item" style="border-color:rgba(124,58,237,0.3);">
               <div class="di-label" style="color:#7c3aed;">Sugestão de RICE com IA</div>
               <p>Edge function que analisa o contexto de uma tarefa e sugere automaticamente os valores de Reach, Impact, Confidence e Effort — acelerando a priorização do backlog.</p>
@@ -668,7 +680,7 @@
           </div>
 
           <div class="cb-h5">Integração com Google Calendar</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:8px 0 24px;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:8px 0 24px;">
             <div class="decision-item" style="border-color:rgba(16,185,129,0.3);">
               <div class="di-label" style="color:#10b981;">OAuth completo</div>
               <p>3 edge functions para autenticação, callback e desconexão do Google Calendar — fluxo seguro com tokens armazenados com RLS.</p>
