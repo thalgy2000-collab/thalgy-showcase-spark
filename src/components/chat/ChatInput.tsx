@@ -37,7 +37,7 @@ export const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
   }, [text]);
 
   return (
-    <div className="p-4 border-t border-border/50 bg-background/80 backdrop-blur-md rounded-b-2xl">
+    <div className="p-4 border-t border-border/30 bg-background/50 backdrop-blur-md rounded-b-[20px]">
       <div className="relative flex items-end gap-2">
         <Textarea
           ref={textareaRef}
@@ -45,7 +45,7 @@ export const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
           onChange={(e) => setText(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Ask me anything..."
-          className="min-h-[44px] max-h-[150px] resize-none pr-12 py-3 rounded-xl border-border/50 focus-visible:ring-primary/20 bg-muted/30"
+          className="min-h-[48px] max-h-[104px] resize-none pr-12 py-3 rounded-[20px] border-border/50 focus-visible:ring-blue-500/30 bg-muted/30 shadow-inner"
           disabled={isLoading}
           rows={1}
         />
@@ -53,7 +53,7 @@ export const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
           onClick={handleSend}
           disabled={!text.trim() || isLoading}
           size="icon"
-          className="absolute right-1 bottom-1 h-[36px] w-[36px] rounded-lg bg-primary hover:bg-primary/90 transition-colors"
+          className="absolute right-2 bottom-1.5 h-[36px] w-[36px] rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white hover:opacity-90 transition-opacity shadow-sm"
         >
           <SendHorizontal className="h-4 w-4" />
         </Button>

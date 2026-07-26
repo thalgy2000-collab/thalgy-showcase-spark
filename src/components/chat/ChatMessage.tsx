@@ -18,10 +18,10 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
     >
       <div
         className={cn(
-          "max-w-[80%] px-4 py-3 shadow-sm relative group",
+          "max-w-[85%] px-4 py-3 shadow-sm relative group",
           isUser
-            ? "bg-primary text-primary-foreground rounded-2xl rounded-tr-sm"
-            : "bg-muted/80 backdrop-blur-sm border border-border/50 text-foreground rounded-2xl rounded-tl-sm"
+            ? "bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-[20px] rounded-tr-sm"
+            : "bg-background/60 backdrop-blur-md border border-border/40 text-foreground rounded-[20px] rounded-tl-sm"
         )}
       >
         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.text}</p>

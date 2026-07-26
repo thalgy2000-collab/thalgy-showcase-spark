@@ -10,6 +10,7 @@ export const ChatWidget = () => {
       <FloatingChatButton isOpen={isOpen} toggleChat={toggleChat} />
       <ChatWindow
         isOpen={isOpen}
+        toggleChat={toggleChat}
         messages={messages}
         onSendMessage={sendMessage}
         isLoading={isLoading}
