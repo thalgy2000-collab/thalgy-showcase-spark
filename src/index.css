@@ -91,16 +91,25 @@
 }
 
 @layer base {
-  * {
+  /* Scoped reset for the chat widget since we disabled global preflight */
+  #chat-widget-root {
+    @apply text-foreground;
+  }
+  #chat-widget-root * {
     @apply border-border;
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
   }
-
-  body {
-    @apply bg-background text-foreground font-body antialiased;
+  #chat-widget-root button {
+    appearance: none;
+    background-color: transparent;
+    cursor: pointer;
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+  #chat-widget-root input, #chat-widget-root textarea {
+    appearance: none;
+    background-color: transparent;
+    outline: none;
   }
 }
 
