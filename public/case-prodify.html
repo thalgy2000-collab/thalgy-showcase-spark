@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Prodify — Thalgy Lino</title>
+<meta name="description" content="Case resumido do Prodify: plataforma all-in-one que conectava OKRs, Roadmap, Backlog e Sprints com IA generativa e Google Calendar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F7F5;
+    --paper-alt:#EDEFEA;
+    --ink:#12141A;
+    --ink-soft:#565B63;
+    --accent:#3A5A78;
+    --accent-soft:#DCE6EC;
+    --line:#D9DBD3;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',-apple-system,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:500;
+    line-height:1.18;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  p{margin:0 0 1.1em; color:var(--ink-soft); max-width:62ch;}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,247,245,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .logo{font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600; color:var(--ink);}
+  .logo:hover{text-decoration:none;}
+  .back{font-size:.92rem; color:var(--ink-soft);}
+  .back:hover{color:var(--accent);}
+
+  .hero{
+    padding:80px 0 56px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, var(--paper-alt) 0%, var(--paper) 100%);
+  }
+  .eyebrow{
+    display:inline-block; font-size:.82rem; color:var(--accent);
+    letter-spacing:.04em; text-transform:uppercase; margin-bottom:16px;
+  }
+  .hero h1{font-size:clamp(2rem,4.5vw,3rem); max-width:18ch;}
+  .hero p.lede{font-size:1.1rem; max-width:52ch; color:var(--ink-soft);}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  .section-label{
+    font-size:.82rem; color:var(--accent); margin-bottom:8px; display:block;
+    text-transform:uppercase; letter-spacing:.04em;
+  }
+  h2{font-size:clamp(1.4rem,3vw,1.85rem); margin-bottom:.6em;}
+
+  .case-tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px;}
+  .tag{
+    font-size:.78rem; padding:5px 11px; border:1px solid var(--line);
+    border-radius:2px; color:var(--ink-soft); background:var(--paper-alt);
+  }
+  .tag.status{border-color:var(--accent); color:var(--accent); background:var(--accent-soft);}
+
+  .summary{
+    background:var(--paper-alt);
+    border-left:3px solid var(--accent);
+    padding:20px 22px;
+    margin:0 0 28px;
+  }
+  .summary p{margin:0; color:var(--ink-soft);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .block h3{font-size:1.05rem; margin-bottom:.5em;}
+  .block p{font-size:.96rem;}
+
+  .tech-list{
+    list-style:none; padding:0; margin:0 0 1.2em;
+    display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;
+  }
+  .tech-list li{
+    position:relative; padding-left:16px; color:var(--ink-soft); font-size:.96rem;
+  }
+  .tech-list li::before{
+    content:"—"; position:absolute; left:0; color:var(--accent);
+  }
+
+  .quote{
+    font-family:'Fraunces',serif; font-size:1.25rem; line-height:1.35;
+    color:var(--ink); margin:32px 0 16px; max-width:48ch;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 20px; border-radius:2px; font-size:.95rem;
+    border:1px solid var(--ink); color:var(--ink);
+    margin-right:12px; margin-bottom:12px;
+  }
+  .cta.primary{background:var(--ink); color:var(--paper);}
+  .cta.primary:hover{background:var(--accent); border-color:var(--accent); text-decoration:none;}
+  .cta:hover{border-color:var(--accent); color:var(--accent); text-decoration:none;}
+
+  footer{
+    padding:40px 0;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:.9rem;
+  }
+  footer p{margin:0 0 .4em;}
+
+  @media (max-width:640px){
+    .grid-2{grid-template-columns:1fr;}
+    .tech-list{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="/">Thalgy Lino</a>
+    <a class="back" href="/">← Voltar ao portfólio</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Case de Produto</span>
+      <h1>Prodify <span style="color:var(--accent);">·</span> 2026</h1>
+      <p class="lede">Plataforma all-in-one que conectava OKRs, Roadmap, Backlog e Sprints em um único sistema — e o aprendizado por trás da decisão de engavetá-la.</p>
+      <div class="case-tags">
+        <span class="tag status">Engavetado — decisão consciente</span>
+        <span class="tag">SaaS</span>
+        <span class="tag">IA Generativa</span>
+        <span class="tag">Google Calendar</span>
+        <span class="tag">Supabase</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">O problema</span>
+      <h2>Frameworks espalhados, perda de contexto</h2>
+      <div class="summary">
+        <p>Product Managers usam OKRs em planilhas, roadmaps em ferramentas visuais, backlogs no Jira e sprints no Trello. A informação fica fragmentada, e a conexão estratégica entre objetivos e entrega se perde no caminho.</p>
+      </div>
+      <p>Eu vivia isso na pele: ajustar OKRs no Excel, desenhar roadmap no Figma, detalhar histórias no Notion e depois descobrir que o time não conseguia ver como aquilo se conectava ao objetivo do trimestre. A ideia do Prodify nasceu dessa fricção.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">A solução</span>
+      <h2>Um único sistema com IA como assistente</h2>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Conexão entre camadas</h3>
+          <p>Cada iniciativa do roadmap era ligada a um OKR, cada item do backlog ligado a uma iniciativa, e cada sprint ligada a entregáveis mensuráveis.</p>
+        </div>
+        <div class="block">
+          <h3>IA generativa</h3>
+          <p>Assistente que sugeria histórias, quebrava épicos em tarefas e ajudava a priorizar com base no impacto esperado nos indicadores.</p>
+        </div>
+        <div class="block">
+          <h3>Integração com Google Calendar</h3>
+          <p>Eventos de discovery, refinamento e review eram sincronizados automaticamente, reduzindo o trabalho manual de gestão de agenda.</p>
+        </div>
+        <div class="block">
+          <h3>Visão unificada</h3>
+          <p>Dashboards simples mostravam, em um só lugar, o que estava sendo feito, por que estava sendo feito e como isso impactava os objetivos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Tecnologias</span>
+      <h2>O que usamos para construir</h2>
+      <ul class="tech-list">
+        <li>Lovable / React</li>
+        <li>Supabase</li>
+        <li>IA Generativa</li>
+        <li>Google Calendar API</li>
+        <li>Figma</li>
+        <li>Notion</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Por que engavetamos</span>
+      <h2>A conexão total tinha um custo escondido</h2>
+      <p>À medida que o produto ganhava forma, percebi que forçar tudo em um único sistema reduzia a liberdade criativa do PM. Cada contexto — estratégia, discovery, delivery — exige ritmos e granularidades diferentes.</p>
+      <p class="quote">“Automatizar demais a tomada de decisão pode transformar o PM em operador de um sistema, em vez de pensador do produto.”</p>
+      <p>Engavetar o Prodify foi uma decisão consciente: o aprendizado valeu mais do que o MVP em si. Hoje levo esse raciocínio para cada produto que toco.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Aprendizados</span>
+      <h2>O que levo da experiência</h2>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Product Discovery antes de build</h3>
+          <p>A dor real era clara, mas a solução precisava de mais validação sobre adesão e comportamento de uso antes de virar código.</p>
+        </div>
+        <div class="block">
+          <h3>Escopo versus profundidade</h3>
+          <p>All-in-one soa bem, mas entrega menos valor do que uma ferramenta que resolve uma única dor muito bem.</p>
+        </div>
+        <div class="block">
+          <h3>IA como acelerador, não substituto</h3>
+          <p>A IA funcionava melhor quando ajudava a priorizar e documentar, não quando tentava tomar decisões pelo PM.</p>
+        </div>
+        <div class="block">
+          <h3>Matar projetos também é entrega</h3>
+          <p>Saber quando parar liberou tempo e energia para experimentos com maior potencial de impacto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Acesso</span>
+      <h2>Quer ver o MVP?</h2>
+      <p>O MVP ainda está disponível para exploração. Ele reflete a versão inicial da ideia, antes da decisão de engavetar o projeto.</p>
+      <a class="cta primary" href="https://prodifydev.lovable.app/login" target="_blank" rel="noopener">Acessar MVP ao vivo ↗</a>
+      <a class="cta" href="/">← Voltar ao portfólio</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Thalgy de Oliveira Lino · Product Manager Jr. · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
