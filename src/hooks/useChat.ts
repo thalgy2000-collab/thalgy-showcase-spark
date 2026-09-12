@@ -3,6 +3,8 @@ import { getSessionId } from "../utils/session";
 import { sendGeminiChatMessage } from "../services/geminiChat";
 import { toast } from "sonner";
 
+import { trackChatMessage } from "../services/chatTracker";
+
 export interface Message {
   id: string;
   sender: "user" | "ai";
@@ -43,6 +45,9 @@ export const useChat = () => {
   const sendMessage = async (text: string) => {
     if (!text.trim()) return;
 
+    const currentSessionId = sessionId || getSessionId();
+    if (!sessionId) setSessionId(currentSessionId);
+
     const newUserMessage: Message = {
       id: crypto.randomUUID(),
       sender: "user",
@@ -54,6 +59,13 @@ export const useChat = () => {
     setMessages(updatedMessages);
     setIsLoading(true);
 
+    // Track user message in Supabase
+    trackChatMessage({
+      sessionId: currentSessionId,
+      sender: "user",
+      message: text.trim(),
+    });
+
     try {
       const outputText = await sendGeminiChatMessage(updatedMessages);
 
@@ -64,6 +76,16 @@ export const useChat = () => {
         timestamp: Date.now(),
       };
       setMessages((prev) => [...prev, newAiMessage]);
+
+      // Track AI response in Supabase
+      trackChatMessage({
+        sessionId: currentSessionId,
+        sender: "ai",
+        message: outputText,
+        metadata: {
+          model: import.meta.env.VITE_GEMINI_MODEL || "gemini-3.5-flash",
+        },
+      });
     } catch (error: any) {
       const errorMsg =
         error?.message || "Desculpe, ocorreu um erro ao conectar com o Gemini.";
@@ -71,6 +93,16 @@ export const useChat = () => {
         action: {
           label: "Tentar novamente",
           onClick: () => sendMessage(text),
+        },
+      });
+
+      // Track failed attempt in Supabase
+      trackChatMessage({
+        sessionId: currentSessionId,
+        sender: "ai",
+        message: `[ERRO]: ${errorMsg}`,
+        metadata: {
+          is_error: true,
         },
       });
     } finally {
