@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Propostas Políticas com IA — Thalgy Lino</title>
+<meta name="description" content="Case do Propostas Políticas IA: motor RAG com guardrails estritos e dados oficiais do TSE para consulta imparcial de planos de governo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F7F5;
+    --paper-alt:#EDEFEA;
+    --ink:#12141A;
+    --ink-soft:#565B63;
+    --accent:#3A5A78;
+    --accent-soft:#DCE6EC;
+    --line:#D9DBD3;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',-apple-system,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:500;
+    line-height:1.18;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  p{margin:0 0 1.1em; color:var(--ink-soft); max-width:62ch;}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,247,245,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .logo{font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600; color:var(--ink);}
+  .logo:hover{text-decoration:none;}
+  .back{font-size:.92rem; color:var(--ink-soft);}
+  .back:hover{color:var(--accent);}
+
+  .hero{
+    padding:80px 0 56px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, var(--paper-alt) 0%, var(--paper) 100%);
+  }
+  .eyebrow{
+    display:inline-block; font-size:.82rem; color:var(--accent);
+    letter-spacing:.04em; text-transform:uppercase; margin-bottom:16px;
+  }
+  .hero h1{font-size:clamp(2rem,4.5vw,3rem); max-width:18ch;}
+  .hero p.lede{font-size:1.1rem; max-width:52ch; color:var(--ink-soft);}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  .section-label{
+    font-size:.82rem; color:var(--accent); margin-bottom:8px; display:block;
+    text-transform:uppercase; letter-spacing:.04em;
+  }
+  h2{font-size:clamp(1.4rem,3vw,1.85rem); margin-bottom:.6em;}
+
+  .case-tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px;}
+  .tag{
+    font-size:.78rem; padding:5px 11px; border:1px solid var(--line);
+    border-radius:2px; color:var(--ink-soft); background:var(--paper-alt);
+  }
+  .tag.status{border-color:var(--accent); color:var(--accent); background:var(--accent-soft);}
+
+  .summary{
+    background:var(--paper-alt);
+    border-left:3px solid var(--accent);
+    padding:20px 22px;
+    margin:0 0 28px;
+  }
+  .summary p{margin:0; color:var(--ink-soft);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .block h3{font-size:1.05rem; margin-bottom:.5em;}
+  .block p{font-size:.96rem;}
+
+  .tech-list{
+    list-style:none; padding:0; margin:0 0 1.2em;
+    display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;
+  }
+  .tech-list li{
+    position:relative; padding-left:16px; color:var(--ink-soft); font-size:.96rem;
+  }
+  .tech-list li::before{
+    content:"—"; position:absolute; left:0; color:var(--accent);
+  }
+
+  .quote{
+    font-family:'Fraunces',serif; font-size:1.25rem; line-height:1.35;
+    color:var(--ink); margin:32px 0 16px; max-width:48ch;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 20px; border-radius:2px; font-size:.95rem;
+    border:1px solid var(--ink); color:var(--ink);
+    margin-right:12px; margin-bottom:12px;
+  }
+  .cta.primary{background:var(--ink); color:var(--paper);}
+  .cta.primary:hover{background:var(--accent); border-color:var(--accent); text-decoration:none;}
+  .cta:hover{border-color:var(--accent); color:var(--accent); text-decoration:none;}
+
+  footer{
+    padding:40px 0;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:.9rem;
+  }
+  footer p{margin:0 0 .4em;}
+
+  @media (max-width:640px){
+    .grid-2{grid-template-columns:1fr;}
+    .tech-list{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="/">Thalgy Lino</a>
+    <a class="back" href="/">← Voltar ao portfólio</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Projeto de Estudo · RAG &amp; IA · 2026</span>
+      <h1>Propostas Políticas IA <span style="color:var(--accent);">·</span> 2026</h1>
+      <p class="lede">Assistente de consulta factual e imparcial de planos de governo de candidatos à presidência, baseado exclusivamente nos documentos oficiais do TSE e protegido por guardrails estritos contra alucinações.</p>
+      <div class="case-tags">
+        <span class="tag status">Projeto de estudo</span>
+        <span class="tag">RAG (Retrieval-Augmented Generation)</span>
+        <span class="tag">AI Guardrails</span>
+        <span class="tag">Claude &amp; Skills</span>
+        <span class="tag">Dados Oficiais TSE</span>
+        <span class="tag">Lovable</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Antigravity</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">O objetivo</span>
+      <h2>Consciência política fundamentada em fatos</h2>
+      <div class="summary">
+        <p>Durante períodos eleitorais, o debate público é inundado por opiniões de redes sociais e desinformação. O objetivo do projeto foi dar ao cidadão um meio neutro, direto e confiável de ler o que cada candidato realmente registrou no TSE.</p>
+      </div>
+      <p>Em vez de navegar em dezenas de páginas de PDFs densos arquivados na Justiça Eleitoral, o usuário pode interagir em linguagem natural: "O que o candidato X propõe para a saúde primária?" ou "Qual a meta registrada para energias renováveis?".</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">O desafio crítico</span>
+      <h2>Mitigar alucinações e viés político</h2>
+      <p>Num tema sensível como eleições, uma resposta incorreta ou 'inventada' por uma LLM destrói totalmente o propósito da solução. O grande foco foi a blindagem do modelo através de guardrails arquiteturais.</p>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Guardrails estruturados com Claude</h3>
+          <p>Utilização do Claude para modelar e validar regras rígidas e skills personalizadas de contexto, bloqueando respostas opinativas ou extrapoladas.</p>
+        </div>
+        <div class="block">
+          <h3>Fonte única da verdade (TSE)</h3>
+          <p>O modelo só responde se o fato estiver explicitamente indexado no plano de governo registrado. Se não constar, a IA declara a ausência do dado com total transparência.</p>
+        </div>
+        <div class="block">
+          <h3>Chunking semântico &amp; metadados</h3>
+          <p>Divisão dos documentos respeitando eixos temáticos (educação, economia, segurança) com metadados de rastreabilidade (página, tópico e seção).</p>
+        </div>
+        <div class="block">
+          <h3>Citação obrigatória de fontes</h3>
+          <p>Toda resposta gerada aponta o trecho e a referência documental original, permitindo que o usuário verifique e audite a informação em segundos.</p>
+        </div>
+      </div>
+      <p class="quote">“Em IA aplicada a dados públicos, criatividade é risco: o valor está na fidelidade documental, neutralidade e rastreabilidade total.”</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Tecnologias</span>
+      <h2>Arquitetura &amp; ferramentas</h2>
+      <ul class="tech-list">
+        <li>Claude (Engenharia de Guardrails &amp; Skills)</li>
+        <li>RAG (Retrieval-Augmented Generation)</li>
+        <li>Lovable (Desenvolvimento de interface rápida)</li>
+        <li>Antigravity IDE (Pair programming &amp; orquestração)</li>
+        <li>Supabase (Armazenamento e vetores)</li>
+        <li>Base documental oficial do TSE</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Aprendizados</span>
+      <h2>Lições de engenharia de contexto e produto</h2>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Skills dedicadas como Guardrails</h3>
+          <p>Estruturar o conhecimento em skills bem delimitadas provou ser muito mais eficaz contra jailbreaks e desvios do que apenas prompts genéricos.</p>
+        </div>
+        <div class="block">
+          <h3>Auditoria e transparência</h3>
+          <p>Usuários confiam muito mais na IA quando ela inclui a citação exata de onde extraiu o trecho do que quando apenas sintetiza o texto.</p>
+        </div>
+        <div class="block">
+          <h3>Velocidade do ciclo de prototipagem</h3>
+          <p>A combinação de Lovable + Antigravity acelerou o desenvolvimento da prova de conceito, permitindo focar a energia no comportamento da IA.</p>
+        </div>
+        <div class="block">
+          <h3>Impacto cívico da tecnologia</h3>
+          <p>Comprovação de que interfaces conversacionais com IA podem simplificar o acesso a dados de interesse público de forma ética e imparcial.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Acesso</span>
+      <h2>Explore a POC de Propostas Políticas</h2>
+      <p>A prova de conceito está online para demonstrar a consulta interativa e a disciplina dos guardrails de contexto.</p>
+      <a class="cta primary" href="https://plan-chat-explorer.lovable.app/" target="_blank" rel="noopener">Acessar Plan Chat Explorer ↗</a>
+      <a class="cta" href="/">← Voltar ao portfólio</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Thalgy de Oliveira Lino · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

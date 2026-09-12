@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Forms Carrer — Thalgy Lino</title>
+<meta name="description" content="Case do Forms Carrer: aplicação interativa para descoberta de fit de carreira em tecnologia com algoritmo probabilístico calibrado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F7F5;
+    --paper-alt:#EDEFEA;
+    --ink:#12141A;
+    --ink-soft:#565B63;
+    --accent:#3A5A78;
+    --accent-soft:#DCE6EC;
+    --line:#D9DBD3;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',-apple-system,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:500;
+    line-height:1.18;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  p{margin:0 0 1.1em; color:var(--ink-soft); max-width:62ch;}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,247,245,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .logo{font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600; color:var(--ink);}
+  .logo:hover{text-decoration:none;}
+  .back{font-size:.92rem; color:var(--ink-soft);}
+  .back:hover{color:var(--accent);}
+
+  .hero{
+    padding:80px 0 56px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, var(--paper-alt) 0%, var(--paper) 100%);
+  }
+  .eyebrow{
+    display:inline-block; font-size:.82rem; color:var(--accent);
+    letter-spacing:.04em; text-transform:uppercase; margin-bottom:16px;
+  }
+  .hero h1{font-size:clamp(2rem,4.5vw,3rem); max-width:18ch;}
+  .hero p.lede{font-size:1.1rem; max-width:52ch; color:var(--ink-soft);}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  .section-label{
+    font-size:.82rem; color:var(--accent); margin-bottom:8px; display:block;
+    text-transform:uppercase; letter-spacing:.04em;
+  }
+  h2{font-size:clamp(1.4rem,3vw,1.85rem); margin-bottom:.6em;}
+
+  .case-tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px;}
+  .tag{
+    font-size:.78rem; padding:5px 11px; border:1px solid var(--line);
+    border-radius:2px; color:var(--ink-soft); background:var(--paper-alt);
+  }
+  .tag.status{border-color:var(--accent); color:var(--accent); background:var(--accent-soft);}
+
+  .summary{
+    background:var(--paper-alt);
+    border-left:3px solid var(--accent);
+    padding:20px 22px;
+    margin:0 0 28px;
+  }
+  .summary p{margin:0; color:var(--ink-soft);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .block h3{font-size:1.05rem; margin-bottom:.5em;}
+  .block p{font-size:.96rem;}
+
+  .tech-list{
+    list-style:none; padding:0; margin:0 0 1.2em;
+    display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;
+  }
+  .tech-list li{
+    position:relative; padding-left:16px; color:var(--ink-soft); font-size:.96rem;
+  }
+  .tech-list li::before{
+    content:"—"; position:absolute; left:0; color:var(--accent);
+  }
+
+  .quote{
+    font-family:'Fraunces',serif; font-size:1.25rem; line-height:1.35;
+    color:var(--ink); margin:32px 0 16px; max-width:48ch;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 20px; border-radius:2px; font-size:.95rem;
+    border:1px solid var(--ink); color:var(--ink);
+    margin-right:12px; margin-bottom:12px;
+  }
+  .cta.primary{background:var(--ink); color:var(--paper);}
+  .cta.primary:hover{background:var(--accent); border-color:var(--accent); text-decoration:none;}
+  .cta:hover{border-color:var(--accent); color:var(--accent); text-decoration:none;}
+
+  footer{
+    padding:40px 0;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:.9rem;
+  }
+  footer p{margin:0 0 .4em;}
+
+  @media (max-width:640px){
+    .grid-2{grid-template-columns:1fr;}
+    .tech-list{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="/">Thalgy Lino</a>
+    <a class="back" href="/">← Voltar ao portfólio</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Projeto de Estudo · 2026</span>
+      <h1>Forms Carrer <span style="color:var(--accent);">·</span> 2026</h1>
+      <p class="lede">Aplicação interativa para descoberta de fit de carreira em tecnologia, desenhada com lógica probabilística balanceada e foco em usabilidade fluida.</p>
+      <div class="case-tags">
+        <span class="tag status">Projeto de estudo</span>
+        <span class="tag">UX Interativa</span>
+        <span class="tag">Lógica Estatística</span>
+        <span class="tag">Antigravity</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Vercel</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">O objetivo</span>
+      <h2>Descobrir afinidades sem questionários cansativos</h2>
+      <div class="summary">
+        <p>A transição ou entrada na área de tecnologia costuma gerar ansiedade e sobrecarga de termos técnicos. O Forms Carrer foi construído para transformar essa reflexão em uma jornada interativa, leve e matematicamente justa.</p>
+      </div>
+      <p>O foco central foi desenhar uma experiência em que qualquer pessoa pudesse responder a perguntas situacionais e práticas do dia a dia e, ao final, receber um diagnóstico claro sobre quais trilhas de tech (Produto, Dados, Operações, Engenharia, Design) mais combinam com suas forças.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">O desafio técnico</span>
+      <h2>Calibragem de probabilidades e pesos</h2>
+      <p>O maior desafio do projeto não foi visual, mas estatístico. Em questionários de afinidade simples, é muito comum que uma ou duas áreas dominem os resultados por viés de formulação das perguntas.</p>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Equilíbrio probabilístico</h3>
+          <p>Foram necessárias dezenas de iterações e simulações para calibrar os pesos das respostas, garantindo que todas as carreiras tivessem chances estatísticas balanceadas de recomendação.</p>
+        </div>
+        <div class="block">
+          <h3>Perguntas situacionais</h3>
+          <p>Em vez de perguntar "você gosta de programar?", as perguntas avaliam preferências reais de rotina: resolução de problemas ambíguos, interação com pessoas, análise visual ou processos.</p>
+        </div>
+        <div class="block">
+          <h3>Sensibilidade do algoritmo</h3>
+          <p>A pontuação foi projetada para lidar com perfis híbridos, evitando respostas binárias e exibindo afinidades complementares.</p>
+        </div>
+        <div class="block">
+          <h3>Persistência em tempo real</h3>
+          <p>Estrutura integrada ao Supabase para registro seguro e contínuo das interações, possibilitando análise do comportamento dos respondentes.</p>
+        </div>
+      </div>
+      <p class="quote">“Construir uma lógica de quiz parece simples até você perceber que pequenos desvios nos pesos distorcem completamente a probabilidade final.”</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Tecnologias</span>
+      <h2>Stack &amp; infraestrutura</h2>
+      <ul class="tech-list">
+        <li>Antigravity IDE / AI Coding</li>
+        <li>React &amp; TypeScript</li>
+        <li>Supabase (Banco de dados)</li>
+        <li>Vercel (Deploy contínuo)</li>
+        <li>Design System responsivo</li>
+        <li>Modelagem de dados estatística</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Aprendizados</span>
+      <h2>O que essa experiência consolidou</h2>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Pensamento estatístico na prática</h3>
+          <p>Entender distribuição normal, matrizes de correlação e como perguntas concorrentes influenciam o resultado cumulativo.</p>
+        </div>
+        <div class="block">
+          <h3>UX baseada em atrito reduzido</h3>
+          <p>Formulários longos geram abandono. Reduzir para perguntas diretas com feedback imediato aumentou a taxa de conclusão.</p>
+        </div>
+        <div class="block">
+          <h3>Velocidade com Antigravity &amp; Vercel</h3>
+          <p>Uso de inteligência assistida para iterar rapidamente em lógica matemática complexa e deploy imediato com CI/CD.</p>
+        </div>
+        <div class="block">
+          <h3>Visão analítica de produto</h3>
+          <p>A habilidade de auditar dados de respostas e calibrar produtos interativos para que o usuário sinta precisão e valor real na entrega.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Acesso</span>
+      <h2>Experimente o Forms Carrer</h2>
+      <p>A aplicação está no ar para você testar a dinâmica das perguntas e conferir a lógica de cálculo em tempo real.</p>
+      <a class="cta primary" href="https://forms-carrer.vercel.app/" target="_blank" rel="noopener">Acessar Forms Carrer ↗</a>
+      <a class="cta" href="/">← Voltar ao portfólio</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Thalgy de Oliveira Lino · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

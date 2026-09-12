@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Pipeline de Automação Shopee — Thalgy Lino</title>
+<meta name="description" content="Case do Pipeline de Automação Shopee: sistema integrado de 3 agentes autônomos com RPA Playwright e IA Multimodal para publicação via Magis5.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F7F5;
+    --paper-alt:#EDEFEA;
+    --ink:#12141A;
+    --ink-soft:#565B63;
+    --accent:#3A5A78;
+    --accent-soft:#DCE6EC;
+    --line:#D9DBD3;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',-apple-system,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:500;
+    line-height:1.18;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  p{margin:0 0 1.1em; color:var(--ink-soft); max-width:62ch;}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,247,245,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .logo{font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600; color:var(--ink);}
+  .logo:hover{text-decoration:none;}
+  .back{font-size:.92rem; color:var(--ink-soft);}
+  .back:hover{color:var(--accent);}
+
+  .hero{
+    padding:80px 0 56px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, var(--paper-alt) 0%, var(--paper) 100%);
+  }
+  .eyebrow{
+    display:inline-block; font-size:.82rem; color:var(--accent);
+    letter-spacing:.04em; text-transform:uppercase; margin-bottom:16px;
+  }
+  .hero h1{font-size:clamp(2rem,4.5vw,3rem); max-width:18ch;}
+  .hero p.lede{font-size:1.1rem; max-width:52ch; color:var(--ink-soft);}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  .section-label{
+    font-size:.82rem; color:var(--accent); margin-bottom:8px; display:block;
+    text-transform:uppercase; letter-spacing:.04em;
+  }
+  h2{font-size:clamp(1.4rem,3vw,1.85rem); margin-bottom:.6em;}
+
+  .case-tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px;}
+  .tag{
+    font-size:.78rem; padding:5px 11px; border:1px solid var(--line);
+    border-radius:2px; color:var(--ink-soft); background:var(--paper-alt);
+  }
+  .tag.status{border-color:var(--accent); color:var(--accent); background:var(--accent-soft);}
+
+  .summary{
+    background:var(--paper-alt);
+    border-left:3px solid var(--accent);
+    padding:20px 22px;
+    margin:0 0 28px;
+  }
+  .summary p{margin:0; color:var(--ink-soft);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .block h3{font-size:1.05rem; margin-bottom:.5em;}
+  .block p{font-size:.96rem;}
+
+  .tech-list{
+    list-style:none; padding:0; margin:0 0 1.2em;
+    display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;
+  }
+  .tech-list li{
+    position:relative; padding-left:16px; color:var(--ink-soft); font-size:.96rem;
+  }
+  .tech-list li::before{
+    content:"—"; position:absolute; left:0; color:var(--accent);
+  }
+
+  .quote{
+    font-family:'Fraunces',serif; font-size:1.25rem; line-height:1.35;
+    color:var(--ink); margin:32px 0 16px; max-width:48ch;
+  }
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 20px; border-radius:2px; font-size:.95rem;
+    border:1px solid var(--ink); color:var(--ink);
+    margin-right:12px; margin-bottom:12px;
+  }
+  .cta.primary{background:var(--ink); color:var(--paper);}
+  .cta.primary:hover{background:var(--accent); border-color:var(--accent); text-decoration:none;}
+  .cta:hover{border-color:var(--accent); color:var(--accent); text-decoration:none;}
+
+  footer{
+    padding:40px 0;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:.9rem;
+  }
+  footer p{margin:0 0 .4em;}
+
+  @media (max-width:640px){
+    .grid-2{grid-template-columns:1fr;}
+    .tech-list{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="/">Thalgy Lino</a>
+    <a class="back" href="/">← Voltar ao portfólio</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Case de Operações, IA &amp; RPA · 2026</span>
+      <h1>Pipeline de Automação Shopee <span style="color:var(--accent);">·</span> 2026</h1>
+      <p class="lede">Sistema integrado de 3 agentes autônomos que automatiza o fluxo ponta a ponta de e-commerce: coleta e tratamento de fotos, enriquecimento com IA multimodal e publicação via RPA na Magis5.</p>
+      <div class="case-tags">
+        <span class="tag status">Em desenvolvimento / Operacional</span>
+        <span class="tag">RPA (Playwright)</span>
+        <span class="tag">IA Multimodal (Gemini / Groq)</span>
+        <span class="tag">Processamento de Imagens (Sharp.js)</span>
+        <span class="tag">Hub Magis5</span>
+        <span class="tag">Node.js &amp; TypeScript</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">O problema operacional</span>
+      <h2>O gargalo do cadastro manual em escala</h2>
+      <div class="summary">
+        <p>Cadastrar dezenas ou centenas de novos produtos em marketplaces é um processo lento, repetitivo e vulnerável a erros: redimensionar fotos uma a uma, preencher planilhas, redigir títulos manuais e digitar formulários complexos no hub de integração.</p>
+      </div>
+      <p>Vivenciando a rotina de operações e e-commerce na prática, identifiquei que a equipe gastava horas preciosas em trabalho operacional mecânico que poderia ser 100% orquestrado por um ecossistema de robôs inteligentes e visão computacional.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">A arquitetura</span>
+      <h2>O fluxo dos 3 agentes autônomos</h2>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Agente 1 · Coletor &amp; Tratamento</h3>
+          <p>Lê bases de produtos e utiliza a biblioteca <strong>Sharp.js</strong> para processar, cortar, ajustar proporções e otimizar o peso das imagens em lote, atendendo aos padrões técnicos exigidos pelo canal.</p>
+        </div>
+        <div class="block">
+          <h3>Agente 2 · Enriquecedor com IA Multimodal</h3>
+          <p>Analisa a imagem e os dados brutos com modelos de visão computacional (<strong>Gemini / Groq</strong>). Gera títulos com alto índice de buscas (SEO), descrições atrativas e categorização automática.</p>
+        </div>
+        <div class="block">
+          <h3>Agente 3 · Publicador RPA com Playwright</h3>
+          <p>Um bot em navegador automatizado via <strong>Playwright</strong> que acessa o hub <strong>Magis5</strong>, preenche campos obrigatórios, faz upload das fotos tratadas e conclui a publicação sem intervenção humana.</p>
+        </div>
+        <div class="block">
+          <h3>Central de Controle Web</h3>
+          <p>Interface web centralizada para acompanhamento em tempo real do status das execuções, logs de publicação e disparo de novos lotes de anúncios.</p>
+        </div>
+      </div>
+      <p class="quote">“Eliminar tarefas mecânicas devolve o tempo da equipe para o que realmente importa: estratégia comercial, precificação e atendimento ao cliente.”</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Tecnologias</span>
+      <h2>Stack técnica utilizada</h2>
+      <ul class="tech-list">
+        <li>Node.js &amp; TypeScript</li>
+        <li>Playwright (Automação de navegador &amp; RPA)</li>
+        <li>Sharp.js (Processamento de fotos em lote)</li>
+        <li>Google Gemini Vision / Groq</li>
+        <li>Integração com Magis5 (ERP/Hub)</li>
+        <li>Dashboard web de controle</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Aprendizados &amp; Próximos Passos</span>
+      <h2>Resiliência e estabilidade em RPA</h2>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Tratamento de exceções em RPA</h3>
+          <p>Sistemas legados e hubs de marketplace sofrem lentidão esporádica. Construir retries inteligentes e esperas dinâmicas foi crucial para evitar falhas silenciosas.</p>
+        </div>
+        <div class="block">
+          <h3>Prompts visuais determinísticos</h3>
+          <p>Calibrar a IA multimodal para respeitar regras de negócio rígidas (tamanho máximo de título e proibições de palavras sensíveis nos marketplaces).</p>
+        </div>
+        <div class="block">
+          <h3>Modularidade dos agentes</h3>
+          <p>Dividir a solução em 3 agentes independentes permitiu debugar e evoluir o processamento de imagens sem travar a fila de publicação do bot.</p>
+        </div>
+        <div class="block">
+          <h3>Mensuração e escala contínua</h3>
+          <p>O pipeline está em fase ativa de validação operacional, avançando para monitoramento detalhado de throughput e assertividade de publicação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Contato</span>
+      <h2>Quer entender os detalhes da arquitetura?</h2>
+      <p>Estou à disposição para demonstrar como o pipeline foi estruturado e discutir soluções de automação e IA aplicadas a operações reais.</p>
+      <a class="cta primary" href="https://wa.me/5516994657472" target="_blank" rel="noopener">Conversar no WhatsApp ↗</a>
+      <a class="cta" href="https://www.linkedin.com/in/thalgy-lino-438445196/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="cta" href="/">← Voltar ao portfólio</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Thalgy de Oliveira Lino · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

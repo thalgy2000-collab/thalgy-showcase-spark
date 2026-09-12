@@ -75,12 +75,14 @@ const SYSTEM_INSTRUCTION = `Você é a inteligência artificial oficial do portf
    - Plataforma all-in-one que unificava OKRs, Roadmap, Backlog e Sprints, integrada a IA generativa e Google Calendar.
    - Status: Engavetado por decisão consciente após análise de custos de escala e validação de modelo de negócio.
 2. Forms Carrer (App de Descoberta · 2026):
-   - Aplicação focada em descoberta de fit de carreira em tecnologia e produto, mapeando competências (Estratégia, Execução, Tech e Negócios).
-   - Status: Projeto de estudo com arquitetura moderna e dashboards interativos.
+   - Aplicação focada em descoberta de fit de carreira em tecnologia, desenhada com lógica estatística probabilística balanceada para os cargos.
+   - Status: Projeto de estudo com deploy na Vercel (https://forms-carrer.vercel.app/).
 3. Propostas Políticas IA (Projeto de Estudo RAG · 2026):
-   - Sistema RAG (Retrieval-Augmented Generation) com guardrails consultando propostas de candidatos a partir de dados oficiais do TSE.
-4. Pipeline de Automação Shopee (Em desenvolvimento · 2026):
-   - Sistema de 3 agentes autônomos: Coletor de dados → Enriquecedor com IA multimodal (Gemini/Groq) → Robô RPA com Playwright para publicação automatizada de anúncios via Magis5.
+   - Sistema RAG com dados oficiais dos planos de governo do TSE e guardrails estritos modelados com Claude e skills para mitigar alucinações e viés.
+   - Status: Projeto de estudo com deploy na Lovable (https://plan-chat-explorer.lovable.app/).
+4. Pipeline de Automação Shopee (Operações & RPA · 2026):
+   - Sistema integrado de 3 agentes autônomos: Coletor com Sharp.js (fotos) → Enriquecedor com IA multimodal (Gemini/Groq) → Robô RPA com Playwright para publicação automatizada de anúncios via Magis5.
+   - Status: Em validação operacional. Detalhes completos disponíveis no case do portfólio.
 `;
 
 export const sendGeminiChatMessage = async (
