@@ -49,13 +49,13 @@ export const ChatWindow = ({
           <AvatarFallback className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-medium text-xs">AI</AvatarFallback>
         </Avatar>
         <div className="flex flex-col flex-1">
-          <h3 className="font-semibold text-sm leading-tight text-foreground">Thalgy's AI</h3>
-          <p className="text-[11px] text-muted-foreground leading-tight">Ask me about his work</p>
+          <h3 className="font-semibold text-sm leading-tight text-foreground">IA do Thalgy</h3>
+          <p className="text-[11px] text-muted-foreground leading-tight">Pergunte sobre seus projetos e trajetória</p>
         </div>
         <button
           onClick={toggleChat}
           className="h-8 w-8 rounded-full flex items-center justify-center hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
-          aria-label="Close chat"
+          aria-label="Fechar chat"
         >
           <X className="h-4 w-4" />
         </button>
@@ -70,10 +70,10 @@ export const ChatWindow = ({
                 <MessageCircle className="h-6 w-6" />
               </div>
               <p className="text-sm text-foreground font-medium">
-                Welcome!
+                Boas-vindas!
               </p>
               <p className="text-xs text-muted-foreground max-w-[240px]">
-                I'm an AI assistant trained on Thalgy's portfolio. How can I help you today?
+                Sou o assistente virtual treinado no portfólio do Thalgy. Como posso te ajudar hoje?
               </p>
             </div>
           ) : (

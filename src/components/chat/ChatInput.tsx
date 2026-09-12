@@ -44,7 +44,7 @@ export const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Ask me anything..."
+          placeholder="Pergunte qualquer coisa sobre o Thalgy..."
           className="min-h-[48px] max-h-[104px] resize-none pr-12 py-3 rounded-[20px] border-border/50 focus-visible:ring-blue-500/30 bg-muted/30 shadow-inner"
           disabled={isLoading}
           rows={1}
@@ -60,7 +60,7 @@ export const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
       </div>
       <div className="text-center mt-2">
         <span className="text-[10px] text-muted-foreground">
-          Press Enter to send, Shift + Enter for new line
+          Pressione Enter para enviar, Shift + Enter para nova linha
         </span>
       </div>
     </div>

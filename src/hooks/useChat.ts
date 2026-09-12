@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getSessionId } from "../utils/session";
-import { sendChatMessage } from "../services/chatWebhook";
+import { sendGeminiChatMessage } from "../services/geminiChat";
 import { toast } from "sonner";
 
 export interface Message {
@@ -50,31 +50,26 @@ export const useChat = () => {
       timestamp: Date.now(),
     };
 
-    setMessages((prev) => [...prev, newUserMessage]);
+    const updatedMessages = [...messages, newUserMessage];
+    setMessages(updatedMessages);
     setIsLoading(true);
 
     try {
-      // We will define the webhook URL in env variables, fallback to empty to avoid crash
-      const webhookUrl = import.meta.env.VITE_CHAT_WEBHOOK_URL || "http://localhost:5678/webhook-test/45635239-eab9-4fac-a7d2-8e9d535ce68a";
-      if (!webhookUrl) {
-        throw new Error("Webhook URL is not configured. Please set VITE_CHAT_WEBHOOK_URL.");
-      }
+      const outputText = await sendGeminiChatMessage(updatedMessages);
 
-      const response = await sendChatMessage(sessionId, text, webhookUrl);
-
-      if (response.status === "success" && response.output) {
-        const newAiMessage: Message = {
-          id: crypto.randomUUID(),
-          sender: "ai",
-          text: response.output,
-          timestamp: Date.now(),
-        };
-        setMessages((prev) => [...prev, newAiMessage]);
-      }
-    } catch (error) {
-      toast.error("Sorry, something went wrong.", {
+      const newAiMessage: Message = {
+        id: crypto.randomUUID(),
+        sender: "ai",
+        text: outputText,
+        timestamp: Date.now(),
+      };
+      setMessages((prev) => [...prev, newAiMessage]);
+    } catch (error: any) {
+      const errorMsg =
+        error?.message || "Desculpe, ocorreu um erro ao conectar com o Gemini.";
+      toast.error(errorMsg, {
         action: {
-          label: "Retry",
+          label: "Tentar novamente",
           onClick: () => sendMessage(text),
         },
       });

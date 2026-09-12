@@ -13,7 +13,7 @@ export const FloatingChatButton = ({ isOpen, toggleChat }: FloatingChatButtonPro
         onClick={toggleChat}
         className="h-[60px] w-[60px] rounded-full shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105 bg-gradient-to-br from-blue-500 to-indigo-600 text-white relative border-none"
         size="icon"
-        aria-label="Toggle chat window"
+        aria-label="Abrir ou fechar chat"
       >
         {!isOpen && (
           <span className="absolute -top-1 -right-1 flex h-4 w-4">
