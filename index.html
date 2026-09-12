@@ -118,9 +118,8 @@
     font-family:'IBM Plex Sans',sans-serif; transition:opacity .15s ease;
     text-decoration:none;
   }
-  .cover-card:not(.active){opacity:.82;}
-  .cover-card:hover{opacity:1; text-decoration:none;}
-  .cover-card.active{box-shadow:inset 0 0 0 3px rgba(255,255,255,.35);}
+  .cover-card{opacity:1; transition: transform .2s ease, box-shadow .2s ease; border-radius:4px;}
+  .cover-card:hover{transform: translateY(-4px); text-decoration:none; box-shadow: 0 10px 25px rgba(0,0,0,0.22);}
   .cover-eyebrow{font-size:.72rem; letter-spacing:.03em; opacity:.85;}
   .cover-title{
     font-family:'Fraunces',serif; font-weight:500; line-height:1.08;
@@ -412,7 +411,7 @@
       <div class="section-head">
         <span class="section-label">Projetos</span>
         <h2>Produto &amp; experimentos com IA</h2>
-        <p>Do case principal a experimentos em andamento — cada aba é um projeto diferente.</p>
+        <p>Do case principal a experimentos em andamento — clique no card para ver o case completo.</p>
       </div>
 
       <div class="project-covers">
@@ -423,95 +422,39 @@
               <h3 class="cover-title">Prodify <span class="cover-year">2026</span></h3>
               <p class="cover-sub">OKRs · Roadmap · Backlog · Sprints</p>
             </div>
-            <div class="cover-foot"><span class="cover-pill">Engavetado — decisão consciente</span></div>
+            <div class="cover-foot"><span class="cover-pill">Ver case completo →</span></div>
           </div>
         </a>
-        <button class="cover-card cover-forms active" data-tab="forms" aria-pressed="true">
-            <div class="cover-reveal">
-              <span class="cover-eyebrow">● Projeto de estudo</span>
-              <div>
-                <h3 class="cover-title">Forms Carrer <span class="cover-year">2026</span></h3>
-                <p class="cover-sub">Descoberta de fit de carreira</p>
-              </div>
-              <div class="cover-foot"><span class="cover-pill">Projeto de estudo</span></div>
+        <a href="case-forms-career.html" class="cover-card cover-forms">
+          <div class="cover-reveal">
+            <span class="cover-eyebrow">● Projeto de estudo</span>
+            <div>
+              <h3 class="cover-title">Forms Carrer <span class="cover-year">2026</span></h3>
+              <p class="cover-sub">Descoberta de fit de carreira</p>
             </div>
-          </button>
-        <button class="cover-card cover-propostas" data-tab="propostas" aria-pressed="false">
+            <div class="cover-foot"><span class="cover-pill">Ver case completo →</span></div>
+          </div>
+        </a>
+        <a href="case-propostas-politicas.html" class="cover-card cover-propostas">
           <div class="cover-reveal">
             <span class="cover-eyebrow">● Projeto de estudo · RAG</span>
             <div>
               <h3 class="cover-title">Propostas Políticas IA <span class="cover-year">2026</span></h3>
               <p class="cover-sub">Consulta de propostas de candidatos com dados do TSE</p>
             </div>
-            <div class="cover-foot"><span class="cover-pill">Projeto de estudo</span></div>
+            <div class="cover-foot"><span class="cover-pill">Ver case completo →</span></div>
           </div>
-        </button>
-        <button class="cover-card cover-shopee" data-tab="shopee" aria-pressed="false">
+        </a>
+        <a href="case-automacao-shopee.html" class="cover-card cover-shopee">
           <div class="cover-reveal">
-            <span class="cover-eyebrow">● Em desenvolvimento</span>
+            <span class="cover-eyebrow">● Operações &amp; RPA</span>
             <div>
               <h3 class="cover-title">Automação Shopee <span class="cover-year">2026</span></h3>
               <p class="cover-sub">Coletor → Enriquecedor IA → Publicador RPA</p>
             </div>
-            <div class="cover-foot"><span class="cover-pill">Em desenvolvimento</span></div>
+            <div class="cover-foot"><span class="cover-pill">Ver case completo →</span></div>
           </div>
-        </button>
-      </div>
-
-
-      <!-- Forms Carrer -->
-      <div class="tab-panel active" id="panel-forms">
-        <h3 style="font-size:1.3rem;">Forms Carrer</h3>
-        <p class="tab-panel-intro">Aplicação interativa de descoberta de fit de carreira em tecnologia com lógica probabilística balanceada.</p>
-        <div class="case-tags">
-          <span class="tag status">Projeto de estudo</span>
-          <span class="tag">UX Interativa</span>
-          <span class="tag">Lógica Estatística</span>
-          <span class="tag">Antigravity</span>
-          <span class="tag">Supabase</span>
-          <span class="tag">Vercel</span>
-        </div>
-        <p>Um quiz situacional projetado para equilibrar as chances probabilísticas entre diferentes carreiras de tecnologia, ajudando quem está em transição ou início de carreira a encontrar suas principais afinidades.</p>
-        <div class="case-links">
-          <a href="case-forms-career.html">Ver case completo →</a>
-          <a href="https://forms-carrer.vercel.app/" target="_blank" rel="noopener">Acessar Forms Carrer ↗</a>
-        </div>
-      </div>
-
-      <!-- Consulta de Propostas Políticas com IA -->
-      <div class="tab-panel" id="panel-propostas" hidden>
-        <h3 style="font-size:1.3rem;">Propostas Políticas IA</h3>
-        <p class="tab-panel-intro">Assistente RAG com guardrails rígidos para consulta factual e imparcial dos planos de governo registrados no TSE.</p>
-        <div class="case-tags">
-          <span class="tag status">Projeto de estudo</span>
-          <span class="tag">RAG (Retrieval-Augmented Generation)</span>
-          <span class="tag">AI Guardrails</span>
-          <span class="tag">Claude &amp; Skills</span>
-          <span class="tag">Dados Oficiais TSE</span>
-          <span class="tag">Lovable</span>
-        </div>
-        <p>Desenvolvido para combater a desinformação política através da inteligência artificial, utilizando skills dedicadas e citações documentais obrigatórias para mitigar alucinações e viés.</p>
-        <div class="case-links">
-          <a href="case-propostas-politicas.html">Ver case completo →</a>
-          <a href="https://plan-chat-explorer.lovable.app/" target="_blank" rel="noopener">Acessar Plan Chat Explorer ↗</a>
-        </div>
-      </div>
-
-      <!-- Automação Shopee IA -->
-      <div class="tab-panel" id="panel-shopee" hidden>
-        <h3 style="font-size:1.3rem;">Pipeline de Automação Shopee</h3>
-        <p class="tab-panel-intro">Sistema integrado de 3 agentes autônomos que automatizam a coleta, o enriquecimento com IA e a publicação de produtos na Shopee via Magis5.</p>
-        <div class="case-tags">
-          <span class="tag status">Em desenvolvimento</span>
-          <span class="tag">RPA · Playwright</span>
-          <span class="tag">IA Multimodal (Gemini/Groq)</span>
-          <span class="tag">Sharp.js</span>
-          <span class="tag">Magis5</span>
-        </div>
-        <p>Do coletor que trata planilhas e fotos, ao enriquecedor que gera título/descrição otimizados com IA, até o robô RPA que publica o anúncio de ponta a ponta na Magis5 — tudo disparado por uma central de controle web.</p>
-        <div class="case-links">
-          <a href="case-automacao-shopee.html">Ver case completo →</a>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -675,26 +618,7 @@
     });
   }
 
-  var tabBtns = document.querySelectorAll('.cover-card[data-tab]');
-  var tabPanels = document.querySelectorAll('.tab-panel');
-  tabBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      tabBtns.forEach(function (b) {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      tabPanels.forEach(function (p) {
-        p.classList.remove('active');
-        p.setAttribute('hidden', '');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      var panel = document.getElementById('panel-' + btn.dataset.tab);
-      panel.classList.add('active');
-      panel.removeAttribute('hidden');
-      panel.scrollIntoView({behavior:'smooth', block:'nearest'});
-    });
-  });
+
 </script>
 
 <!-- Widget de chat (React/Vite) - NÃO REMOVER, já existe no projeto -->
