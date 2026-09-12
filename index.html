@@ -116,9 +116,10 @@
     aspect-ratio:1/1; padding:30px; display:flex; flex-direction:column;
     justify-content:space-between; position:relative; overflow:hidden;
     font-family:'IBM Plex Sans',sans-serif; transition:opacity .15s ease;
+    text-decoration:none;
   }
   .cover-card:not(.active){opacity:.82;}
-  .cover-card:hover{opacity:1;}
+  .cover-card:hover{opacity:1; text-decoration:none;}
   .cover-card.active{box-shadow:inset 0 0 0 3px rgba(255,255,255,.35);}
   .cover-eyebrow{font-size:.72rem; letter-spacing:.03em; opacity:.85;}
   .cover-title{
@@ -276,7 +277,7 @@
       </div>
 
       <div class="project-covers">
-        <button class="cover-card cover-prodify active" data-tab="prodify" aria-pressed="true">
+        <a href="case-prodify.html" class="cover-card cover-prodify">
           <div class="cover-reveal">
             <span class="cover-eyebrow">● Produto · SaaS</span>
             <div>
@@ -285,8 +286,8 @@
             </div>
             <div class="cover-foot"><span class="cover-pill">Engavetado — decisão consciente</span></div>
           </div>
-        </button>
-        <button class="cover-card cover-forms" data-tab="forms" aria-pressed="false">
+        </a>
+        <button class="cover-card cover-forms active" data-tab="forms" aria-pressed="true">
           <span class="cover-eyebrow">● Projeto de estudo</span>
           <h3 class="cover-title">Forms Carrer</h3>
           <p class="cover-sub">Descoberta de fit de carreira</p>
@@ -306,24 +307,9 @@
         </button>
       </div>
 
-      <!-- Prodify -->
-      <div class="tab-panel active" id="panel-prodify">
-        <h3 style="font-size:1.3rem;">Prodify</h3>
-        <p class="tab-panel-intro">Uma plataforma que conectava todos os frameworks de produto em um lugar — e o motivo real pelo qual decidi engavetá-la.</p>
-        <div class="case-tags">
-          <span class="tag status">Engavetado — decisão consciente</span>
-          <span class="tag">Supabase</span>
-          <span class="tag">IA Generativa</span>
-          <span class="tag">Google Calendar</span>
-        </div>
-        <p>Ferramenta all-in-one que conectava OKRs, Roadmap, Backlog e Sprints em um único sistema — até eu perceber o que essa conexão total estava custando pra liberdade criativa do PM.</p>
-        <div class="case-links">
-          <a href="case-prodify.html">Ver case completo →</a>
-          <a href="https://prodifydev.lovable.app/login">Acessar MVP ao vivo ↗</a>
-        </div>
-      </div>
 
       <!-- Forms Carrer -->
+      <div class="tab-panel active" id="panel-forms">
       <div class="tab-panel" id="panel-forms" hidden>
         <h3 style="font-size:1.3rem;">Forms Carrer</h3>
         <p class="tab-panel-intro">App de descoberta de fit de carreira.</p>
