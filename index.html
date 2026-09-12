@@ -179,8 +179,63 @@
     color:#F6F7F5;
     backdrop-filter: blur(2px);
   }
-  .cover-forms{background:#B9862E; color:#20160A;}
-  .cover-propostas{background:#1F3A5F; color:#F2F5F8;}
+      .cover-forms{
+      position:relative;
+      background-color:#EDEFEA;
+      background-image: url('/cover_forms_career.jpg');
+      background-size: cover;
+      background-position: center;
+      color:#12141A;
+    }
+    .cover-forms .cover-reveal{
+      position:absolute; inset:0;
+      padding:30px;
+      background:rgba(246, 247, 245, 0.90);
+      display:flex; flex-direction:column;
+      justify-content:space-between;
+      opacity:0;
+      transition: opacity .25s ease;
+    }
+    .cover-forms:hover .cover-reveal,
+    .cover-forms:focus-visible .cover-reveal{
+      opacity:1;
+    }
+    .cover-forms .cover-eyebrow{ color:#3A5A78; }
+    .cover-forms .cover-pill{
+      background:rgba(18, 20, 26, 0.06);
+      border-color:rgba(18, 20, 26, 0.25);
+      color:#12141A;
+      backdrop-filter: blur(2px);
+    }
+  .cover-propostas{
+    position:relative;
+    background-color:#141F2B;
+    background-image: url('/cover_portfolio.jpg');
+    background-size: cover;
+    background-position: center;
+    color:#F2F5F8;
+  }
+  .cover-propostas .cover-reveal{
+    position:absolute; inset:0;
+    padding:30px;
+    background:rgba(18, 28, 40, 0.88);
+    display:flex; flex-direction:column;
+    justify-content:space-between;
+    opacity:0;
+    transition: opacity .25s ease;
+  }
+  .cover-propostas:hover .cover-reveal,
+  .cover-propostas:focus-visible .cover-reveal,
+  .cover-propostas.active .cover-reveal{
+    opacity:1;
+  }
+  .cover-propostas .cover-eyebrow{ color:#8FB4D6; }
+  .cover-propostas .cover-pill{
+    background:rgba(255,255,255,0.08);
+    border-color:rgba(255,255,255,0.3);
+    color:#F6F7F5;
+    backdrop-filter: blur(2px);
+  }
   .cover-shopee{background:#B8542C; color:#FBF1EA;}
 
   .tab-panel{display:none;}
@@ -288,16 +343,24 @@
           </div>
         </a>
         <button class="cover-card cover-forms active" data-tab="forms" aria-pressed="true">
-          <span class="cover-eyebrow">● Projeto de estudo</span>
-          <h3 class="cover-title">Forms Carrer</h3>
-          <p class="cover-sub">Descoberta de fit de carreira</p>
-          <div class="cover-foot"><span class="cover-pill">Projeto de estudo</span></div>
-        </button>
+            <div class="cover-reveal">
+              <span class="cover-eyebrow">● Projeto de estudo</span>
+              <div>
+                <h3 class="cover-title">Forms Carrer</h3>
+                <p class="cover-sub">Descoberta de fit de carreira</p>
+              </div>
+              <div class="cover-foot"><span class="cover-pill">Projeto de estudo</span></div>
+            </div>
+          </button>
         <button class="cover-card cover-propostas" data-tab="propostas" aria-pressed="false">
-          <span class="cover-eyebrow">● Projeto de estudo · RAG</span>
-          <h3 class="cover-title">Propostas Políticas IA</h3>
-          <p class="cover-sub">Consulta de propostas de candidatos com dados do TSE</p>
-          <div class="cover-foot"><span class="cover-pill">Projeto de estudo</span></div>
+          <div class="cover-reveal">
+            <span class="cover-eyebrow">● Projeto de estudo · RAG</span>
+            <div>
+              <h3 class="cover-title">Propostas Políticas IA</h3>
+              <p class="cover-sub">Consulta de propostas de candidatos com dados do TSE</p>
+            </div>
+            <div class="cover-foot"><span class="cover-pill">Projeto de estudo</span></div>
+          </div>
         </button>
         <button class="cover-card cover-shopee" data-tab="shopee" aria-pressed="false">
           <span class="cover-eyebrow">● Em desenvolvimento</span>
