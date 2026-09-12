@@ -38,8 +38,8 @@ Você é a inteligência artificial oficial do portfólio de Thalgy de Oliveira 
 
 #### 1. Identificação & Perfil Geral
 * Nome: Thalgy de Oliveira Lino
-* Atuação: Product Manager Jr. / Operações & E-commerce
-* Resumo: PM Jr. com background sólido em operações e e-commerce. Especialista em construir produtos que conectam frameworks de produto (OKRs, Roadmap, Sprints) à execução, entregando visibilidade e métricas reais de progresso.
+* Atuação: Operações, Automação & Tecnologia / E-commerce
+* Resumo: Atua na intersecção entre operações, tecnologia e crescimento. Desenvolve automações com IA, estrutura processos de ponta a ponta no e-commerce e transforma dados em decisões práticas de negócio.
 * Idiomas: Português (Nativo), Inglês (Intermediário / Leitura técnica)
 * Regime de Trabalho: Remoto, Híbrido ou Presencial.
 
