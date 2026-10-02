@@ -321,6 +321,59 @@
     backdrop-filter: blur(2px);
   }
 
+  .cover-budget{
+    position:relative;
+    background-color:#0E1116;
+    background-image: url('/cover_budget_buddy.jpg');
+    background-size: cover;
+    background-position: center;
+    color:#ECFDF5;
+    opacity:1 !important;
+  }
+  .cover-budget .cover-reveal{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:30px;
+    background:linear-gradient(rgba(10,12,16,0.35), rgba(10,12,16,0.85));
+    opacity:0;
+    transition: opacity .25s ease;
+  }
+  .cover-budget:hover .cover-reveal,
+  .cover-budget:focus-visible .cover-reveal{
+    opacity:1;
+  }
+  .cover-budget .cover-eyebrow{ color:#34D399; }
+  .cover-budget .cover-title{
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    padding-bottom:10px;
+    border-bottom:2px solid rgba(52,211,153,0.7);
+    display:inline-block;
+    width:fit-content;
+  }
+  .cover-budget .cover-year{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:.9rem; font-weight:400;
+    color:rgba(246,247,245,0.55);
+    vertical-align:middle;
+    margin-left:4px;
+  }
+  .cover-budget .cover-sub{
+    font-size:.78rem; letter-spacing:.02em; color:rgba(246,247,245,0.65);
+    max-width:none; text-transform:uppercase;
+  }
+  .cover-budget .cover-foot{ margin-top:auto; padding-top:18px; }
+  .cover-budget .cover-pill{
+    background:rgba(255,255,255,0.08);
+    border-color:rgba(255,255,255,0.3);
+    color:#F6F7F5;
+    backdrop-filter: blur(2px);
+  }
+
+  .project-covers > .cover-card:last-child:nth-child(odd){
+    grid-column: 1 / -1;
+    aspect-ratio: 2 / 1;
+  }
+
   .tab-panel{display:none;}
   .tab-panel.active{display:block;}
   .tab-panel-intro{max-width:60ch;}
@@ -451,6 +504,16 @@
             <div>
               <h3 class="cover-title">Automação Shopee <span class="cover-year">2026</span></h3>
               <p class="cover-sub">Coletor → Enriquecedor IA → Publicador RPA</p>
+            </div>
+            <div class="cover-foot"><span class="cover-pill">Ver case completo →</span></div>
+          </div>
+        </a>
+        <a href="case-budget-buddy.html" class="cover-card cover-budget">
+          <div class="cover-reveal">
+            <span class="cover-eyebrow">● FinTech · Automação &amp; IA</span>
+            <div>
+              <h3 class="cover-title">Budget Buddy <span class="cover-year">2026</span></h3>
+              <p class="cover-sub">Gestão Financeira &amp; Bot Telegram Multimodal (Gemini)</p>
             </div>
             <div class="cover-foot"><span class="cover-pill">Ver case completo →</span></div>
           </div>

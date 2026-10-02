@@ -83,6 +83,10 @@ const SYSTEM_INSTRUCTION = `Você é a inteligência artificial oficial do portf
 4. Pipeline de Automação Shopee (Operações & RPA · 2026):
    - Sistema integrado de 3 agentes autônomos: Coletor com Sharp.js (fotos) → Enriquecedor com IA multimodal (Gemini/Groq) → Robô RPA com Playwright para publicação automatizada de anúncios via Magis5.
    - Status: Em validação operacional. Detalhes completos disponíveis no case do portfólio.
+5. Budget Buddy (FinTech & Automação com IA · 2026):
+   - Aplicação web de gestão financeira pessoal (orçado vs. realizado por competência, categorias e gráficos analíticos com Recharts) integrada a um Bot de IA no Telegram (Grammy + Google Gemini + Supabase).
+   - Funcionalidades do Bot: Entrada multimodal por fotos/prints de comprovantes PIX (OCR com visão computacional), PDFs bancários, áudio (mensagens de voz) e texto livre; extração automática de estabelecimento, valor, data e categoria com confirmação interativa inline e persistência instantânea no Supabase.
+   - Status: Em produção / deploy ativo (https://budget-buddy-app-733.lovable.app). Case completo disponível no portfólio.
 `;
 
 export const sendGeminiChatMessage = async (

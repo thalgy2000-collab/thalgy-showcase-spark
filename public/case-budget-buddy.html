@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Budget Buddy — Thalgy Lino</title>
+<meta name="description" content="Case completo do Budget Buddy: plataforma de planejamento financeiro pessoal integrada a bot de automação multimodal no Telegram com IA (Google Gemini) e Supabase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F7F5;
+    --paper-alt:#EDEFEA;
+    --ink:#12141A;
+    --ink-soft:#565B63;
+    --accent:#10B981;
+    --accent-dark:#065F46;
+    --accent-soft:#D1FAE5;
+    --line:#D9DBD3;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',-apple-system,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:500;
+    line-height:1.18;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  a{color:var(--accent-dark);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  p{margin:0 0 1.1em; color:var(--ink-soft); max-width:62ch;}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,247,245,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .logo{font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600; color:var(--ink);}
+  .logo:hover{text-decoration:none;}
+  .back{font-size:.92rem; color:var(--ink-soft);}
+  .back:hover{color:var(--accent-dark);}
+
+  .hero{
+    padding:80px 0 56px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, var(--paper-alt) 0%, var(--paper) 100%);
+  }
+  .eyebrow{
+    display:inline-block; font-size:.82rem; color:var(--accent-dark);
+    letter-spacing:.04em; text-transform:uppercase; margin-bottom:16px; font-weight:600;
+  }
+  .hero h1{font-size:clamp(2rem,4.5vw,3rem); max-width:18ch;}
+  .hero p.lede{font-size:1.1rem; max-width:52ch; color:var(--ink-soft);}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  .section-label{
+    font-size:.82rem; color:var(--accent-dark); margin-bottom:8px; display:block;
+    text-transform:uppercase; letter-spacing:.04em; font-weight:600;
+  }
+  h2{font-size:clamp(1.4rem,3vw,1.85rem); margin-bottom:.6em;}
+
+  .case-tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px;}
+  .tag{
+    font-size:.78rem; padding:5px 11px; border:1px solid var(--line);
+    border-radius:2px; color:var(--ink-soft); background:var(--paper-alt);
+  }
+  .tag.status{border-color:var(--accent); color:var(--accent-dark); background:var(--accent-soft);}
+
+  .summary{
+    background:var(--paper-alt);
+    border-left:3px solid var(--accent);
+    padding:20px 22px;
+    margin:0 0 28px;
+  }
+  .summary p{margin:0; color:var(--ink-soft);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .block h3{font-size:1.05rem; margin-bottom:.5em;}
+  .block p{font-size:.96rem;}
+
+  .tech-list{
+    list-style:none; padding:0; margin:0 0 1.2em;
+    display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;
+  }
+  .tech-list li{
+    position:relative; padding-left:16px; color:var(--ink-soft); font-size:.96rem;
+  }
+  .tech-list li::before{
+    content:"—"; position:absolute; left:0; color:var(--accent);
+  }
+
+  .quote{
+    font-family:'Fraunces',serif; font-size:1.25rem; line-height:1.35;
+    color:var(--ink); margin:32px 0 16px; max-width:48ch;
+  }
+
+  .diagram{
+    background:#0E1116;
+    color:#E6EDF3;
+    padding:28px;
+    border-radius:4px;
+    font-family:monospace;
+    font-size:.86rem;
+    line-height:1.6;
+    margin:24px 0 32px;
+    overflow-x:auto;
+  }
+  .diagram strong{color:#34D399;}
+  .diagram em{color:#93C5FD; font-style:normal;}
+
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 20px; border-radius:2px; font-size:.95rem;
+    border:1px solid var(--ink); color:var(--ink);
+    margin-right:12px; margin-bottom:12px;
+  }
+  .cta.primary{background:var(--ink); color:var(--paper);}
+  .cta.primary:hover{background:var(--accent-dark); border-color:var(--accent-dark); text-decoration:none; color:#fff;}
+  .cta:hover{border-color:var(--accent-dark); color:var(--accent-dark); text-decoration:none;}
+
+  footer{
+    padding:40px 0;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:.9rem;
+  }
+  footer p{margin:0 0 .4em;}
+
+  @media (max-width:640px){
+    .grid-2{grid-template-columns:1fr;}
+    .tech-list{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="/">Thalgy Lino</a>
+    <a class="back" href="/">← Voltar ao portfólio</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Case de FinTech, IA &amp; Automação · 2026</span>
+      <h1>Budget Buddy <span style="color:var(--accent);">·</span> 2026</h1>
+      <p class="lede">Ecossistema financeiro pessoal completo: aplicação web de controle orçamentário (Planejado vs. Realizado por competência) sincronizada em tempo real com um Bot de IA no Telegram com visão computacional, áudio e linguagem natural para registro sem atrito.</p>
+      <div class="case-tags">
+        <span class="tag status">● Em produção / Operacional</span>
+        <span class="tag">FinTech &amp; Gestão Financeira</span>
+        <span class="tag">Bot Telegram (Grammy)</span>
+        <span class="tag">IA Multimodal (Google Gemini)</span>
+        <span class="tag">Visão OCR (Comprovantes &amp; PIX)</span>
+        <span class="tag">Transcrição de Áudio</span>
+        <span class="tag">Supabase Realtime &amp; Auth</span>
+        <span class="tag">React &amp; Recharts</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">O problem statement</span>
+      <h2>A barreira de hábito no controle financeiro pessoal</h2>
+      <div class="summary">
+        <p>A imensa maioria dos aplicativos e planilhas financeiras falha pelo mesmo motivo: o atrito de registro. Abrir um aplicativo bancário, depois abrir um app de finanças, autenticar, escolher categoria, digitar data e centavos no meio da rotina é uma tarefa repetitiva que quase todo usuário abandona após poucas semanas.</p>
+      </div>
+      <p>Além da fricção do input diário, existe a desconexão entre <strong>Orçamento Planejado</strong> e <strong>Execução Real</strong>. Usuários costumam saber quanto ganham e quanto gastaram no total do mês, mas têm pouca visibilidade preditiva de desvios em categorias essenciais (alimentação, lazer, moradia) antes que o orçamento estoure.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">A arquitetura da solução</span>
+      <h2>Do comprovante ao dashboard em 3 segundos</h2>
+      <p>A solução foi desenhada para eliminar 100% da fricção de entrada, permitindo que qualquer gasto seja registrado onde o usuário já se comunica todos os dias: no Telegram.</p>
+
+      <div class="diagram">
+[Input no Telegram] 📸 Print PIX / Comprovante PDF / 🎤 Áudio / 💬 Texto livre
+       │
+       ▼
+[Agente IA - Google Gemini]
+├── OCR & Visão Computacional (extrai estabelecimento, valor exato e data)
+├── Mapeamento Semântico (identifica categoria cadastrada no app)
+└── Resolução de Competência (determina mês/ano YYYY-MM)
+       │
+       ▼
+[Confirmação Interativa] Botões inline no Telegram [Confirmar / Trocar Categoria / Mês]
+       │
+       ▼
+[Banco Supabase / Cloud]
+├── Registra sub-item com data e detalhes
+├── Incrementa valor Realizado (Actual) da Categoria
+└── Sincroniza via Realtime com Dashboard Web Recharts (Saldo, Gráficos e Desvios)
+      </div>
+
+      <div class="grid-2">
+        <div class="block">
+          <h3>Input Multimodal Sem Fricção</h3>
+          <p>O usuário pode tirar um print do comprovante PIX, encaminhar um PDF de boleto, mandar uma mensagem de voz (<em>"Almoço executivo 48 reais"</em>) ou texto rápido (<em>"Shell 150"</em>).</p>
+        </div>
+        <div class="block">
+          <h3>Classificação Inteligente com Gemini</h3>
+          <p>A IA analisa o contexto, extrai montantes numéricos com precisão monetária, data e classifica o gasto contra a lista dinâmica de categorias existentes do usuário.</p>
+        </div>
+        <div class="block">
+          <h3>Planejado vs. Realizado (Budgeting)</h3>
+          <p>Visão mensal clara por competência: controle de metas planejadas vs. despesas reais, indicando percentual consumido e alertando desvios por categoria.</p>
+        </div>
+        <div class="block">
+          <h3>Analytics e Gráficos Interativos</h3>
+          <p>Dashboard analítico em Recharts com visão consolidada de receitas, despesas fixas/variáveis, fluxo de caixa e evolução temporal de economia líquida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Engenharia &amp; Stack</span>
+      <h2>Tecnologia orientada a velocidade e autonomia</h2>
+      <ul class="tech-list">
+        <li><strong>Frontend:</strong> React 18, TypeScript, TailwindCSS, Shadcn/ui</li>
+        <li><strong>Backend &amp; Dados:</strong> Supabase (PostgreSQL, Row Level Security, Auth)</li>
+        <li><strong>Bot Telegram:</strong> Node.js, TypeScript, Grammy Framework</li>
+        <li><strong>IA Multimodal:</strong> Google Generative AI (Gemini 1.5/2.5)</li>
+        <li><strong>Processamento de Voz:</strong> Edge TTS / Audio processing pipeline</li>
+        <li><strong>Visualização:</strong> Recharts (análise de tendências e distribuição)</li>
+        <li><strong>Infraestrutura:</strong> Lovable Cloud Deploy + Node Service</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Impacto &amp; Resultados</span>
+      <h2>Automação que gera consistência real</h2>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Zero Abandono de Rotina</h3>
+          <p>O registro de despesas caiu de uma média de 90 segundos (abrir app tradicional e preencher 5 campos) para menos de 4 segundos via print no Telegram.</p>
+        </div>
+        <div class="block">
+          <h3>Precisão na Classificação</h3>
+          <p>A taxa de acerto do Gemini na identificação de estabelecimentos, datas e associação correta de categorias superou 96% nos testes com comprovantes reais.</p>
+        </div>
+      </div>
+      <p class="quote">“A melhor interface para registrar hábitos do dia a dia não é um novo aplicativo que disputa atenção na tela inicial, mas um agente inteligente presente nas ferramentas de conversa que o usuário já utiliza.”</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Acesso ao Projeto</span>
+      <h2>Explore a aplicação</h2>
+      <p>Acesse o ambiente em produção do Budget Buddy e confira a experiência completa de planejamento e dashboards analíticos.</p>
+      <a class="cta primary" href="https://budget-buddy-app-733.lovable.app" target="_blank" rel="noopener">Acessar App ao Vivo ↗</a>
+      <a class="cta" href="/">← Voltar ao portfólio</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Thalgy de Oliveira Lino · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
