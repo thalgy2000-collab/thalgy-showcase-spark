@@ -72,8 +72,9 @@ const SYSTEM_INSTRUCTION = `Você é a inteligência artificial oficial do portf
 
 #### 5. Projetos de Destaque no Portfólio
 1. Prodify (Produto SaaS · 2026):
-   - Plataforma all-in-one que unificava OKRs, Roadmap, Backlog e Sprints, integrada a IA generativa e Google Calendar.
-   - Status: Engavetado por decisão consciente após análise de custos de escala e validação de modelo de negócio.
+   - Plataforma all-in-one que unificava Discovery (Opportunity Solution Tree), OKRs, priorização RICE, Roadmap, Backlog e Sprints, integrada a IA generativa e Google Calendar.
+   - Automação de controle de execução da Sprint por e-mail (Supabase Edge Function + pg_cron + Resend): envio automático no horário escolhido pelo usuário no perfil (BRT), trazendo às segundas-feiras o planejamento completo da semana e de terça a domingo as tarefas/subtarefas (critérios de aceitação com data e horário) programadas para o dia e atrasadas.
+   - Status: MVP funcional online (https://prodifydev.lovable.app/login); engavetado comercialmente por decisão consciente após análise de custos de escala e validação de modelo de negócio.
 2. Forms Carrer (App de Descoberta · 2026):
    - Aplicação focada em descoberta de fit de carreira em tecnologia, desenhada com lógica estatística probabilística balanceada para os cargos.
    - Status: Projeto de estudo com deploy na Vercel (https://forms-carrer.vercel.app/).

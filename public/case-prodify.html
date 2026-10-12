@@ -158,6 +158,7 @@
         <span class="tag">Priorização RICE com IA</span>
         <span class="tag">OKRs &amp; Roadmap</span>
         <span class="tag">Sprints &amp; PRDs</span>
+        <span class="tag">Automação de Sprints por E-mail</span>
         <span class="tag">React &amp; Supabase</span>
       </div>
     </div>
@@ -185,7 +186,7 @@
         </div>
         <div class="block">
           <h3>Estratégia &amp; OKRs Inteligentes</h3>
-          <p>Gestão hierárquica de Objetivos e Key Results por trimestre, com assistente de IA para sugerir indicadores e extrator automatizado de OKRs a partir de documentos (PDF/Docx).</p>
+          <p>Gestão hierárquica de Objetivos e Key Results por trimestre, com assistente de IA para sugerir indicadores, ajuste manual ou automático de progresso e extrator de OKRs a partir de documentos (PDF/Docx).</p>
         </div>
         <div class="block">
           <h3>Priorização RICE com IA</h3>
@@ -193,7 +194,35 @@
         </div>
         <div class="block">
           <h3>Delivery, Sprints &amp; PRD</h3>
-          <p>Kanban ágil de Sprints conectado aos épicos do roadmap, histórico de velocidade, gerador de PRD (Product Requirement Documents) e sincronização de ritos na agenda do PM.</p>
+          <p>Kanban ágil de Sprints conectado aos épicos do roadmap, histórico de velocidade, gerador de PRD, sincronização com Google Calendar e automação de avisos de tarefas por e-mail.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="section-label">Automação &amp; Controle de Execução</span>
+      <h2>Aviso automático das tarefas da Sprint por e-mail</h2>
+      <div class="summary">
+        <p>Planejar a sprint não garante sua execução se o usuário esquecer de consultar a ferramenta na rotina diária. Para elevar o controle sobre o que está em andamento, implementei um motor de avisos automáticos por e-mail (<strong>Supabase Edge Function + pg_cron + Resend</strong>) que entrega o plano de ação diretamente na caixa de entrada no horário configurado pelo usuário.</p>
+      </div>
+      <div class="grid-2">
+        <div class="block">
+          <h3>Segundas-feiras: Visão da Semana</h3>
+          <p>No início da semana, o digest dispara o cronograma completo da Sprint ativa: tarefas do dia, eventuais pendências atrasadas e todas as entregas planejadas para a semana.</p>
+        </div>
+        <div class="block">
+          <h3>Terça a Domingo: Foco Diário</h3>
+          <p>Nos demais dias, o envio filtra apenas as atividades programadas para hoje e os itens em atraso, evitando fadiga de notificações e mantendo o foco na execução imediata.</p>
+        </div>
+        <div class="block">
+          <h3>Granularidade por Subtarefas</h3>
+          <p>A automação lê datas (<em>due_date</em>) e horários (<em>due_time</em>) individuais dos critérios de aceitação (subtarefas) não concluídos, dando visibilidade exata de cada passo da entrega.</p>
+        </div>
+        <div class="block">
+          <h3>Preferências Opt-in no Perfil</h3>
+          <p>Controle total pelo usuário nas configurações de perfil (ativação do lembrete e escolha da hora cheia em horário de Brasília), disparando e-mails somente quando há pendências reais.</p>
         </div>
       </div>
     </div>
@@ -224,13 +253,13 @@
       <h2>Stack &amp; engenharia</h2>
       <ul class="tech-list">
         <li>React 18 &amp; TypeScript</li>
-        <li>Supabase (PostgreSQL, Auth &amp; Realtime)</li>
+        <li>Supabase (PostgreSQL, Auth, Edge Functions &amp; pg_cron)</li>
+        <li>Resend API &amp; Google Calendar API (Automações de Sprint)</li>
         <li>Radix UI / TailwindCSS (Design System)</li>
         <li>APIs de IA Generativa (Prompt engineering para RICE e OKRs)</li>
         <li>TanStack Query &amp; Recharts (Dashboards analíticos)</li>
         <li>pdf-lib &amp; Mammoth (Parser de documentos de produto)</li>
         <li>Vitest &amp; Playwright (Testes automatizados)</li>
-        <li>Lovable &amp; Antigravity (Aceleração de desenvolvimento)</li>
       </ul>
     </div>
   </section>
