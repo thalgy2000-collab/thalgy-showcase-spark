@@ -400,8 +400,10 @@
   .cert-badge{
     border:1px solid var(--line); background:var(--paper-alt);
     padding:14px 18px; border-radius:2px; font-size:.88rem; color:var(--ink-soft);
-    min-width:180px;
+    min-width:180px; display:inline-block; transition:border-color .2s, transform .15s;
   }
+  a.cert-badge{color:var(--ink-soft); text-decoration:none;}
+  a.cert-badge:hover{border-color:var(--accent); text-decoration:none; transform:translateY(-1px);}
   .cert-badge strong{display:block; color:var(--ink); font-family:'Fraunces',serif; font-weight:500; margin-bottom:2px;}
 
   /* Contact */
@@ -635,6 +637,7 @@
         <div class="certs">
           <div class="cert-badge"><strong>Product Management</strong>PM3</div>
           <div class="cert-badge"><strong>Product Discovery</strong>PM3</div>
+          <a href="https://plataforma.cursospm3.com.br/certificate/9564eaa6-2d4f-4c79-8af0-cc6d8020e693" target="_blank" rel="noopener" class="cert-badge"><strong>Experimentação com Teste A/B</strong>PM3 ↗</a>
           <div class="cert-badge"><strong>Scrum Master Professional</strong>Certiprof</div>
           <div class="cert-badge"><strong>Power BI</strong>Data Science Academy</div>
         </div>

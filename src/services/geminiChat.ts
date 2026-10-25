@@ -64,6 +64,13 @@ const SYSTEM_INSTRUCTION = `Você é a inteligência artificial oficial do portf
   - Mapeamento de processos, fluxogramas, POP e melhoria contínua (Kaizen/5S).
 * Produto & Métodos Ágeis:
   - Frameworks: OKRs, Roadmaps, Backlog Prioritization (RICE/MoSCoW), User Stories, Gestão de Sprints (Scrum/Kanban).
+  - Experimentação: Testes A/B (Certificação PM3 com 100% de aproveitamento), validação de hipóteses e métricas de conversão.
+* Certificações Oficiais:
+  - Experimentação com Teste A/B — PM3 (concluído com 100% de aproveitamento)
+  - Product Management — PM3
+  - Product Discovery — PM3
+  - Scrum Master Professional Certificate (SMPC) — Certiprof
+  - Power BI para Business Intelligence — Data Science Academy
 * Marketing Digital & IA:
   - Métricas de Growth (CTR, taxa de conversão, CAC, churn, retenção).
   - Criação e automação de agentes com IA generativa, RAG e RPA.
