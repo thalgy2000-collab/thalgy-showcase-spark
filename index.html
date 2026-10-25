@@ -400,11 +400,108 @@
   .cert-badge{
     border:1px solid var(--line); background:var(--paper-alt);
     padding:14px 18px; border-radius:2px; font-size:.88rem; color:var(--ink-soft);
-    min-width:180px; display:inline-block; transition:border-color .2s, transform .15s;
+    min-width:180px; display:inline-block; transition:border-color .2s, transform .15s, box-shadow .15s;
+    cursor:pointer; text-align:left; font-family:inherit;
   }
-  a.cert-badge{color:var(--ink-soft); text-decoration:none;}
-  a.cert-badge:hover{border-color:var(--accent); text-decoration:none; transform:translateY(-1px);}
+  .cert-badge:hover{
+    border-color:var(--accent); transform:translateY(-2px);
+    box-shadow:0 6px 14px rgba(0,0,0,.06);
+  }
   .cert-badge strong{display:block; color:var(--ink); font-family:'Fraunces',serif; font-weight:500; margin-bottom:2px;}
+  .cert-badge .cert-link-text{font-size:.78rem; color:var(--accent); display:inline-block; margin-top:4px;}
+
+  /* Certificate Modal */
+  .cert-modal{
+    position:fixed; inset:0; z-index:1000;
+    display:flex; align-items:center; justify-content:center;
+    padding:20px; opacity:0; pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .cert-modal.open{
+    opacity:1; pointer-events:auto;
+  }
+  .cert-modal-backdrop{
+    position:absolute; inset:0;
+    background:rgba(18,20,26,.75);
+    backdrop-filter:blur(4px);
+  }
+  .cert-modal-card{
+    position:relative; z-index:2;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    max-width:760px; width:100%;
+    max-height:90vh;
+    display:flex; flex-direction:column;
+    box-shadow:0 24px 48px rgba(0,0,0,.28);
+    transform:scale(.96);
+    transition:transform .2s ease;
+    overflow:hidden;
+  }
+  .cert-modal.open .cert-modal-card{
+    transform:scale(1);
+  }
+  .cert-modal-close{
+    position:absolute; top:12px; right:16px;
+    background:none; border:none; font-size:1.6rem; line-height:1;
+    color:var(--ink-soft); cursor:pointer; padding:6px 10px;
+    border-radius:2px; transition:color .15s, background .15s;
+  }
+  .cert-modal-close:hover{
+    color:var(--ink); background:var(--paper-alt);
+  }
+  .cert-modal-header{
+    padding:22px 24px 14px;
+    border-bottom:1px solid var(--line);
+    padding-right:50px;
+  }
+  .cert-modal-tag{
+    display:inline-block; font-size:.75rem; text-transform:uppercase;
+    letter-spacing:.05em; color:var(--accent); font-weight:600; margin-bottom:4px;
+  }
+  .cert-modal-title{
+    margin:0; font-family:'Fraunces',serif; font-size:1.35rem; color:var(--ink);
+  }
+  .cert-modal-body{
+    padding:20px 24px;
+    overflow-y:auto;
+  }
+  .cert-modal-img-wrap{
+    background:var(--paper-alt);
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+    margin-bottom:18px;
+    display:flex; justify-content:center; align-items:center;
+  }
+  .cert-modal-img-wrap img{
+    width:100%; height:auto; display:block; max-height:440px; object-fit:contain;
+  }
+  .cert-meta-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:12px 20px;
+    background:var(--paper-alt); border:1px solid var(--line);
+    border-radius:2px; padding:14px 16px; font-size:.88rem;
+  }
+  .cert-meta-item strong{
+    display:block; font-size:.75rem; text-transform:uppercase;
+    letter-spacing:.03em; color:var(--ink-soft); font-weight:600; margin-bottom:2px;
+  }
+  .cert-meta-item span{
+    color:var(--ink); word-break:break-word;
+  }
+  .cert-modal-footer{
+    padding:14px 24px 18px;
+    border-top:1px solid var(--line);
+    display:flex; justify-content:flex-end; gap:12px;
+    background:var(--paper);
+  }
+  @media (max-width:640px){
+    .cert-meta-grid{grid-template-columns:1fr;}
+    .cert-modal-card{max-height:94vh;}
+    .cert-modal-body{padding:16px;}
+    .cert-modal-header{padding:16px 16px 10px;}
+    .cert-modal-footer{padding:12px 16px;}
+  }
 
   /* Contact */
   .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px;}
@@ -635,11 +732,21 @@
       <div style="margin-top:48px;">
         <span class="section-label">Certificações</span>
         <div class="certs">
-          <div class="cert-badge"><strong>Product Management</strong>PM3</div>
-          <div class="cert-badge"><strong>Product Discovery</strong>PM3</div>
-          <a href="https://plataforma.cursospm3.com.br/certificate/9564eaa6-2d4f-4c79-8af0-cc6d8020e693" target="_blank" rel="noopener" class="cert-badge"><strong>Experimentação com Teste A/B</strong>PM3 ↗</a>
-          <div class="cert-badge"><strong>Scrum Master Professional</strong>Certiprof</div>
-          <div class="cert-badge"><strong>Power BI</strong>Data Science Academy</div>
+          <button type="button" class="cert-badge" data-cert="pm">
+            <strong>Product Management</strong>PM3 <span class="cert-link-text">Ver certificado ↗</span>
+          </button>
+          <button type="button" class="cert-badge" data-cert="discovery">
+            <strong>Product Discovery</strong>PM3 <span class="cert-link-text">Ver certificado ↗</span>
+          </button>
+          <button type="button" class="cert-badge" data-cert="teste-ab">
+            <strong>Experimentação com Teste A/B</strong>PM3 <span class="cert-link-text">Ver certificado ↗</span>
+          </button>
+          <button type="button" class="cert-badge" data-cert="scrum">
+            <strong>Scrum Master Professional</strong>Certiprof <span class="cert-link-text">Ver certificado ↗</span>
+          </button>
+          <button type="button" class="cert-badge" data-cert="powerbi">
+            <strong>Power BI</strong>Data Science Academy <span class="cert-link-text">Ver certificado ↗</span>
+          </button>
         </div>
       </div>
     </div>
@@ -690,6 +797,163 @@
 <!-- Widget de chat (React/Vite) - NÃO REMOVER, já existe no projeto -->
 <div id="chat-widget-root"></div>
 <script type="module" src="/src/chat-main.tsx"></script>
+
+
+<!-- Modal de Certificado (Popup interno) -->
+<div id="certModal" class="cert-modal" aria-hidden="true" role="dialog" aria-labelledby="certModalTitle">
+  <div class="cert-modal-backdrop" id="certModalBackdrop"></div>
+  <div class="cert-modal-card">
+    <button class="cert-modal-close" id="certModalClose" aria-label="Fechar">&times;</button>
+    <div class="cert-modal-header">
+      <span class="cert-modal-tag" id="certModalIssuer">Instituição</span>
+      <h3 id="certModalTitle" class="cert-modal-title">Título do Certificado</h3>
+    </div>
+    <div class="cert-modal-body">
+      <div class="cert-modal-img-wrap" id="certModalImgWrap">
+        <img id="certModalImg" src="" alt="Certificado" />
+      </div>
+      <div class="cert-meta-grid" id="certModalMeta"></div>
+    </div>
+    <div class="cert-modal-footer">
+      <a id="certModalVerifyBtn" href="#" target="_blank" rel="noopener" class="btn primary">Verificar credencial oficial ↗</a>
+      <button type="button" class="btn ghost" id="certModalCloseBtn">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var certsData = {
+    'pm': {
+      title: 'Formação Product Management (Menção Honrosa)',
+      issuer: 'PM3',
+      date: '20/02/2026',
+      workload: '90 horas de dedicação + desafio prático',
+      grade: 'Aproveitamento igual ou superior a 80%',
+      code: 'bd6e5c562777847ec9898effdd3d99d4',
+      verifyUrl: 'https://gerarcertificado.com.br/validar.php',
+      image: '/certificates/product-management.jpg'
+    },
+    'discovery': {
+      title: 'Product Discovery',
+      issuer: 'PM3',
+      date: '16/07/2026',
+      workload: '42 horas e 30 minutos',
+      grade: 'Aproveitamento igual ou superior a 80%',
+      code: '4047ed87ce6c466893982caab7119a1b',
+      verifyUrl: 'https://gerarcertificado.com.br/validar.php',
+      image: ''
+    },
+    'teste-ab': {
+      title: 'Experimentação com Teste A/B',
+      issuer: 'PM3',
+      date: '22/09/2026',
+      workload: '3 horas de imersão prática',
+      grade: '100% de aproveitamento na avaliação final',
+      code: '9564eaa6-2d4f-4c79-8af0-cc6d8020e693',
+      verifyUrl: 'https://plataforma.cursospm3.com.br/certificate/9564eaa6-2d4f-4c79-8af0-cc6d8020e693',
+      image: '/certificates/teste-ab-pm3.png'
+    },
+    'scrum': {
+      title: 'Scrum Master Professional Certificate (SMPC®)',
+      issuer: 'Certiprof',
+      date: '16/08/2025 (Validade: 15/08/2028)',
+      workload: 'Certificação Internacional Oficial',
+      grade: 'Aprovado no exame de proficiência',
+      code: 'JLRKLPHRLHJ-WWZQWTBHZ-YQBTGDBWSG',
+      verifyUrl: '',
+      image: '/certificates/scrum-master.jpg'
+    },
+    'powerbi': {
+      title: 'Microsoft Power BI Para Business Intelligence e Data Science',
+      issuer: 'Data Science Academy',
+      date: '04/02/2024',
+      workload: '72 horas',
+      grade: '91% de aproveitamento',
+      code: '65bfaffdbee1d86f1300fb77',
+      verifyUrl: 'https://mycourse.app/tr6o42xdMX4FGfbi9',
+      image: '/certificates/power-bi.jpg'
+    }
+  };
+
+  var modal = document.getElementById('certModal');
+  var backdrop = document.getElementById('certModalBackdrop');
+  var closeBtn = document.getElementById('certModalClose');
+  var closeFooterBtn = document.getElementById('certModalCloseBtn');
+  var titleEl = document.getElementById('certModalTitle');
+  var issuerEl = document.getElementById('certModalIssuer');
+  var imgWrap = document.getElementById('certModalImgWrap');
+  var imgEl = document.getElementById('certModalImg');
+  var metaEl = document.getElementById('certModalMeta');
+  var verifyBtn = document.getElementById('certModalVerifyBtn');
+
+  function openCert(id) {
+    var data = certsData[id];
+    if (!data) return;
+
+    titleEl.textContent = data.title;
+    issuerEl.textContent = data.issuer;
+
+    if (data.image) {
+      imgEl.src = data.image;
+      imgEl.alt = 'Certificado ' + data.title + ' - ' + data.issuer;
+      imgWrap.style.display = 'flex';
+    } else {
+      imgWrap.style.display = 'none';
+    }
+
+    var metaHtml = '';
+    if (data.date) {
+      metaHtml += '<div class="cert-meta-item"><strong>Conclusão</strong><span>' + data.date + '</span></div>';
+    }
+    if (data.workload) {
+      metaHtml += '<div class="cert-meta-item"><strong>Carga Horária</strong><span>' + data.workload + '</span></div>';
+    }
+    if (data.grade) {
+      metaHtml += '<div class="cert-meta-item"><strong>Aproveitamento</strong><span>' + data.grade + '</span></div>';
+    }
+    if (data.code) {
+      metaHtml += '<div class="cert-meta-item"><strong>Código / ID de Autenticidade</strong><span style="font-family:monospace;font-size:.85rem;">' + data.code + '</span></div>';
+    }
+    metaEl.innerHTML = metaHtml;
+
+    if (data.verifyUrl) {
+      verifyBtn.href = data.verifyUrl;
+      verifyBtn.style.display = 'inline-flex';
+    } else {
+      verifyBtn.style.display = 'none';
+    }
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCert() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.cert-badge[data-cert]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var certId = btn.getAttribute('data-cert');
+      openCert(certId);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeCert);
+  if (closeFooterBtn) closeFooterBtn.addEventListener('click', closeCert);
+  if (backdrop) backdrop.addEventListener('click', closeCert);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeCert();
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
