@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Case Pipeline de Automação Shopee — Thalgy Lino</title>
-<meta name="description" content="Case do Pipeline de Automação Shopee: sistema integrado de 3 agentes autônomos com RPA Playwright e IA Multimodal para publicação via Magis5.">
+<meta name="description" content="Case do Pipeline de Automação Shopee: sistema integrado de 6 agentes autônomos com RPA Playwright e IA Multimodal para operação de e-commerce via ERP Sankhya, Magis5 e Shopee.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -96,6 +96,67 @@
   .block h3{font-size:1.05rem; margin-bottom:.5em;}
   .block p{font-size:.96rem;}
 
+  .agents-intro{margin-bottom:28px;}
+  .agents-list{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    margin:0 0 12px;
+  }
+  .agent-item{
+    display:grid;
+    grid-template-columns:112px 1fr;
+    gap:22px;
+    align-items:start;
+    padding:20px;
+    background:var(--paper-alt);
+    border:1px solid var(--line);
+    border-radius:2px;
+  }
+  .agent-thumb{
+    width:112px;
+    height:112px;
+    border-radius:4px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    object-fit:cover;
+    display:block;
+  }
+  .agent-content{min-width:0;}
+  .agent-step{
+    display:inline-block;
+    font-size:.75rem;
+    font-weight:600;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    border-radius:2px;
+    padding:2px 8px;
+    margin-bottom:8px;
+  }
+  .agent-content h3{
+    font-size:1.05rem;
+    margin:0 0 .45em;
+  }
+  .agent-content p{
+    font-size:.96rem;
+    margin:0 0 .65em;
+    max-width:none;
+  }
+  .agent-io{
+    font-size:.84rem;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+    padding-top:8px;
+    margin:0;
+  }
+  .agent-io strong{
+    color:var(--ink);
+    font-weight:500;
+  }
+
   .tech-list{
     list-style:none; padding:0; margin:0 0 1.2em;
     display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;
@@ -133,6 +194,8 @@
   @media (max-width:640px){
     .grid-2{grid-template-columns:1fr;}
     .tech-list{grid-template-columns:1fr;}
+    .agent-item{grid-template-columns:1fr; gap:14px;}
+    .agent-thumb{width:96px; height:96px;}
   }
 </style>
 </head>
@@ -150,13 +213,14 @@
     <div class="wrap">
       <span class="eyebrow">Case de Operações, IA &amp; RPA · 2026</span>
       <h1>Pipeline de Automação Shopee <span style="color:var(--accent);">·</span> 2026</h1>
-      <p class="lede">Sistema integrado de 3 agentes autônomos que automatiza o fluxo ponta a ponta de e-commerce: coleta e tratamento de fotos, enriquecimento com IA multimodal e publicação via RPA na Magis5.</p>
+      <p class="lede">Sistema integrado de 6 agentes especializados que automatiza o fluxo ponta a ponta de e-commerce: extração de variações no ERP Sankhya, coleta e tratamento de fotos, enriquecimento com IA multimodal, publicação assistida via RPA na Magis5, auditoria de falhas e atualização de atributos na Shopee.</p>
       <div class="case-tags">
         <span class="tag status">Em desenvolvimento / Operacional</span>
         <span class="tag">RPA (Playwright)</span>
         <span class="tag">IA Multimodal (Gemini / Groq)</span>
         <span class="tag">Processamento de Imagens (Sharp.js)</span>
-        <span class="tag">Hub Magis5</span>
+        <span class="tag">ERP Sankhya &amp; Hub Magis5</span>
+        <span class="tag">Shopee Seller Center</span>
         <span class="tag">Node.js &amp; TypeScript</span>
       </div>
     </div>
@@ -167,32 +231,102 @@
       <span class="section-label">O problema operacional</span>
       <h2>O gargalo do cadastro manual em escala</h2>
       <div class="summary">
-        <p>Cadastrar dezenas ou centenas de novos produtos em marketplaces é um processo lento, repetitivo e vulnerável a erros: redimensionar fotos uma a uma, preencher planilhas, redigir títulos manuais e digitar formulários complexos no hub de integração.</p>
+        <p>Cadastrar dezenas ou centenas de novos produtos em marketplaces é um processo lento, repetitivo e vulnerável a erros: consultar códigos de variações no ERP, redimensionar fotos uma a uma, preencher planilhas, redigir títulos com SEO e digitar formulários complexos no hub de integração e na Shopee.</p>
       </div>
-      <p>Vivenciando a rotina de operações e e-commerce na prática, identifiquei que a equipe gastava horas preciosas em trabalho operacional mecânico que poderia ser 100% orquestrado por um ecossistema de robôs inteligentes e visão computacional.</p>
+      <p>Vivenciando a rotina de operações e e-commerce na prática, estruturei uma esteira modular em que robôs de navegação e visão computacional assumem o trabalho mecânico pesado, mantendo checkpoints claros e aprovação humana antes da publicação final.</p>
+    </div>
+  </section>
+
+  <section id="agentes">
+    <div class="wrap">
+      <span class="section-label">Agentes</span>
+      <h2>A esteira de 6 agentes especializados (00 → 05)</h2>
+      <p class="agents-intro">Desenhei a arquitetura com responsabilidade única por etapa: cada agente executa uma tarefa isolada do pipeline na ordem <strong>00 → 05</strong>, consumindo a entrega validada do agente anterior e gerando artefatos auditáveis para o próximo passo.</p>
+
+      <div class="agents-list">
+        <article class="agent-item">
+          <img class="agent-thumb" src="/agents/indiana-jones.png" alt="Agente 00 — Indiana Jones · Scout ERP" loading="lazy">
+          <div class="agent-content">
+            <span class="agent-step">Agente 00 · agent0-sankhya</span>
+            <h3>Indiana Jones • Scout ERP</h3>
+            <p>Acessa o ERP Sankhya Web via Playwright, pesquisa SKUs pai ou coleções no módulo de produtos, expande todas as variações e tamanhos com seus códigos internos e gera a planilha de entrada formatada para a esteira.</p>
+            <div class="agent-io"><strong>Recebe:</strong> SKUs pai ou nome da coleção → <strong>Entrega:</strong> planilha .xlsx com variações e códigos ERP.</div>
+          </div>
+        </article>
+
+        <article class="agent-item">
+          <img class="agent-thumb" src="/agents/peter-parker.png" alt="Agente 01 — Peter Parker · Coletor &amp; Fotos" loading="lazy">
+          <div class="agent-content">
+            <span class="agent-step">Agente 01 · agent1-scraper</span>
+            <h3>Peter Parker • Coletor &amp; Fotos</h3>
+            <p>Lê a planilha de entrada (com suporte a filtro por cor da célula), localiza os produtos nos sites oficiais da marca e baixa as fotos em alta resolução, convertendo e padronizando os arquivos em JPEG com Sharp.js.</p>
+            <div class="agent-io"><strong>Recebe:</strong> planilha de lote → <strong>Entrega:</strong> pastas de fotos padronizadas por SKU e CSV atualizado.</div>
+          </div>
+        </article>
+
+        <article class="agent-item">
+          <img class="agent-thumb" src="/agents/mago.png" alt="Agente 02 — Mago · IA Vision &amp; SEO" loading="lazy">
+          <div class="agent-content">
+            <span class="agent-step">Agente 02 · agent2-enricher</span>
+            <h3>Mago • IA Vision &amp; SEO</h3>
+            <p>Analisa as fotos e o título bruto com IA multimodal (Gemini / Groq), agrupa variações pai-filho e gera título otimizado para busca, descrição estruturada, categoria e ficha técnica completa, além de montar kits.</p>
+            <div class="agent-io"><strong>Recebe:</strong> fotos + dados brutos → <strong>Entrega:</strong> ficha estruturada (JSON) com SEO, atributos e variações.</div>
+          </div>
+        </article>
+
+        <article class="agent-item">
+          <img class="agent-thumb" src="/agents/wall-e.png" alt="Agente 03 — Wall-E · RPA Magis5" loading="lazy">
+          <div class="agent-content">
+            <span class="agent-step">Agente 03 · agent3-rpa-magis5</span>
+            <h3>Wall-E • RPA Magis5</h3>
+            <p>Valida os campos obrigatórios e preços em um checkpoint pré-voo, preenche o anúncio completo no hub Magis5 via Playwright (categorias, atributos, códigos ERP e fotos das variações) e aguarda aprovação humana antes de publicar.</p>
+            <div class="agent-io"><strong>Recebe:</strong> ficha enriquecida + fotos → <strong>Entrega:</strong> anúncio preenchido e revisado na Magis5 com screenshot de auditoria.</div>
+          </div>
+        </article>
+
+        <article class="agent-item">
+          <img class="agent-thumb" src="/agents/sherlock-holmes.png" alt="Agente 04 — Sherlock Holmes · Auditor da Esteira" loading="lazy">
+          <div class="agent-content">
+            <span class="agent-step">Agente 04 · agent4-diagnostician</span>
+            <h3>Sherlock Holmes • Auditor da Esteira</h3>
+            <p>Inspeciona os registros de execução e screenshots de erro, classifica a causa-raiz das falhas (categoria, marca, atributo pendente ou limite de imagens), propõe correções automáticas e consolida o funil da operação.</p>
+            <div class="agent-io"><strong>Recebe:</strong> logs, JSONs e screenshots de falha → <strong>Entrega:</strong> diagnóstico da causa-raiz e correção sugerida/aplicada.</div>
+          </div>
+        </article>
+
+        <article class="agent-item">
+          <img class="agent-thumb" src="/agents/sonic.png" alt="Agente 05 — Sonic · Importador Shopee" loading="lazy">
+          <div class="agent-content">
+            <span class="agent-step">Agente 05 · agent5-shopee-attributes</span>
+            <h3>Sonic • Importador Shopee</h3>
+            <p>Abre o Shopee Seller Center via Playwright com sessão persistente pós-2FA, localiza os anúncios importados ou publicados (por planilha, SKU ou ID) e preenche ou atualiza os atributos técnicos obrigatórios e recomendados diretamente na Shopee, salvando com screenshot de auditoria.</p>
+            <div class="agent-io"><strong>Recebe:</strong> planilha/JSON + anúncio existente no Seller Center → <strong>Entrega:</strong> atributos técnicos preenchidos e salvos na Shopee.</div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
       <span class="section-label">A arquitetura</span>
-      <h2>O fluxo dos 3 agentes autônomos</h2>
+      <h2>Orquestração e governança operacional</h2>
       <div class="grid-2">
         <div class="block">
-          <h3>Agente 1 · Coletor &amp; Tratamento</h3>
-          <p>Lê bases de produtos e utiliza a biblioteca <strong>Sharp.js</strong> para processar, cortar, ajustar proporções e otimizar o peso das imagens em lote, atendendo aos padrões técnicos exigidos pelo canal.</p>
+          <h3>Extração &amp; Padronização Visual</h3>
+          <p>Da consulta automatizada de grades no <strong>ERP Sankhya</strong> ao download e conversão em lote com <strong>Sharp.js</strong>, eliminando gargalos manuais de preparação de catálogo.</p>
         </div>
         <div class="block">
-          <h3>Agente 2 · Enriquecedor com IA Multimodal</h3>
-          <p>Analisa a imagem e os dados brutos com modelos de visão computacional (<strong>Gemini / Groq</strong>). Gera títulos com alto índice de buscas (SEO), descrições atrativas e categorização automática.</p>
+          <h3>Enriquecimento com IA Multimodal</h3>
+          <p>Visão computacional (<strong>Gemini / Groq</strong>) combinada a regras de negócio para estruturar títulos SEO, descrições, agrupamento pai-filho e fichas técnicas completas.</p>
         </div>
         <div class="block">
-          <h3>Agente 3 · Publicador RPA com Playwright</h3>
-          <p>Um bot em navegador automatizado via <strong>Playwright</strong> que acessa o hub <strong>Magis5</strong>, preenche campos obrigatórios, faz upload das fotos tratadas e conclui a publicação sem intervenção humana.</p>
+          <h3>Publicação Assistida &amp; Pós-Publicação</h3>
+          <p>Automação via <strong>Playwright</strong> no hub <strong>Magis5</strong> com trava de revisão humana pré-publicação e refinamento direto de atributos técnicos no <strong>Shopee Seller Center</strong>.</p>
         </div>
         <div class="block">
-          <h3>Central de Controle Web</h3>
-          <p>Interface web centralizada para acompanhamento em tempo real do status das execuções, logs de publicação e disparo de novos lotes de anúncios.</p>
+          <h3>Central Web &amp; Auditoria de Falhas</h3>
+          <p>Painel web centralizado para disparo de lotes, acompanhamento de logs em tempo real e diagnóstico automatizado de exceções com capturas de tela.</p>
         </div>
       </div>
       <p class="quote">“Eliminar tarefas mecânicas devolve o tempo da equipe para o que realmente importa: estratégia comercial, precificação e atendimento ao cliente.”</p>
@@ -208,8 +342,8 @@
         <li>Playwright (Automação de navegador &amp; RPA)</li>
         <li>Sharp.js (Processamento de fotos em lote)</li>
         <li>Google Gemini Vision / Groq</li>
-        <li>Integração com Magis5 (ERP/Hub)</li>
-        <li>Dashboard web de controle</li>
+        <li>Integração ERP Sankhya &amp; Magis5</li>
+        <li>Automação Shopee Seller Center &amp; Painel Web</li>
       </ul>
     </div>
   </section>
@@ -221,19 +355,19 @@
       <div class="grid-2">
         <div class="block">
           <h3>Tratamento de exceções em RPA</h3>
-          <p>Sistemas legados e hubs de marketplace sofrem lentidão esporádica. Construir retries inteligentes e esperas dinâmicas foi crucial para evitar falhas silenciosas.</p>
+          <p>Sistemas legados e hubs de marketplace sofrem lentidão esporádica. Construir retries inteligentes, sessões persistentes e diagnóstico visual de erros foi crucial para evitar falhas silenciosas.</p>
         </div>
         <div class="block">
           <h3>Prompts visuais determinísticos</h3>
-          <p>Calibrar a IA multimodal para respeitar regras de negócio rígidas (tamanho máximo de título e proibições de palavras sensíveis nos marketplaces).</p>
+          <p>Calibrar a IA multimodal para respeitar regras de negócio rígidas (tamanho máximo de título, atributos obrigatórios e proibições de palavras sensíveis nos marketplaces).</p>
         </div>
         <div class="block">
-          <h3>Modularidade dos agentes</h3>
-          <p>Dividir a solução em 3 agentes independentes permitiu debugar e evoluir o processamento de imagens sem travar a fila de publicação do bot.</p>
+          <h3>Modularidade dos 6 agentes</h3>
+          <p>Dividir a solução em 6 agentes independentes (00 → 05) permitiu isolar falhas, auditar cada etapa e evoluir o pipeline sem travar a fila de publicação.</p>
         </div>
         <div class="block">
-          <h3>Mensuração e escala contínua</h3>
-          <p>O pipeline está em fase ativa de validação operacional, avançando para monitoramento detalhado de throughput e assertividade de publicação.</p>
+          <h3>Human-in-the-loop e escala</h3>
+          <p>Manter a aprovação humana no checkpoint de publicação garante segurança comercial enquanto o pipeline avança em throughput e assertividade operacional.</p>
         </div>
       </div>
     </div>
