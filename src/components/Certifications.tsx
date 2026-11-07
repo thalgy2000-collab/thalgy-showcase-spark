@@ -3,6 +3,7 @@ import { Award, GraduationCap, LayoutDashboard, Trello, Workflow, Figma, BarChar
 
 const certifications = [
   { name: "Product Management — PM3", link: "https://gerarcertificado.com.br/validar.php" },
+  { name: "Gestão de Resultados com OKR — PM3", link: "https://plataforma.cursospm3.com.br/certificate/b4fd83e1-bc24-487f-b596-fd5a05e15b51" },
   { name: "Experimentação com Teste A/B — PM3", link: "https://plataforma.cursospm3.com.br/certificate/9564eaa6-2d4f-4c79-8af0-cc6d8020e693" },
   { name: "Scrum Master Professional Certificate (SMPC) — Certprof", link: "https://drive.google.com/drive/u/0/folders/1cP-AXITCA4U0YTIbpwTgN66e_GVu_heb" },
   { name: "Power BI para Business Intelligence — Data Science Academy", link: "https://drive.google.com/drive/u/0/folders/1cP-AXITCA4U0YTIbpwTgN66e_GVu_heb" },

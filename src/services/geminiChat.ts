@@ -66,6 +66,7 @@ const SYSTEM_INSTRUCTION = `Você é a inteligência artificial oficial do portf
   - Frameworks: OKRs, Roadmaps, Backlog Prioritization (RICE/MoSCoW), User Stories, Gestão de Sprints (Scrum/Kanban).
   - Experimentação: Testes A/B (Certificação PM3 com 100% de aproveitamento), validação de hipóteses e métricas de conversão.
 * Certificações Oficiais:
+  - Gestão de Resultados com OKR — PM3 (concluído com 100% de aproveitamento)
   - Experimentação com Teste A/B — PM3 (concluído com 100% de aproveitamento)
   - Product Management — PM3
   - Product Discovery — PM3
