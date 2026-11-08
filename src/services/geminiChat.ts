@@ -91,7 +91,7 @@ const SYSTEM_INSTRUCTION = `Você é a inteligência artificial oficial do portf
    - Status: Projeto de estudo com deploy na Lovable (https://plan-chat-explorer.lovable.app/).
 4. Zapee — Pipeline de Automação Shopee (Operações, IA & RPA · 2026):
    - Sistema oficial integrado de 6 agentes especializados (00 a 05): Agente 00 (Indiana Jones • Scout ERP Sankhya, 75 planilhas geradas com filtro FULL e deduplicação) → Agente 01 (Peter Parker • Coletor & Fotos com Sharp.js e leitura de cores BIFF8, 820 pastas e 4.970 fotos tratadas) → Agente 02 (Mago • IA Vision & SEO com Gemini 2.5 Flash/Groq, Estrutura Multi-Modelo PP–G2, Kits e banco PostgreSQL/Supabase, 276 produtos enriquecidos) → Agente 03 (Wall-E • RPA Magis5 com Playwright, Draft Fixer, 64 anúncios publicados, 499 screenshots de auditoria e aprovação humana pré-publicação) → Agente 04 (Sherlock Holmes • Auditor & Relator Executivo do funil SKU a SKU) → Agente 05 (Sonic • Importador & Atributos Shopee Seller Center com sessão persistente pós-2FA e 247 fichas validadas).
-   - Inclui suíte web (Mission Control, Painel Executivo da Esteira e Quadro Kanban de risco cadastral) e containerização Docker 24/7.
+   - Inclui suíte web (Workspace Central Mission Control e Painel Executivo da Esteira) e containerização Docker 24/7.
    - Status: Em desenvolvimento / Operacional. Case completo com prints reais do sistema disponível no portfólio.
 5. Budget Buddy (FinTech & Automação com IA · 2026):
    - Aplicação web de gestão financeira pessoal (orçado vs. realizado por competência, categorias e gráficos analíticos com Recharts) integrada a um Bot de IA no Telegram (Grammy + Google Gemini + Supabase).
