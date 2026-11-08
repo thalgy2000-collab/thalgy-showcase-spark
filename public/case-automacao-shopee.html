@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Pipeline de Automação Shopee — Thalgy Lino</title>
-<meta name="description" content="Case do Pipeline de Automação Shopee: sistema integrado de 6 agentes autônomos com RPA Playwright e IA Multimodal para operação de e-commerce via ERP Sankhya, Magis5 e Shopee.">
+<title>Case Zapee · Pipeline de Automação Shopee — Thalgy Lino</title>
+<meta name="description" content="Case do Zapee (Pipeline de Automação Shopee): sistema integrado de 6 agentes autônomos com RPA Playwright, IA Multimodal e Supabase para operação de e-commerce via ERP Sankhya, Magis5 e Shopee.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
   }
   a{color:var(--accent);text-decoration:none;}
   a:hover{text-decoration:underline;}
-  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
   p{margin:0 0 1.1em; color:var(--ink-soft); max-width:62ch;}
 
@@ -67,8 +67,8 @@
     display:inline-block; font-size:.82rem; color:var(--accent);
     letter-spacing:.04em; text-transform:uppercase; margin-bottom:16px;
   }
-  .hero h1{font-size:clamp(2rem,4.5vw,3rem); max-width:18ch;}
-  .hero p.lede{font-size:1.1rem; max-width:52ch; color:var(--ink-soft);}
+  .hero h1{font-size:clamp(2rem,4.5vw,3rem); max-width:20ch;}
+  .hero p.lede{font-size:1.1rem; max-width:56ch; color:var(--ink-soft);}
 
   section{padding:56px 0; border-bottom:1px solid var(--line);}
   .section-label{
@@ -83,6 +83,32 @@
     border-radius:2px; color:var(--ink-soft); background:var(--paper-alt);
   }
   .tag.status{border-color:var(--accent); color:var(--accent); background:var(--accent-soft);}
+
+  .metrics-strip{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:12px;
+    margin-top:24px;
+  }
+  .metric-box{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:14px 16px;
+  }
+  .metric-val{
+    font-family:'Fraunces',Georgia,serif;
+    font-size:1.45rem;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.1;
+    margin-bottom:4px;
+  }
+  .metric-lbl{
+    font-size:.78rem;
+    color:var(--ink-soft);
+    line-height:1.3;
+  }
 
   .summary{
     background:var(--paper-alt);
@@ -157,6 +183,100 @@
     font-weight:500;
   }
 
+  /* Galeria de telas do sistema Zapee */
+  .screens-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:28px;
+    margin-top:24px;
+  }
+  .screen-figure{
+    margin:0;
+    background:var(--paper-alt);
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .screen-btn{
+    all:unset;
+    display:block;
+    width:100%;
+    cursor:zoom-in;
+    border-bottom:1px solid var(--line);
+    background:#0B0E17;
+  }
+  .screen-btn img{
+    display:block;
+    width:100%;
+    height:auto;
+    transition:opacity .15s ease;
+  }
+  .screen-btn:hover img{opacity:.94;}
+  .screen-caption{
+    padding:16px 20px;
+  }
+  .screen-caption strong{
+    display:block;
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:500;
+    font-size:1rem;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .screen-caption span{
+    display:block;
+    font-size:.9rem;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+
+  /* Lightbox Modal */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    background:rgba(18,20,26,.88);
+    backdrop-filter:blur(4px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .lightbox.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .lightbox-close{
+    align-self:flex-end;
+    background:var(--paper);
+    color:var(--ink);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:6px 14px;
+    font-size:.88rem;
+    font-family:inherit;
+    cursor:pointer;
+    margin-bottom:12px;
+  }
+  .lightbox-img{
+    max-width:96vw;
+    max-height:82vh;
+    border:1px solid var(--line);
+    border-radius:2px;
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+  }
+  .lightbox-caption{
+    color:var(--paper);
+    font-size:.9rem;
+    margin-top:12px;
+    text-align:center;
+    max-width:65ch;
+  }
+
   .tech-list{
     list-style:none; padding:0; margin:0 0 1.2em;
     display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;
@@ -194,6 +314,7 @@
   @media (max-width:640px){
     .grid-2{grid-template-columns:1fr;}
     .tech-list{grid-template-columns:1fr;}
+    .metrics-strip{grid-template-columns:1fr 1fr;}
     .agent-item{grid-template-columns:1fr; gap:14px;}
     .agent-thumb{width:96px; height:96px;}
   }
@@ -212,16 +333,36 @@
   <section class="hero">
     <div class="wrap">
       <span class="eyebrow">Case de Operações, IA &amp; RPA · 2026</span>
-      <h1>Pipeline de Automação Shopee <span style="color:var(--accent);">·</span> 2026</h1>
-      <p class="lede">Sistema integrado de 6 agentes especializados que automatiza o fluxo ponta a ponta de e-commerce: extração de variações no ERP Sankhya, coleta e tratamento de fotos, enriquecimento com IA multimodal, publicação assistida via RPA na Magis5, auditoria de falhas e atualização de atributos na Shopee.</p>
+      <h1>Zapee <span style="color:var(--accent);">·</span> Pipeline de Automação Shopee</h1>
+      <p class="lede">Sistema oficial integrado de 6 agentes especializados que automatiza a operação ponta a ponta de catálogo para e-commerce: mineração de grades no ERP Sankhya, coleta e padronização de fotos, enriquecimento com IA multimodal e banco Supabase, publicação assistida via RPA na Magis5, auditoria executiva de funil e atualização direta no Shopee Seller Center.</p>
       <div class="case-tags">
         <span class="tag status">Em desenvolvimento / Operacional</span>
+        <span class="tag">Zapee Suite</span>
         <span class="tag">RPA (Playwright)</span>
-        <span class="tag">IA Multimodal (Gemini / Groq)</span>
-        <span class="tag">Processamento de Imagens (Sharp.js)</span>
+        <span class="tag">IA Multimodal (Gemini 2.5 Flash / Groq)</span>
+        <span class="tag">PostgreSQL / Supabase</span>
+        <span class="tag">Sharp.js</span>
         <span class="tag">ERP Sankhya &amp; Hub Magis5</span>
-        <span class="tag">Shopee Seller Center</span>
-        <span class="tag">Node.js &amp; TypeScript</span>
+        <span class="tag">Docker &amp; Node.js</span>
+      </div>
+
+      <div class="metrics-strip" aria-label="Métricas operacionais consolidadas no Zapee">
+        <div class="metric-box">
+          <div class="metric-val">75</div>
+          <div class="metric-lbl">Planilhas de lotes mineradas via ERP Sankhya</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">4.970</div>
+          <div class="metric-lbl">Fotos oficiais baixadas e tratadas em 820 pastas</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">276</div>
+          <div class="metric-lbl">Produtos enriquecidos com IA, SEO e ficha técnica</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-val">499</div>
+          <div class="metric-lbl">Screenshots de auditoria RPA e 64 anúncios publicados</div>
+        </div>
       </div>
     </div>
   </section>
@@ -233,15 +374,15 @@
       <div class="summary">
         <p>Cadastrar dezenas ou centenas de novos produtos em marketplaces é um processo lento, repetitivo e vulnerável a erros: consultar códigos de variações no ERP, redimensionar fotos uma a uma, preencher planilhas, redigir títulos com SEO e digitar formulários complexos no hub de integração e na Shopee.</p>
       </div>
-      <p>Vivenciando a rotina de operações e e-commerce na prática, estruturei uma esteira modular em que robôs de navegação e visão computacional assumem o trabalho mecânico pesado, mantendo checkpoints claros e aprovação humana antes da publicação final.</p>
+      <p>Vivenciando a rotina de operações e e-commerce na prática, desenvolvi o <strong>Zapee</strong>: uma esteira modular em que robôs de navegação e visão computacional assumem o trabalho mecânico pesado, mantendo governança visual, banco de dados sincronizado e aprovação humana antes da publicação final.</p>
     </div>
   </section>
 
   <section id="agentes">
     <div class="wrap">
       <span class="section-label">Agentes</span>
-      <h2>A esteira de 6 agentes especializados (00 → 05)</h2>
-      <p class="agents-intro">Desenhei a arquitetura com responsabilidade única por etapa: cada agente executa uma tarefa isolada do pipeline na ordem <strong>00 → 05</strong>, consumindo a entrega validada do agente anterior e gerando artefatos auditáveis para o próximo passo.</p>
+      <h2>A esteira de 6 agentes do Zapee (00 → 05)</h2>
+      <p class="agents-intro">Desenhei a arquitetura com responsabilidade única por etapa: cada agente executa uma missão isolada na ordem <strong>00 → 05</strong>, consumindo a entrega validada do agente anterior e gerando artefatos auditáveis para o próximo passo.</p>
 
       <div class="agents-list">
         <article class="agent-item">
@@ -249,8 +390,8 @@
           <div class="agent-content">
             <span class="agent-step">Agente 00 · agent0-sankhya</span>
             <h3>Indiana Jones • Scout ERP</h3>
-            <p>Acessa o ERP Sankhya Web via Playwright, pesquisa SKUs pai ou coleções no módulo de produtos, expande todas as variações e tamanhos com seus códigos internos e gera a planilha de entrada formatada para a esteira.</p>
-            <div class="agent-io"><strong>Recebe:</strong> SKUs pai ou nome da coleção → <strong>Entrega:</strong> planilha .xlsx com variações e códigos ERP.</div>
+            <p>Acessa o ERP Sankhya Web via Playwright, pesquisa SKUs pai individuais ou coleções completas (ex.: <em>ArmorX</em>, <em>São Bento</em>), aplica filtro inteligente de modalidade (<code>full</code>, <code>standard</code> ou <code>all</code>), expande todas as variações/tamanhos com deduplicação por código interno e gera a planilha de entrada formatada.</p>
+            <div class="agent-io"><strong>Recebe:</strong> SKUs pai ou nome da coleção → <strong>Entrega:</strong> planilha .xlsx deduplicada com variações e códigos ERP (75 planilhas geradas).</div>
           </div>
         </article>
 
@@ -259,8 +400,8 @@
           <div class="agent-content">
             <span class="agent-step">Agente 01 · agent1-scraper</span>
             <h3>Peter Parker • Coletor &amp; Fotos</h3>
-            <p>Lê a planilha de entrada (com suporte a filtro por cor da célula), localiza os produtos nos sites oficiais da marca e baixa as fotos em alta resolução, convertendo e padronizando os arquivos em JPEG com Sharp.js.</p>
-            <div class="agent-io"><strong>Recebe:</strong> planilha de lote → <strong>Entrega:</strong> pastas de fotos padronizadas por SKU e CSV atualizado.</div>
+            <p>Lê planilhas legadas (<code>.xls</code> BIFF8) e modernas (<code>.xlsx</code>) inspecionando a cor hexadecimal real das células (ex.: <code>#D1FAE5</code>), varre múltiplos domínios Shopify da marca para baixar fotos em alta resolução (1200×1200) e padroniza os arquivos em JPEG com <strong>Sharp.js</strong>.</p>
+            <div class="agent-io"><strong>Recebe:</strong> planilha de lote → <strong>Entrega:</strong> 820 pastas de fotos padronizadas por SKU (4.970 imagens) e CSV sincronizado.</div>
           </div>
         </article>
 
@@ -269,8 +410,8 @@
           <div class="agent-content">
             <span class="agent-step">Agente 02 · agent2-enricher</span>
             <h3>Mago • IA Vision &amp; SEO</h3>
-            <p>Analisa as fotos e o título bruto com IA multimodal (Gemini / Groq), agrupa variações pai-filho e gera título otimizado para busca, descrição estruturada, categoria e ficha técnica completa, além de montar kits.</p>
-            <div class="agent-io"><strong>Recebe:</strong> fotos + dados brutos → <strong>Entrega:</strong> ficha estruturada (JSON) com SEO, atributos e variações.</div>
+            <p>Analisa fotos e dados brutos com IA multimodal (<strong>Gemini 2.5 Flash / Groq Qwen</strong>), calcula <em>SEO Score</em> (0–100) e gera títulos otimizados (60–120 caracteres), descrições escaneáveis e fichas técnicas. Conta também com o <strong>Gerador Multi-Modelo (Estrutura 1)</strong> — unificando múltiplos modelos × grade <code>PP–G2</code> em um único anúncio pai —, criador de Kits/Combos e sincronização automática com banco <strong>PostgreSQL / Supabase</strong>.</p>
+            <div class="agent-io"><strong>Recebe:</strong> fotos + dados brutos → <strong>Entrega:</strong> 276 fichas estruturadas (JSON + tabela <code>produtos_shopee</code> no Supabase).</div>
           </div>
         </article>
 
@@ -279,8 +420,8 @@
           <div class="agent-content">
             <span class="agent-step">Agente 03 · agent3-rpa-magis5</span>
             <h3>Wall-E • RPA Magis5</h3>
-            <p>Valida os campos obrigatórios e preços em um checkpoint pré-voo, preenche o anúncio completo no hub Magis5 via Playwright (categorias, atributos, códigos ERP e fotos das variações) e aguarda aprovação humana antes de publicar.</p>
-            <div class="agent-io"><strong>Recebe:</strong> ficha enriquecida + fotos → <strong>Entrega:</strong> anúncio preenchido e revisado na Magis5 com screenshot de auditoria.</div>
+            <p>Executa validação de pré-voo (<em>checkpoint</em> de integridade e fallback de preços), preenche o anúncio completo no hub Magis5 via Playwright (árvore de categorias de 4 níveis, 18+ atributos, códigos ERP e fotos sem miniaturas duplicadas) e aguarda aprovação humana antes de publicar. Inclui também o módulo <strong>Draft Fixer</strong>, que localiza rascunhos com grade incompleta na Magis5 e reconstrói todas as variações automaticamente.</p>
+            <div class="agent-io"><strong>Recebe:</strong> ficha enriquecida + fotos → <strong>Entrega:</strong> 64 anúncios publicados e 499 screenshots de auditoria na Magis5.</div>
           </div>
         </article>
 
@@ -288,9 +429,9 @@
           <img class="agent-thumb" src="/agents/sherlock-holmes.png" alt="Agente 04 — Sherlock Holmes · Auditor da Esteira" loading="lazy">
           <div class="agent-content">
             <span class="agent-step">Agente 04 · agent4-diagnostician</span>
-            <h3>Sherlock Holmes • Auditor da Esteira</h3>
-            <p>Inspeciona os registros de execução e screenshots de erro, classifica a causa-raiz das falhas (categoria, marca, atributo pendente ou limite de imagens), propõe correções automáticas e consolida o funil da operação.</p>
-            <div class="agent-io"><strong>Recebe:</strong> logs, JSONs e screenshots de falha → <strong>Entrega:</strong> diagnóstico da causa-raiz e correção sugerida/aplicada.</div>
+            <h3>Sherlock Holmes • Auditor &amp; Relator Executivo</h3>
+            <p>Inspeciona logs e screenshots de erro para classificar a causa-raiz das rejeições (categoria, marca, atributo ou limite de imagens) com correção automática em 1 clique. Opera também o <strong>Relator Executivo da Esteira</strong> (<code>pipeline_reporter.mjs</code>), consolidando o funil SKU a SKU desde o ERP até a publicação e apontando automaticamente o gargalo atual da operação.</p>
+            <div class="agent-io"><strong>Recebe:</strong> logs, JSONs e screenshots de falha → <strong>Entrega:</strong> diagnóstico da causa-raiz, auto-fix em lote e painel executivo do funil.</div>
           </div>
         </article>
 
@@ -299,10 +440,60 @@
           <div class="agent-content">
             <span class="agent-step">Agente 05 · agent5-shopee-attributes</span>
             <h3>Sonic • Importador Shopee</h3>
-            <p>Abre o Shopee Seller Center via Playwright com sessão persistente pós-2FA, localiza os anúncios importados ou publicados (por planilha, SKU ou ID) e preenche ou atualiza os atributos técnicos obrigatórios e recomendados diretamente na Shopee, salvando com screenshot de auditoria.</p>
-            <div class="agent-io"><strong>Recebe:</strong> planilha/JSON + anúncio existente no Seller Center → <strong>Entrega:</strong> atributos técnicos preenchidos e salvos na Shopee.</div>
+            <p>Acessa diretamente o Shopee Seller Center via Playwright com perfil de sessão persistente pós-2FA, audita ao vivo todo o catálogo ativo da loja para mapear fichas técnicas vazias ou categorias incorretas e preenche/atualiza os atributos obrigatórios e recomendados diretamente na Shopee, salvando com screenshot de comprovação.</p>
+            <div class="agent-io"><strong>Recebe:</strong> planilha/JSON + anúncio existente no Seller Center → <strong>Entrega:</strong> atributos técnicos preenchidos e auditados na Shopee (247 fichas validadas).</div>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="interfaces">
+    <div class="wrap">
+      <span class="section-label">Interfaces do sistema</span>
+      <h2>O Zapee em operação real</h2>
+      <p>Para orquestrar os 6 robôs sem depender de terminais manuais, construí uma suíte web completa (<em>Mission Control</em>) com disparo de lotes, monitoramento de logs em tempo real, funil executivo e quadro Kanban de prioridades operacionais. Clique em qualquer tela para ampliar:</p>
+
+      <div class="screens-grid">
+        <figure class="screen-figure">
+          <button type="button" class="screen-btn" data-full="/zapee/zapee-painel.png" data-caption="Workspace Central do Zapee — Navegação lateral entre os Agentes 00 a 04, Roadmap Shopee, Quadro Kanban e disparo direto de lotes no Sankhya ERP.">
+            <img src="/zapee/zapee-painel.png" alt="Painel Central do sistema Zapee com menu lateral de agentes e ferramentas" loading="lazy">
+          </button>
+          <figcaption class="screen-caption">
+            <strong>1. Workspace Central &amp; Orquestrador de Agentes (Mission Control)</strong>
+            <span>Interface unificada com barra lateral para alternar entre os workspaces dedicados de cada agente (00 a 04), edição em massa, terminal em tempo real e atalhos para o Magis5 Hub e Shopee Seller Center.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="screen-figure">
+          <button type="button" class="screen-btn" data-full="/zapee/zapee-esteira.png" data-caption="Painel Executivo da Esteira (Agente 4) — Visão consolidada do lote ativo, diagnóstico automático de gargalo e funil SKU a SKU.">
+            <img src="/zapee/zapee-esteira.png" alt="Painel Executivo da Esteira gerado pelo Agente 4 com métricas e funil SKU a SKU" loading="lazy">
+          </button>
+          <figcaption class="screen-caption">
+            <strong>2. Painel Executivo da Esteira &amp; Detector de Gargalos (Agente 04)</strong>
+            <span>Consolida os números reais da operação (75 planilhas, 4.970 fotos salvas, 276 produtos enriquecidos e 499 comprovantes RPA), identifica onde a fila está represada e rastreia o status individual de cada SKU Pai.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="screen-figure">
+          <button type="button" class="screen-btn" data-full="/zapee/zapee-kanban.png" data-caption="Roadmap Interativo & Quadro Kanban — Monitoramento ao vivo da saúde do catálogo Shopee (risco DTS, categoria Outros e fichas técnicas vazias).">
+            <img src="/zapee/zapee-kanban.png" alt="Roadmap Interativo e Quadro Kanban de regularização cadastral na Shopee" loading="lazy">
+          </button>
+          <figcaption class="screen-caption">
+            <strong>3. Roadmap Interativo &amp; Gestão de Risco Cadastral (Agente 05 + Kanban)</strong>
+            <span>Painel tático alimentado pela auditoria ao vivo na Shopee: destaca alertas críticos D-0 (como prazos de envio DTS, anúncios desindexados na categoria "Outros" e 140 fichas técnicas vazias prontas para injeção pelo Agente 5).</span>
+          </figcaption>
+        </figure>
+
+        <figure class="screen-figure">
+          <button type="button" class="screen-btn" data-full="/zapee/zapee-classic-dashboard.png" data-caption="Centro de Operações de Lote & Console de Streaming — Acompanhamento de lote com 150 de 151 anúncios publicados e zero falhas pendentes.">
+            <img src="/zapee/zapee-classic-dashboard.png" alt="Centro de Operações dos Agentes mostrando lote concluído e console de logs" loading="lazy">
+          </button>
+          <figcaption class="screen-caption">
+            <strong>4. Centro de Operações de Lote &amp; Console de Streaming</strong>
+            <span>Visão de execução de lote (150 anúncios publicados de 151 enriquecidos pela IA) com console de logs filtrável por sucessos, avisos e erros em tempo real.</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -310,23 +501,23 @@
   <section>
     <div class="wrap">
       <span class="section-label">A arquitetura</span>
-      <h2>Orquestração e governança operacional</h2>
+      <h2>Orquestração, banco de dados e governança</h2>
       <div class="grid-2">
         <div class="block">
-          <h3>Extração &amp; Padronização Visual</h3>
-          <p>Da consulta automatizada de grades no <strong>ERP Sankhya</strong> ao download e conversão em lote com <strong>Sharp.js</strong>, eliminando gargalos manuais de preparação de catálogo.</p>
+          <h3>Extração ERP &amp; Padronização Visual</h3>
+          <p>Da mineração automatizada de coleções no <strong>ERP Sankhya</strong> à leitura de cores hexadecimais (BIFF8) e conversão de 4.970 fotos com <strong>Sharp.js</strong>, eliminando gargalos de preparação de catálogo.</p>
         </div>
         <div class="block">
-          <h3>Enriquecimento com IA Multimodal</h3>
-          <p>Visão computacional (<strong>Gemini / Groq</strong>) combinada a regras de negócio para estruturar títulos SEO, descrições, agrupamento pai-filho e fichas técnicas completas.</p>
+          <h3>IA Multimodal &amp; Estrutura Multi-Modelo</h3>
+          <p>Visão computacional (<strong>Gemini 2.5 Flash / Groq</strong>) aliada ao gerador de anúncios multi-estampa (<code>PP–G2</code>) e persistência estruturada em banco <strong>PostgreSQL / Supabase</strong>.</p>
         </div>
         <div class="block">
-          <h3>Publicação Assistida &amp; Pós-Publicação</h3>
-          <p>Automação via <strong>Playwright</strong> no hub <strong>Magis5</strong> com trava de revisão humana pré-publicação e refinamento direto de atributos técnicos no <strong>Shopee Seller Center</strong>.</p>
+          <h3>Publicação Assistida &amp; Draft Fixer</h3>
+          <p>Automação via <strong>Playwright</strong> na <strong>Magis5</strong> com checkpoint pré-voo, correção automática de rascunhos, aprovação humana e injeção direta de atributos no <strong>Shopee Seller Center</strong>.</p>
         </div>
         <div class="block">
-          <h3>Central Web &amp; Auditoria de Falhas</h3>
-          <p>Painel web centralizado para disparo de lotes, acompanhamento de logs em tempo real e diagnóstico automatizado de exceções com capturas de tela.</p>
+          <h3>Containerização 24/7 &amp; Acesso Remoto</h3>
+          <p>Preparado para operação contínua em VPS Linux via <strong>Docker Compose</strong> (imagem oficial Playwright) e exposição segura do painel web via túneis <strong>Cloudflare / Ngrok</strong>.</p>
         </div>
       </div>
       <p class="quote">“Eliminar tarefas mecânicas devolve o tempo da equipe para o que realmente importa: estratégia comercial, precificação e atendimento ao cliente.”</p>
@@ -336,14 +527,16 @@
   <section>
     <div class="wrap">
       <span class="section-label">Tecnologias</span>
-      <h2>Stack técnica utilizada</h2>
+      <h2>Stack técnica utilizada no Zapee</h2>
       <ul class="tech-list">
-        <li>Node.js &amp; TypeScript</li>
-        <li>Playwright (Automação de navegador &amp; RPA)</li>
-        <li>Sharp.js (Processamento de fotos em lote)</li>
-        <li>Google Gemini Vision / Groq</li>
-        <li>Integração ERP Sankhya &amp; Magis5</li>
-        <li>Automação Shopee Seller Center &amp; Painel Web</li>
+        <li>Node.js (ES Modules) &amp; API HTTP REST</li>
+        <li>Playwright (Automação RPA Headless / Headed)</li>
+        <li>Google Gemini 2.5 Flash Vision &amp; Groq (Qwen)</li>
+        <li>PostgreSQL / Supabase (Catálogo &amp; JSONB)</li>
+        <li>Sharp.js (Processamento de 4.900+ fotos)</li>
+        <li>Integração ERP Sankhya, Magis5 &amp; Shopee</li>
+        <li>Docker, Docker Compose &amp; Deploy VPS Linux</li>
+        <li>Mission Control Web, Funil Executivo &amp; Kanban</li>
       </ul>
     </div>
   </section>
@@ -351,23 +544,23 @@
   <section>
     <div class="wrap">
       <span class="section-label">Aprendizados &amp; Próximos Passos</span>
-      <h2>Resiliência e estabilidade em RPA</h2>
+      <h2>Resiliência e engenharia em RPA real</h2>
       <div class="grid-2">
         <div class="block">
-          <h3>Tratamento de exceções em RPA</h3>
-          <p>Sistemas legados e hubs de marketplace sofrem lentidão esporádica. Construir retries inteligentes, sessões persistentes e diagnóstico visual de erros foi crucial para evitar falhas silenciosas.</p>
+          <h3>Sessões persistentes e contorno de 2FA</h3>
+          <p>Utilizar perfis persistentes de navegador e injeção segura de sessão permitiu operar no ERP Sankhya, Magis5 e Shopee Seller Center sem bloqueios constantes de autenticação.</p>
         </div>
         <div class="block">
-          <h3>Prompts visuais determinísticos</h3>
-          <p>Calibrar a IA multimodal para respeitar regras de negócio rígidas (tamanho máximo de título, atributos obrigatórios e proibições de palavras sensíveis nos marketplaces).</p>
+          <h3>Regras determinísticas + IA Multimodal</h3>
+          <p>Combinar a criatividade do Gemini Vision com validadores estritos de schema garantiu títulos entre 60–120 caracteres, remoção automática de códigos internos e árvore de categorias exata.</p>
         </div>
         <div class="block">
-          <h3>Modularidade dos 6 agentes</h3>
-          <p>Dividir a solução em 6 agentes independentes (00 → 05) permitiu isolar falhas, auditar cada etapa e evoluir o pipeline sem travar a fila de publicação.</p>
+          <h3>Observabilidade orientada a gargalos</h3>
+          <p>Com 6 agentes independentes (00 → 05), o Relator Executivo e os 499 screenshots de auditoria tornaram visível exatamente onde atuar a cada rodada de publicação.</p>
         </div>
         <div class="block">
           <h3>Human-in-the-loop e escala</h3>
-          <p>Manter a aprovação humana no checkpoint de publicação garante segurança comercial enquanto o pipeline avança em throughput e assertividade operacional.</p>
+          <p>Manter a aprovação humana no checkpoint de publicação garante segurança comercial enquanto o Zapee avança em recuperação cadastral e expansão de catálogo.</p>
         </div>
       </div>
     </div>
@@ -376,8 +569,8 @@
   <section>
     <div class="wrap">
       <span class="section-label">Contato</span>
-      <h2>Quer entender os detalhes da arquitetura?</h2>
-      <p>Estou à disposição para demonstrar como o pipeline foi estruturado e discutir soluções de automação e IA aplicadas a operações reais.</p>
+      <h2>Quer conhecer o Zapee por dentro?</h2>
+      <p>Estou à disposição para demonstrar a arquitetura completa dos 6 agentes e discutir como aplicar automação RPA e IA multimodal em operações reais de e-commerce.</p>
       <a class="cta primary" href="https://wa.me/5516994657472" target="_blank" rel="noopener">Conversar no WhatsApp ↗</a>
       <a class="cta" href="https://www.linkedin.com/in/thalgy-lino-438445196/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="cta" href="/">← Voltar ao portfólio</a>
@@ -390,6 +583,45 @@
     <p>Thalgy de Oliveira Lino · 2026</p>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada da tela do sistema">
+  <button type="button" class="lightbox-close" id="lightboxClose">Fechar ✕</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script>
+  (function(){
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightboxImg');
+    var lbCap = document.getElementById('lightboxCaption');
+    var lbClose = document.getElementById('lightboxClose');
+    var btns = document.querySelectorAll('.screen-btn');
+
+    btns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var src = btn.getAttribute('data-full');
+        var cap = btn.getAttribute('data-caption') || '';
+        lbImg.src = src;
+        lbImg.alt = cap;
+        lbCap.textContent = cap;
+        lb.classList.add('open');
+      });
+    });
+
+    function closeLb(){
+      lb.classList.remove('open');
+      lbImg.src = '';
+    }
+    lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', function(e){
+      if(e.target === lb) closeLb();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && lb.classList.contains('open')) closeLb();
+    });
+  })();
+</script>
 
 </body>
 </html>
